@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
-
-namespace ScrumPm.Application.Products
+﻿namespace ScrumPm.Application.Products
 {
+    using System.Collections.Generic;
+    using ScrumPm.Domain.Teams;
+    using ScrumPm.Domain.Tenants;
+
     public interface ITeamRepository
     {
-        ICollection<Team> GetAllTeams(Tenants.TenantId tenantId);
+        ICollection<Team> GetAllTeams(TenantId tenantId);
 
         void Remove(Team team);
 
@@ -14,6 +16,6 @@ namespace ScrumPm.Application.Products
 
         void SaveAll(IEnumerable<Team> teams);
 
-        Team GetByName(Tenants.TenantId tenantId, string name);
+        Team GetByName(TenantId tenantId, string name);
     }
 }

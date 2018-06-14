@@ -14,10 +14,10 @@ namespace ScrumPm.Domain.Teams
 
         public TeamMemberId TeamMemberId
         {
-            get 
+            get
             {
                 // TODO: consider length restrictions on TeamMemberId.Id
-                return new TeamMemberId(this.TenantId, this.Username); 
+                return new TeamMemberId(this.TenantId, this.Username);
             }
         }
 

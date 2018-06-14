@@ -12,4 +12,8 @@
     <ProjectReference Include="..\ScrumPm.Common\ScrumPm.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Products\" />
+  </ItemGroup>
+
 </Project>
