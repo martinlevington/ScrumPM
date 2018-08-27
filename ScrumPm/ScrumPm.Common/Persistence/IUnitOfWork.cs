@@ -1,14 +1,15 @@
-﻿using ScrumPm.Persistence.Database.UnitOfWork;
+﻿using System.Threading.Tasks;
 
 namespace ScrumPm.Common.Persistence
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork<T> where T : class
     {
-        void RegisterUpdate(IAggregateRoot aggregateRoot);
-        void RegisterInsertion(IAggregateRoot aggregateRoot);
-        void RegisterDeletion(IAggregateRoot aggregateRoot);
-
+        T GetContext();
+        void Start();
+        Task StartAsync();
         void CommitAsync();
         void Commit();
+        void SaveChanges();
+        Task SaveChangesAsync();
     }
 }

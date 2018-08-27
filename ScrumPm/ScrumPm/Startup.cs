@@ -41,7 +41,7 @@ namespace ScrumPm
             services.AddTransient<ITeamMemberRepository, TeamMemberRepository>();
             services.AddTransient<IProductOwnerRepository, ProductOwnerRepository>();
             services.AddTransient<ITeamRepository, TeamRepository>();
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IUnitOfWork<ScrumPMContext>, UnitOfWorkEf<ScrumPMContext>>();
             services.AddTransient<IContextFactory<ScrumPMContext>, ContextFactory>();
             
             
@@ -61,6 +61,8 @@ namespace ScrumPm
                 {
                     var context = serviceScope.ServiceProvider.GetRequiredService<ScrumPMContext>();
                     context.Database.EnsureCreated();
+                    //context.Database.Migrate();
+                 
                 }
             }
             else

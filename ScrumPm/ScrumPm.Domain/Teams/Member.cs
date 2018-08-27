@@ -52,7 +52,7 @@
             {
                 if (value != null)
                 {
-                    AssertionConcern.AssertArgumentLength(_emailAddress, 100,
+                    AssertionConcern.AssertArgumentLength(value, 100,
                         "Email address must be 100 characters or less.");
                 }
 

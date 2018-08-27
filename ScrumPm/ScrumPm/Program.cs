@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ScrumPm.Migrations;
+using ScrumPm.Persistence.Database;
 using Serilog;
 using Serilog.Events;
 using Serilog.Formatting.Json;
@@ -15,6 +16,14 @@ namespace ScrumPm
 {
     public class Program
     {
+
+        public static IConfiguration Configuration { get; } = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true)
+            .AddEnvironmentVariables()
+            .Build();
+
         public static int Main(string[] args)
         {
             
@@ -35,13 +44,14 @@ namespace ScrumPm
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
                 .CreateLogger();
-            
-   
+
+            IWebHost host;
+
             try
             {
                 Log.Information("Starting web host");
-                BuildWebHost(args).Run();
-                return 0;
+                host = BuildWebHost(args);
+                
             }
             catch (Exception ex)
             {
@@ -52,14 +62,34 @@ namespace ScrumPm
             {
                 Log.CloseAndFlush();
             }
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var context = services.GetRequiredService<ScrumPMContext>();
+                try
+                {
+                    context.Database.EnsureCreated();
+                    SeedData.Initialize(services);
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred seeding the DB.");
+                }
+            }
+
+            host.Run();
+            return 0;
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
+        private static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
+                .UseConfiguration(Configuration)
                 .UseSerilog() 
                 .Build();
     }

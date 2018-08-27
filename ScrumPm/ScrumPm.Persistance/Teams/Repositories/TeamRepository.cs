@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Microsoft.EntityFrameworkCore;
 using ScrumPm.Application.Products;
 using ScrumPm.Common.Persistence;
-using ScrumPm.Domain.Teams;
 using ScrumPm.Domain.Tenants;
 using ScrumPm.Persistence.Database;
-using ScrumPm.Persistence.Teams.PersistenceModels;
 using ProductOwner = ScrumPm.Domain.Teams.ProductOwner;
 using Team = ScrumPm.Domain.Teams.Team;
 
@@ -16,16 +13,16 @@ namespace ScrumPm.Persistence.Teams.Repositories
 {
     public class TeamRepository : Repository<Team, int, PersistenceModels.Team>, ITeamRepository
     {
-        private readonly ScrumPMContext _context;
 
-        public TeamRepository(ScrumPMContext context, IUnitOfWork unitOfWork) : base(unitOfWork)
+
+        public TeamRepository(IUnitOfWork<ScrumPMContext> unitOfWork) : base(unitOfWork)
         {
-            _context = context;
+      
         }
 
-        public IEnumerable<Domain.Teams.Team> GetAllTeams(TenantId tenantId)
+        public IEnumerable<Team> GetAllTeams(TenantId tenantId)
         {
-           var teams =  _context.Teams.Select(x => x).ToList();
+           var teams =  UnitOfWork.GetContext().Teams.Include(t => t.ProductOwner).Select(x => x).ToList();
 
             var allTeams = new List<Team>();
             foreach (var dc in teams)
@@ -61,13 +58,24 @@ namespace ScrumPm.Persistence.Teams.Repositories
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Convert a Team Persistence model into a Team Domain Model
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="persistenceModel"></param>
+        /// <returns></returns>
         private Team ConvertToDomain(TenantId tenantId, PersistenceModels.Team persistenceModel)
         {
 
           return new Team(tenantId, persistenceModel.Name, ConvertToDomain(tenantId,persistenceModel.ProductOwner)) ;
         }
 
-
+        /// <summary>
+        /// Convert a Product Owner Persistence model into a 'ProductOwner' Domain Model
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="persistenceModel"></param>
+        /// <returns></returns>
         private ProductOwner ConvertToDomain(TenantId tenantId, PersistenceModels.ProductOwner persistenceModel)
         {
 
