@@ -22,13 +22,13 @@
         {
             return "ProductOwner [productOwnerId()=" + ProductOwnerId + ", emailAddress()=" + EmailAddress + ", isEnabled()="
                    + Enabled + ", firstName()=" + FirstName + ", lastName()=" + LastName + ", tenantId()=" + TenantId
-                   + ", username()=" + Username + "]";
+                   + ", username()=" + UserName + "]";
         }
 
         protected override System.Collections.Generic.IEnumerable<object> GetIdentityComponents()
         {
             yield return this.TenantId;
-            yield return this.Username;
+            yield return this.UserName;
         }
     }
 }

@@ -5,10 +5,15 @@
 
     /// <summary>
     /// Factory to Create ScrumPMContext
-    /// When used with A dependancy injection container this DBContext can be scoped to a desired lifetime
+    /// When used with A dependency injection container this DBContext can be scoped to a desired lifetime
     /// </summary>
     public class ContextFactory : IContextFactory<ScrumPMContext>, IDisposable
     {
+
+        public ContextFactory(ScrumPMContext context)
+        {
+            _dataContext = context;
+        }
 
         private ScrumPMContext _dataContext;
 
@@ -17,9 +22,9 @@
         /// If a instance doe snot already exist a new ScrumPMContext is instantiated
         /// </summary>
         /// <returns>ScrumPMContext</returns>
-        public ScrumPMContext GetContext()
+        public ScrumPMContext Create()
         {
-            return _dataContext ?? (_dataContext = new ScrumPMContext());
+            return _dataContext;
         }
 
         /// <summary>

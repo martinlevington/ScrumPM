@@ -6,7 +6,7 @@
 
     public interface ITeamRepository
     {
-        ICollection<Team> GetAllTeams(TenantId tenantId);
+        IEnumerable<Team> GetAllTeams(TenantId tenantId);
 
         void Remove(Team team);
 

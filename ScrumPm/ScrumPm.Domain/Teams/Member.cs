@@ -6,12 +6,12 @@
 
     public abstract class Member : EntityWithCompositeId
     {
-        private MemberChangeTracker changeTracker;
-        private string emailAddress;
-        private string firstName;
-        private string lastName;
+        private MemberChangeTracker _changeTracker;
+        private string _emailAddress;
+        private string _firstName;
+        private string _lastName;
 
-        private string userName;
+        private string _userName;
 
         public Member(
             TenantId tenantId,
@@ -28,40 +28,41 @@
             Enabled = true;
             FirstName = firstName;
             LastName = lastName;
-            changeTracker = new MemberChangeTracker(initializedOn, initializedOn, initializedOn);
+            UserName = userName;
+            _changeTracker = new MemberChangeTracker(initializedOn, initializedOn, initializedOn);
         }
 
         public TenantId TenantId { get; }
 
-        public string Username
+        public string UserName
         {
-            get => userName;
+            get => _userName;
             private set
             {
                 AssertionConcern.AssertArgumentNotEmpty(value, "The username must be provided.");
                 AssertionConcern.AssertArgumentLength(value, 250, "The username must be 250 characters or less.");
-                userName = value;
+                _userName = value;
             }
         }
 
         public string EmailAddress
         {
-            get => emailAddress;
+            get => _emailAddress;
             private set
             {
                 if (value != null)
                 {
-                    AssertionConcern.AssertArgumentLength(emailAddress, 100,
+                    AssertionConcern.AssertArgumentLength(_emailAddress, 100,
                         "Email address must be 100 characters or less.");
                 }
 
-                emailAddress = value;
+                _emailAddress = value;
             }
         }
 
         public string FirstName
         {
-            get => firstName;
+            get => _firstName;
             private set
             {
                 if (value != null)
@@ -69,13 +70,13 @@
                     AssertionConcern.AssertArgumentLength(value, 50, "First name must be 50 characters or less.");
                 }
 
-                firstName = value;
+                _firstName = value;
             }
         }
 
         public string LastName
         {
-            get => lastName;
+            get => _lastName;
             private set
             {
                 if (value != null)
@@ -83,7 +84,7 @@
                     AssertionConcern.AssertArgumentLength(value, 50, "Last name must be 50 characters or less.");
                 }
 
-                lastName = value;
+                _lastName = value;
             }
         }
 
@@ -91,46 +92,46 @@
 
         public void ChangeEmailAddress(string emailAddress, DateTime asOfDate)
         {
-            if (changeTracker.CanChangeEmailAddress(asOfDate)
+            if (_changeTracker.CanChangeEmailAddress(asOfDate)
                 && !EmailAddress.Equals(emailAddress))
             {
                 EmailAddress = emailAddress;
-                changeTracker = changeTracker.EmailAddressChangedOn(asOfDate);
+                _changeTracker = _changeTracker.EmailAddressChangedOn(asOfDate);
             }
         }
 
         public void ChangeName(string firstName, string lastName, DateTime asOfDate)
         {
-            if (!changeTracker.CanChangeName(asOfDate))
+            if (!_changeTracker.CanChangeName(asOfDate))
             {
                 return;
             }
 
             FirstName = firstName;
             LastName = lastName;
-            changeTracker = changeTracker.NameChangedOn(asOfDate);
+            _changeTracker = _changeTracker.NameChangedOn(asOfDate);
         }
 
         public void Disable(DateTime asOfDate)
         {
-            if (!changeTracker.CanToggleEnabling(asOfDate))
+            if (!_changeTracker.CanToggleEnabling(asOfDate))
             {
                 return;
             }
 
             Enabled = false;
-            changeTracker = changeTracker.EnablingOn(asOfDate);
+            _changeTracker = _changeTracker.EnablingOn(asOfDate);
         }
 
         public void Enable(DateTime asOfDate)
         {
-            if (!changeTracker.CanToggleEnabling(asOfDate))
+            if (!_changeTracker.CanToggleEnabling(asOfDate))
             {
                 return;
             }
 
             Enabled = true;
-            changeTracker = changeTracker.EnablingOn(asOfDate);
+            _changeTracker = _changeTracker.EnablingOn(asOfDate);
         }
     }
 }

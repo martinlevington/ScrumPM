@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumPm", "ScrumPm\ScrumPm.csproj", "{43F1AAE0-2D7F-412A-857D-CE3CE8B5E0C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPm", "ScrumPm\ScrumPm.csproj", "{43F1AAE0-2D7F-412A-857D-CE3CE8B5E0C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumPm.Domain", "ScrumPm.Domain\ScrumPm.Domain.csproj", "{6AFF1C2B-CA33-4144-901E-15B7DF5BD50D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPm.Domain", "ScrumPm.Domain\ScrumPm.Domain.csproj", "{6AFF1C2B-CA33-4144-901E-15B7DF5BD50D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumPm.Application", "ScrumPm.Application\ScrumPm.Application.csproj", "{ADB114D7-4303-496D-AB7E-84A970A07A23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPm.Application", "ScrumPm.Application\ScrumPm.Application.csproj", "{ADB114D7-4303-496D-AB7E-84A970A07A23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumPm.Persistance", "ScrumPm.Persistance\ScrumPm.Persistance.csproj", "{784F14BA-E87E-4CD3-8FD2-3762A1324A4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPm.Persistence", "ScrumPm.Persistance\ScrumPm.Persistence.csproj", "{784F14BA-E87E-4CD3-8FD2-3762A1324A4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumPm.Common", "ScrumPm.Common\ScrumPm.Common.csproj", "{8B78B0B0-A8C0-4BE4-9524-6E049D69E495}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPm.Common", "ScrumPm.Common\ScrumPm.Common.csproj", "{8B78B0B0-A8C0-4BE4-9524-6E049D69E495}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumPm.Common.Logging", "ScrumPm.Common.Logging\ScrumPm.Common.Logging.csproj", "{AC39CB11-E5E2-4A8A-9DE7-56AB134E0399}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{8B78B0B0-A8C0-4BE4-9524-6E049D69E495}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B78B0B0-A8C0-4BE4-9524-6E049D69E495}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B78B0B0-A8C0-4BE4-9524-6E049D69E495}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC39CB11-E5E2-4A8A-9DE7-56AB134E0399}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC39CB11-E5E2-4A8A-9DE7-56AB134E0399}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC39CB11-E5E2-4A8A-9DE7-56AB134E0399}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC39CB11-E5E2-4A8A-9DE7-56AB134E0399}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

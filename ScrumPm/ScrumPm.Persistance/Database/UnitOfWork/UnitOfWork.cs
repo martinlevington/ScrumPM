@@ -1,27 +1,55 @@
-﻿namespace ScrumPm.Persistence.Database.UnitOfWork
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using ScrumPm.Common;
+using ScrumPm.Common.Persistence;
+
+namespace ScrumPm.Persistence.Database.UnitOfWork
 {
-    using ScrumPm.Common.Persistence;
-
-    public class UnitOfWork<T>
-        where T : class, IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
-        private readonly IContextFactory<T> _contextFactory;
-        private T _dataContext;
+        private readonly IContextFactory<ScrumPMContext> _contextFactory;
 
-        public UnitOfWork(IContextFactory<T> databaseFactory)
+        public UnitOfWork(IContextFactory<ScrumPMContext> contextFactory)
         {
-            this._contextFactory = databaseFactory;
+            if (contextFactory == null)
+            {
+                throw new ArgumentNullException("Context factory");
+            }
+
+            _contextFactory = contextFactory;
         }
 
-        protected T DataContext
+        public DbContext GetContext()
         {
-            get { return _dataContext ?? (_dataContext = _contextFactory.GetContext()); }
+            return _contextFactory.Create();
         }
 
         public void Commit()
         {
-            DataContext.Commit();
+            _contextFactory.Create().SaveChanges();
         }
 
+        public async void CommitAsync()
+        {
+            await _contextFactory.Create().SaveChangesAsync();
+        }
+
+        public void RegisterUpdate(IAggregateRoot aggregateRoot)
+        {
+            // todo check if the item exists ??
+            _contextFactory.Create().Update(aggregateRoot);
+        }
+
+        public void RegisterInsertion(IAggregateRoot aggregateRoot)
+        {
+            // todo check if the item exists ??
+            _contextFactory.Create().Add(aggregateRoot);
+        }
+
+        public void RegisterDeletion(IAggregateRoot aggregateRoot)
+        {
+            // todo check if the item exists ??
+            _contextFactory.Create().Remove(aggregateRoot);
+        }
     }
 }

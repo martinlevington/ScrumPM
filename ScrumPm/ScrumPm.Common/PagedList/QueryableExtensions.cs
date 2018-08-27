@@ -15,7 +15,7 @@
 
             var expression = CreateExpression(typeof(T), property);
 
-            return (isAscending) ? Queryable.OrderBy(queryable, expression) : Queryable.OrderByDescending(queryable, expression);
+            return isAscending ? Queryable.OrderBy(queryable, expression) : Queryable.OrderByDescending(queryable, expression);
         }
 
         public static IQueryable<T> Page<T>(this IQueryable<T> queryable, int index, short size)
@@ -28,7 +28,7 @@
             return queryable.Skip((index - 1) * size).Take(size);
         }
 
-        static dynamic CreateExpression(Type type, string property)
+        private static dynamic CreateExpression(Type type, string property)
         {
             var parameter = Expression.Parameter(type, "x");
 

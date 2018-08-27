@@ -6,6 +6,6 @@
     /// <typeparam name="T"></typeparam>
     public interface IContextFactory<T>
     {
-        T GetContext();
+        T Create();
     }
 }

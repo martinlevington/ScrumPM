@@ -17,14 +17,14 @@ namespace ScrumPm.Domain.Teams
             get
             {
                 // TODO: consider length restrictions on TeamMemberId.Id
-                return new TeamMemberId(this.TenantId, this.Username);
+                return new TeamMemberId(this.TenantId, this.UserName);
             }
         }
 
         protected override IEnumerable<object> GetIdentityComponents()
         {
             yield return this.TenantId;
-            yield return this.Username;
+            yield return this.UserName;
         }
     }
 }

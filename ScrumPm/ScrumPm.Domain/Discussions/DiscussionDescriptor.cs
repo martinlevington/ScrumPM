@@ -4,7 +4,7 @@
 
     public class DiscussionDescriptor : ValueObject
     {
-        public const string UNDEFINED_ID = "UNDEFINED";
+        public const string UndefinedId = "UNDEFINED";
 
         public DiscussionDescriptor(string id)
         {
@@ -22,7 +22,7 @@
         {
             get
             {
-                return this.Id.Equals(UNDEFINED_ID);
+                return this.Id.Equals(UndefinedId);
             }
         }
 
