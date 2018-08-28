@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using ScrumPm.Migrations;
-using ScrumPm.Persistence.Database;
 using Serilog;
-using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting.Json;
 
-namespace ScrumPm
+namespace ScrumPmApi
 {
     public class Program
     {
@@ -25,9 +23,10 @@ namespace ScrumPm
             .AddEnvironmentVariables()
             .Build();
 
+
         public static int Main(string[] args)
         {
-            
+
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
@@ -35,39 +34,27 @@ namespace ScrumPm
                 .Enrich.WithMemoryUsage()
                 .Enrich.WithEnvironment("OS")
                 .Enrich.WithThreadId()
-           
                 .Enrich.WithProperty(new KeyValuePair<string, object>("applicationId", "SCRUM PM"))
-                .Enrich.FromLogContext()
-               
-                 //  .WriteTo.Async(a => a.ApplicationInsightsTraces("<MyApplicationInsightsInstrumentationKey>"))
+                //  .WriteTo.Async(a => a.ApplicationInsightsTraces("<MyApplicationInsightsInstrumentationKey>"))
                      
-                //.WriteTo.Async(r => r.RollingFile("logs/log-"+typeof(Program).Assembly.GetName().Name+"-{Date}.txt", retainedFileCountLimit: 10,
-                //    outputTemplate:
-                //    "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] {Message}{NewLine}{Exception}{NewLine}Memory: {MemoryUsage}{NewLine}",
-                //    levelSwitch: new LoggingLevelSwitch(LogEventLevel.Information)
-                //        )
-                //)
-                       
-                .WriteTo.RollingFile("logs/log-"+typeof(Program).Assembly.GetName().Name+"-{Date}.txt", retainedFileCountLimit: 10,
-                        outputTemplate:
-                        "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] {Message}{NewLine}{Exception}{NewLine}Memory: {MemoryUsage}{NewLine}",
-                        levelSwitch: new LoggingLevelSwitch(LogEventLevel.Debug)
-                    )
-                
+                .WriteTo.Async(r => r.RollingFile("logs/log-"+typeof(Program).Assembly.GetName().Name+"-{Date}.txt", retainedFileCountLimit: 10,
+                    outputTemplate:
+                    "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level}] {Message}{NewLine}{Exception}{NewLine}Memory: {MemoryUsage}{NewLine}"))
                 .WriteTo.Async(r => r.RollingFile(new JsonFormatter(), "logs/log-"+typeof(Program).Assembly.GetName().Name+"-json-{Date}.txt"))
 
+                .Enrich.FromLogContext()
                 .WriteTo.Console()
                 .CreateLogger();
 
-       
+     
+
 
             try
             {
                 Log.Information("Starting web host");
                 Log.Information("Application version {Version} starting up",
                     typeof(Program).Assembly.GetName().Version);
-                 CreateWebHostBuilder(args).Build().Run();
-
+                CreateWebHostBuilder(args).Build().Run();
                 return 0;
                 
             }
@@ -81,19 +68,16 @@ namespace ScrumPm
                 Log.CloseAndFlush();
             }
 
-          
+       
 
-    
-         
+
         }
 
         private static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-             //   .UseKestrel()
-             //   .UseContentRoot(Directory.GetCurrentDirectory())
-               // .UseIISIntegration()
+       
                 .UseStartup<Startup>()
                 .UseConfiguration(Configuration)
-                .UseSerilog(Log.Logger);
+                .UseSerilog();
     }
 }

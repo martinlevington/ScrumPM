@@ -1,13 +1,17 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
+using CorrelationId;
 using Microsoft.EntityFrameworkCore;
 using ScrumPm.Application.Products;
 using ScrumPm.Application.Teams;
 using ScrumPm.Common.Persistence;
 using ScrumPm.Domain.Teams;
 using ScrumPm.Middleware;
+using ScrumPm.Migrations;
 using ScrumPm.Persistence.Database;
 using ScrumPm.Persistence.Database.UnitOfWork;
 using ScrumPm.Persistence.Teams.Repositories;
+using Serilog;
 
 namespace ScrumPm
 {
@@ -33,9 +37,12 @@ namespace ScrumPm
             services.AddDbContext<ScrumPMContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ScrumPMContext")));
 
+          
             services.AddAutoMapper();
 
             services.AddMvc();
+
+            services.AddCorrelationId();
 
             services.AddTransient<ITeamApplicationService, TeamApplicationService>();
             services.AddTransient<ITeamMemberRepository, TeamMemberRepository>();
@@ -63,18 +70,37 @@ namespace ScrumPm
                     context.Database.EnsureCreated();
                     //context.Database.Migrate();
                  
+                    try
+                    {
+                        context.Database.EnsureCreated();
+                        SeedData.Initialize(serviceScope.ServiceProvider);
+                    }
+                    catch (Exception ex)
+                    {
+                  
+                        Log.Error(ex, "An error occurred seeding the DB.");
+                    }
                 }
+
+               
+                
+                
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseCorrelationId();
+
             app.UseStaticFiles();
             // setup additional logging
             app.UseRemoteIpAddressLoggingMiddleware();
+            app.UseMiddleware<CorrelationLoggingMiddleware>();
             app.UseMiddleware<HttpContextLoggingMiddleware>();
             app.UseMiddleware<UserLoggingMiddleware>();
+
+            
 
             app.UseMvc(routes =>
             {
