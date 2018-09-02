@@ -3,7 +3,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace ScrumPm.Attributes
+namespace ScrumPm.AspNetCore.Common.Attributes
 {
     public class AutoMapFilter : IActionFilter
     {

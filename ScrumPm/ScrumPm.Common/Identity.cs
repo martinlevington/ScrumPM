@@ -1,7 +1,7 @@
-﻿namespace ScrumPm.Common
-{
-    using System;
+﻿using System;
 
+namespace ScrumPm.Domain.Common
+{
     public abstract class Identity : IEquatable<Identity>, IIdentity
     {
         public Identity()

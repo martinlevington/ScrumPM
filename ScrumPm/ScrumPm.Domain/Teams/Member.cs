@@ -1,7 +1,8 @@
-﻿namespace ScrumPm.Domain.Teams
+﻿using ScrumPm.Domain.Common;
+
+namespace ScrumPm.Domain.Teams
 {
     using System;
-    using ScrumPm.Common;
     using ScrumPm.Domain.Tenants;
 
     public abstract class Member : EntityWithCompositeId

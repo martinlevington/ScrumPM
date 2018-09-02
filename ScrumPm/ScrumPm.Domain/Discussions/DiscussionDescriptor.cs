@@ -1,6 +1,8 @@
-﻿namespace ScrumPm.Domain.Discussions
+﻿using ScrumPm.Domain.Common;
+
+namespace ScrumPm.Domain.Discussions
 {
-    using ScrumPm.Common;
+
 
     public class DiscussionDescriptor : ValueObject
     {

@@ -1,4 +1,6 @@
-﻿namespace ScrumPm.Middleware
+﻿using ScrumPm.Domain.Common.Exceptions;
+
+namespace ScrumPm.Middleware
 {
     using System;
     using System.Net;
@@ -7,7 +9,6 @@
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Logging;
-    using ScrumPm.Common.Exceptions;
 
     public class ExceptionMiddleware
     {

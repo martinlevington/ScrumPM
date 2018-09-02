@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ScrumPm.Common;
-using ScrumPm.Common.Persistence;
+using ScrumPm.Domain.Common;
+using ScrumPm.Domain.Common.Persistence;
 using ScrumPm.Persistence.Database;
 using ScrumPm.Persistence.Database.UnitOfWork;
 

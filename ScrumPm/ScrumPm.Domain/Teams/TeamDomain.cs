@@ -1,9 +1,10 @@
-﻿namespace ScrumPm.Domain.Teams
+﻿using ScrumPm.Domain.Common;
+
+namespace ScrumPm.Domain.Teams
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
-    using ScrumPm.Common;
     using ScrumPm.Domain.Tenants;
 
     public class Team : Entity, IAggregateRoot

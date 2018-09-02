@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using ScrumPm.Application.Products;
-using ScrumPm.Common.Persistence;
+using ScrumPm.Domain.Common.Persistence;
+using ScrumPm.Domain.Teams;
 using ScrumPm.Domain.Tenants;
 using ScrumPm.Persistence.Database;
 using ProductOwner = ScrumPm.Domain.Teams.ProductOwner;

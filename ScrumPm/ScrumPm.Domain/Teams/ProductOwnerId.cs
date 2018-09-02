@@ -1,6 +1,7 @@
-﻿namespace ScrumPm.Domain.Teams
+﻿using ScrumPm.Domain.Common;
+
+namespace ScrumPm.Domain.Teams
 {
-    using ScrumPm.Common;
     using ScrumPm.Domain.Tenants;
 
     public class ProductOwnerId : Identity

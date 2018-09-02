@@ -1,6 +1,8 @@
-﻿namespace ScrumPm.Domain.Tenants
+﻿using ScrumPm.Domain.Common;
+
+namespace ScrumPm.Domain.Tenants
 {
-    using ScrumPm.Common;
+
 
     public class TenantId : Identity
     {

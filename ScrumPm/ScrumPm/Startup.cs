@@ -2,9 +2,8 @@
 using AutoMapper;
 using CorrelationId;
 using Microsoft.EntityFrameworkCore;
-using ScrumPm.Application.Products;
 using ScrumPm.Application.Teams;
-using ScrumPm.Common.Persistence;
+using ScrumPm.Domain.Common.Persistence;
 using ScrumPm.Domain.Teams;
 using ScrumPm.Middleware;
 using ScrumPm.Migrations;

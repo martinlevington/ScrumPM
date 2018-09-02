@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Serilog.Context;
 
-namespace ScrumPm.Middleware
+namespace ScrumPm.AspNetCore.Common.Middleware
 {
     public class UserLoggingMiddleware
     {

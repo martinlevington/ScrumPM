@@ -1,9 +1,9 @@
 ﻿
 
-namespace ScrumPm.Common
-{
-    using System;
+using System;
 
+namespace ScrumPm.Domain.Common
+{
     public interface IDomainEventSubscriber<T>
         where T : IDomainEvent
     {

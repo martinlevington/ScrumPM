@@ -1,7 +1,5 @@
-﻿namespace ScrumPm.Domain
+﻿namespace ScrumPm.Domain.Discussions
 {
-    using System;
-
     public enum DiscussionAvailability
     {
         AddOnNotEnabled,

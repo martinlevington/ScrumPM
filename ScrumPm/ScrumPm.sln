@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPm.Application", "Scru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPm.Persistence", "ScrumPm.Persistance\ScrumPm.Persistence.csproj", "{784F14BA-E87E-4CD3-8FD2-3762A1324A4A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPm.Common", "ScrumPm.Common\ScrumPm.Common.csproj", "{8B78B0B0-A8C0-4BE4-9524-6E049D69E495}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPm.Domain.Common", "ScrumPm.Common\ScrumPm.Domain.Common.csproj", "{8B78B0B0-A8C0-4BE4-9524-6E049D69E495}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPm.Common.Logging", "ScrumPm.Common.Logging\ScrumPm.Common.Logging.csproj", "{AC39CB11-E5E2-4A8A-9DE7-56AB134E0399}"
 EndProject

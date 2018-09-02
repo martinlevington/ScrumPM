@@ -1,9 +1,8 @@
-﻿namespace ScrumPm.Application.Products
-{
-    using System.Collections.Generic;
-    using ScrumPm.Domain.Teams;
-    using ScrumPm.Domain.Tenants;
+﻿using System.Collections.Generic;
+using ScrumPm.Domain.Tenants;
 
+namespace ScrumPm.Domain.Teams
+{
     public interface ITeamRepository
     {
         IEnumerable<Team> GetAllTeams(TenantId tenantId);

@@ -1,4 +1,4 @@
-﻿namespace ScrumPm.Common.PagedList
+﻿namespace ScrumPm.Domain.Common.PagedList
 {
     public class Page
     {

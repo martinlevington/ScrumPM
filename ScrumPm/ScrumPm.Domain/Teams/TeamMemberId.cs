@@ -1,7 +1,8 @@
-﻿namespace ScrumPm.Domain.Teams
+﻿using ScrumPm.Domain.Common;
+
+namespace ScrumPm.Domain.Teams
 {
     using System.Collections.Generic;
-    using ScrumPm.Common;
 
     public class TeamMemberId : ValueObject
     {

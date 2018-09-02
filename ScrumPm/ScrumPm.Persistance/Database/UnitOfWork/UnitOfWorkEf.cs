@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using ScrumPm.Domain.Common.Persistence;
 
 namespace ScrumPm.Persistence.Database.UnitOfWork
 {
-    using ScrumPm.Common.Persistence;
-
     public class UnitOfWorkEf<T> : IUnitOfWork<T> where T : DbContext
     {
         private readonly IContextFactory<T> _contextFactory;

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ScrumPm.Domain.Teams;
 
-namespace ScrumPm.ViewModels
+namespace ScrumPm.Models
 {
     public class TeamModel
     {

@@ -1,7 +1,6 @@
 ﻿using System;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc.Filters;
-using ScrumPm.Attributes;
 
 namespace ScrumPm.AspNetCore.Common.Attributes
 {

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace ScrumPm.Common.Persistence
+namespace ScrumPm.Domain.Common.Persistence
 {
     public interface IUnitOfWork<T> where T : class
     {
