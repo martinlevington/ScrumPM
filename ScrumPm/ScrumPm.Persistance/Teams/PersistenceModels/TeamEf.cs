@@ -15,6 +15,6 @@ namespace ScrumPm.Persistence.Teams.PersistenceModels
         public string Name { get; set; }
 
         public int ProductOwnerId { get; set; }
-        public ProductOwner ProductOwner { get; set; }
+        public ProductOwnerEf ProductOwner { get; set; }
     }
 }

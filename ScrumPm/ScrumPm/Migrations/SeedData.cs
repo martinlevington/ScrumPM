@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using ScrumPm.Domain.Tenants;
 using ScrumPm.Persistence.Database;
 using ScrumPm.Persistence.Teams.PersistenceModels;
-using Tenant = ScrumPm.Persistence.Teams.PersistenceModels.Tenant;
+using TenantEf = ScrumPm.Persistence.Teams.PersistenceModels.TenantEf;
 
 namespace ScrumPm.Migrations
 {
@@ -53,8 +53,8 @@ namespace ScrumPm.Migrations
             var commandTextOn = "SET IDENTITY_INSERT [dbo].[Tenants] ON";
             context.Database.ExecuteSqlCommand(commandTextOn);
 
-            context.Tenants.Add(new Tenant() {Id = 1, Name = "Tenant One"});
-            context.Tenants.Add(new Tenant() {Id = 2, Name = "Tenant Two"});
+            context.Tenants.Add(new TenantEf() {Id = 1, Name = "Tenant One"});
+            context.Tenants.Add(new TenantEf() {Id = 2, Name = "Tenant Two"});
             context.SaveChanges();
 
       
@@ -73,12 +73,12 @@ namespace ScrumPm.Migrations
             var commandTextOn = "SET IDENTITY_INSERT [dbo].[ProductOwners] ON";
             context.Database.ExecuteSqlCommand(commandTextOn);
 
-            context.ProductOwners.Add(new ProductOwner()
+            context.ProductOwners.Add(new ProductOwnerEf()
             {
                 Id = 1, UserName = "bill.lone", FirstName = "Bill", LastName = "LOne", EmailAddress = "bill@email.com",
                 Created = DateTime.Now, Modified = DateTime.Now
             });
-            context.ProductOwners.Add(new ProductOwner()
+            context.ProductOwners.Add(new ProductOwnerEf()
             {
                 Id = 2, UserName = "gill.ltwo", FirstName = "Gill", LastName = "LTwo", EmailAddress = "Gill@email.com",
                 Created = DateTime.Now, Modified = DateTime.Now

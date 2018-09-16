@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using ScrumPm.Domain.Teams;
+using ScrumPm.Domain.Tenants;
+using ScrumPm.Persistence.Teams.PersistenceModels;
 
 namespace ScrumPm.Persistence.Teams
 {
-    class ITeamAdapterFactory
+    public interface ITeamAdapterFactory
     {
+        Team Create(TenantId tenantId, TeamEf persistenceModel);
     }
 }

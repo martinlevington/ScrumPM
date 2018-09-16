@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ScrumPm.Persistence.Teams.PersistenceModels
 {
-    public class Tenant
+    public class TenantEf
     {
 
 

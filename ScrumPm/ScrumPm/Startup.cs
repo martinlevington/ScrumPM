@@ -9,6 +9,7 @@ using ScrumPm.Middleware;
 using ScrumPm.Migrations;
 using ScrumPm.Persistence.Database;
 using ScrumPm.Persistence.Database.UnitOfWork;
+using ScrumPm.Persistence.Teams;
 using ScrumPm.Persistence.Teams.Repositories;
 using Serilog;
 
@@ -47,6 +48,8 @@ namespace ScrumPm
             services.AddTransient<ITeamMemberRepository, TeamMemberRepository>();
             services.AddTransient<IProductOwnerRepository, ProductOwnerRepository>();
             services.AddTransient<ITeamRepository, TeamRepository>();
+            services.AddTransient<ITeamAdapterFactory, TeamAdapterFactory>();
+            
             services.AddTransient<IUnitOfWork<ScrumPMContext>, UnitOfWorkEf<ScrumPMContext>>();
             services.AddTransient<IContextFactory<ScrumPMContext>, ContextFactory>();
             
