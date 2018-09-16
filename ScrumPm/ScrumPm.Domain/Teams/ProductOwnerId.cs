@@ -2,17 +2,17 @@
 
 namespace ScrumPm.Domain.Teams
 {
-    using ScrumPm.Domain.Tenants;
+    using Tenants;
 
-    public class ProductOwnerId : Identity
+    public class ProductOwnerId : IdentityString
     {
         public ProductOwnerId(TenantId tenantId, string id)
             : base(tenantId + ":" + id)
         {
+            TenantId = tenantId;
         }
 
-        public TenantId TenantId => new TenantId(this.Id.Split(':')[0]);
+        public TenantId TenantId;
 
-        public string Identity => this.Id.Split(':')[1];
     }
 }

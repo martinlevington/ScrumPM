@@ -12,46 +12,46 @@ namespace ScrumPm.Domain.Teams
 
         internal MemberChangeTracker(DateTime enablingOn, DateTime nameChangedOn, DateTime emailAddressChangedOn)
         {
-            this._emailAddressChangedOnDate = emailAddressChangedOn;
-            this._enablingOnDate = enablingOn;
-            this._nameChangedOnDate = nameChangedOn;
+            _emailAddressChangedOnDate = emailAddressChangedOn;
+            _enablingOnDate = enablingOn;
+            _nameChangedOnDate = nameChangedOn;
         }
 
         public bool CanChangeEmailAddress(DateTime asOfDateTime)
         {
-            return this._emailAddressChangedOnDate < asOfDateTime;
+            return _emailAddressChangedOnDate < asOfDateTime;
         }
 
         public bool CanChangeName(DateTime asOfDateTime)
         {
-            return this._nameChangedOnDate < asOfDateTime;
+            return _nameChangedOnDate < asOfDateTime;
         }
 
         public bool CanToggleEnabling(DateTime asOfDateTime)
         {
-            return this._enablingOnDate < asOfDateTime;
+            return _enablingOnDate < asOfDateTime;
         }
 
         public MemberChangeTracker EmailAddressChangedOn(DateTime asOfDateTime)
         {
-            return new MemberChangeTracker(this._enablingOnDate, this._nameChangedOnDate, asOfDateTime);
+            return new MemberChangeTracker(_enablingOnDate, _nameChangedOnDate, asOfDateTime);
         }
 
         public MemberChangeTracker EnablingOn(DateTime asOfDateTime)
         {
-            return new MemberChangeTracker(asOfDateTime, this._nameChangedOnDate, this._emailAddressChangedOnDate);
+            return new MemberChangeTracker(asOfDateTime, _nameChangedOnDate, _emailAddressChangedOnDate);
         }
 
         public MemberChangeTracker NameChangedOn(DateTime asOfDateTime)
         {
-            return new MemberChangeTracker(this._enablingOnDate, asOfDateTime, this._emailAddressChangedOnDate);
+            return new MemberChangeTracker(_enablingOnDate, asOfDateTime, _emailAddressChangedOnDate);
         }
 
         protected override System.Collections.Generic.IEnumerable<object> GetEqualityComponents()
         {
-            yield return this._enablingOnDate;
-            yield return this._nameChangedOnDate;
-            yield return this._emailAddressChangedOnDate;
+            yield return _enablingOnDate;
+            yield return _nameChangedOnDate;
+            yield return _emailAddressChangedOnDate;
         }
     }
 }

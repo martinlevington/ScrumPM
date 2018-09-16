@@ -3,7 +3,7 @@
 namespace ScrumPm.Domain.Teams
 {
     using System;
-    using ScrumPm.Domain.Tenants;
+    using Tenants;
 
     public abstract class Member : EntityWithCompositeId
     {
@@ -30,6 +30,7 @@ namespace ScrumPm.Domain.Teams
             FirstName = firstName;
             LastName = lastName;
             UserName = userName;
+
             _changeTracker = new MemberChangeTracker(initializedOn, initializedOn, initializedOn);
         }
 

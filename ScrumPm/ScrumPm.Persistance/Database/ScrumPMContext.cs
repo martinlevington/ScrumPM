@@ -6,7 +6,7 @@ namespace ScrumPm.Persistence.Database
 
     public class ScrumPMContext : DbContext
     {
-        public  DbSet<Team> Teams { get; set; }
+        public  DbSet<TeamEf> Teams { get; set; }
         public  DbSet<ProductOwner> ProductOwners { get; set; }
         public DbSet<Tenant> Tenants { get; set; }
 

@@ -1,13 +1,16 @@
-﻿using ScrumPm.Domain.Common;
+﻿using System;
+using ScrumPm.Domain.Common;
 
 namespace ScrumPm.Domain.Tenants
 {
 
-    public sealed class Tenant : Identity
+    public sealed class Tenant : Entity
     {
-        public Tenant(string id)
-            : base(id)
+        private readonly TenantId _id;
+
+        public Tenant(TenantId id)
         {
+            _id = id;
         }
     }
 }

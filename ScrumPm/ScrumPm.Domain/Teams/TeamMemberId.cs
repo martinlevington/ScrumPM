@@ -12,8 +12,8 @@ namespace ScrumPm.Domain.Teams
             AssertionConcern.AssertArgumentNotEmpty(id, "The id must be provided.");
             AssertionConcern.AssertArgumentLength(id, 36, "The id must be 36 characters or less.");
 
-            this.TenantId = tenantId;
-            this.Id = id;
+            TenantId = tenantId;
+            Id = id;
         }
 
         public Tenants.TenantId TenantId { get; private set; }
@@ -22,8 +22,8 @@ namespace ScrumPm.Domain.Teams
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
-            yield return this.TenantId;
-            yield return this.Id;
+            yield return TenantId;
+            yield return Id;
         }
     }
 }

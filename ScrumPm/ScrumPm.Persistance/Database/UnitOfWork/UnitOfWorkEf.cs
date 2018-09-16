@@ -12,7 +12,7 @@ namespace ScrumPm.Persistence.Database.UnitOfWork
 
         public UnitOfWorkEf(IContextFactory<T> databaseFactory)
         {
-            this._contextFactory = databaseFactory;
+            _contextFactory = databaseFactory;
         }
 
         private T DataContext

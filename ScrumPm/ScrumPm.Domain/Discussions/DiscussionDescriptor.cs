@@ -10,7 +10,7 @@ namespace ScrumPm.Domain.Discussions
 
         public DiscussionDescriptor(string id)
         {
-            this.Id = id;
+            Id = id;
         }
 
         public DiscussionDescriptor(DiscussionDescriptor discussionDescriptor)
@@ -24,7 +24,7 @@ namespace ScrumPm.Domain.Discussions
         {
             get
             {
-                return this.Id.Equals(UndefinedId);
+                return Id.Equals(UndefinedId);
             }
         }
 
@@ -35,7 +35,7 @@ namespace ScrumPm.Domain.Discussions
 
         protected override System.Collections.Generic.IEnumerable<object> GetEqualityComponents()
         {
-            yield return this.Id;
+            yield return Id;
         }
     }
 }

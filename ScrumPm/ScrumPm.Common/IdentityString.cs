@@ -2,26 +2,21 @@
 
 namespace ScrumPm.Domain.Common
 {
-    public abstract class Identity : IEquatable<Identity>, IIdentity<Guid>
+    public abstract class IdentityString : IEquatable<IdentityString>, IIdentity<string>
     {
-        public Identity()
+        public IdentityString()
         {
-            Id = Guid.NewGuid();
+            Id = Guid.NewGuid().ToString();
         }
 
-        public Identity(Guid id)
+        public IdentityString(string id)
         {
             Id = id;
         }
 
-        public Identity(string id)
-        {
-            Id = new Guid(id);
-        }
+        public string Id { get; set; }
 
-        public Guid Id { get; set; }
-
-        public bool Equals(Identity id)
+        public bool Equals(IdentityString id)
         {
             if (ReferenceEquals(this, id)) return true;
 
@@ -32,7 +27,7 @@ namespace ScrumPm.Domain.Common
 
         public override bool Equals(object anotherObject)
         {
-            return Equals(anotherObject as Identity);
+            return Equals(anotherObject as IdentityString);
         }
 
         public override int GetHashCode()
@@ -40,14 +35,9 @@ namespace ScrumPm.Domain.Common
             return (GetType().GetHashCode() * 907) + Id.GetHashCode();
         }
 
-        public  string ToNameString()
-        {
-            return GetType().Name + " [Id=" + Id + "]";
-        }
-
         public override string ToString()
         {
-            return  Id.ToString();
+            return GetType().Name + " [Id=" + Id + "]";
         }
     }
 }

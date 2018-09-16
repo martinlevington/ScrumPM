@@ -1,4 +1,5 @@
-﻿using ScrumPm.Domain.Common;
+﻿using System;
+using ScrumPm.Domain.Common;
 
 namespace ScrumPm.Domain.Tenants
 {
@@ -11,7 +12,7 @@ namespace ScrumPm.Domain.Tenants
         {
         }
 
-        public TenantId(string id)
+        public TenantId(Guid id)
             : base(id)
         {
         }

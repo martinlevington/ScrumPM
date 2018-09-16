@@ -1,7 +1,7 @@
 ﻿namespace ScrumPm.Domain.Teams
 {
     using System;
-    using ScrumPm.Domain.Tenants;
+    using Tenants;
 
     public class ProductOwner : Member
     {
@@ -27,8 +27,8 @@
 
         protected override System.Collections.Generic.IEnumerable<object> GetIdentityComponents()
         {
-            yield return this.TenantId;
-            yield return this.UserName;
+            yield return TenantId;
+            yield return UserName;
         }
     }
 }

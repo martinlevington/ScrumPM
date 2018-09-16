@@ -44,4 +44,8 @@
     <ProjectReference Include="..\ScrumPm.Persistance\ScrumPm.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Teams\" />
+  </ItemGroup>
+
 </Project>

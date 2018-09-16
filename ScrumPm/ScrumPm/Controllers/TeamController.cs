@@ -1,18 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ScrumPm.Application.Teams;
 using ScrumPm.Attributes;
+using ScrumPm.BindingModels;
 using ScrumPm.Domain.Teams;
+using ScrumPm.Domain.Tenants;
 using ScrumPm.ViewModels.Teams;
 using Serilog;
 
 namespace ScrumPm.Controllers
 {
+    [Route("[controller]/[action]")]
     public class TeamController : Controller
     {
         private readonly ITeamApplicationService _teamApplicationService;
         private readonly ILogger<TeamController> _logger;
+
+        private TenantId _tenantId = new TenantId(new Guid("544060C5-4F5F-4EA6-AC8E-7100D7E87CCB"));
 
 
         public TeamController(ITeamApplicationService teamApplicationService, ILogger<TeamController> logger)
@@ -22,31 +28,49 @@ namespace ScrumPm.Controllers
         }
 
         [AutoMapFilter(SourceType = typeof(IEnumerable<Team>), DestinationType = typeof(IEnumerable<TeamViewModel>))]
+
+        [Route("")]      // Combines to define the route template "Home"
+        [Route("Index")] // Combines to define the route template "Home/Index"
+        [Route("/")]     // Doesn't combine, defines the route template ""
+
         public IActionResult Index()
         {
-            _logger.LogInformation("TeamController: Index");
+          
             _logger.LogDebug("TeamController: Index");
-            _logger.LogError("TeamController: Index");
-           
-            Log.Error("Team Error");
+          
+            var teams = _teamApplicationService.GetTeams(_tenantId);
 
-            _logger.LogInformation("Before");
+            _logger.LogInformation("End TeamController: Index");
+            return View(teams);
+        }
 
-            using (_logger.BeginScope("Some name"))
-            using (_logger.BeginScope(42))
-            using (_logger.BeginScope("Formatted {WithValue}", 12345))
-            using (_logger.BeginScope(new Dictionary<string, object> { ["ViaDictionary"] = 100 }))
-            {
-                _logger.LogInformation("Hello from the Index!");
-                _logger.LogDebug("Hello is done");
-            }
+        public IActionResult EditView(Guid teamId)
+        {
+            var team = _teamApplicationService.GetTeam(_tenantId, new TeamId(teamId));
 
-            _logger.LogInformation("After");
+            return View(team);
+        }
 
-            var Teams = _teamApplicationService.GetTeams();
+        [HttpGet("{teamId}")]
+        [AutoMapFilter(SourceType = typeof(Team), DestinationType = typeof(TeamViewModel))]
+        public ActionResult Details(string teamId)
+        {
+            if (string.IsNullOrWhiteSpace(teamId)) throw new ArgumentNullException(nameof(teamId));
 
+            var team = _teamApplicationService.GetTeam(_tenantId, new TeamId(teamId));
 
-            return View(Teams);
+            return View(team);
+        }
+
+        [HttpPost]
+        [AutoMapFilter(SourceType = typeof(IEnumerable<Team>), DestinationType = typeof(IEnumerable<TeamViewModel>))]
+
+        public IActionResult Search(SearchBindingModel searchTerm)
+        {
+
+            var teams = _teamApplicationService.Search(_tenantId, searchTerm.Search);
+
+            return View("Index", teams);
         }
     }
 }

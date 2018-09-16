@@ -13,11 +13,20 @@ namespace ScrumPm.Domain.Common
 
         public override bool Equals(object obj)
         {
-            if (object.ReferenceEquals(this, obj)) return true;
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
 
-            if (object.ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
 
-            if (GetType() != obj.GetType()) return false;
+            if (GetType() != obj.GetType())
+            {
+                return false;
+            }
 
             return obj is EntityWithCompositeId other && GetIdentityComponents().SequenceEqual(other.GetIdentityComponents());
         }
