@@ -9,7 +9,7 @@ namespace ScrumPm.Domain.Teams
     {
         IEnumerable<Team> GetAllTeams(TenantId tenantId);
 
-        IReadOnlyList<Team> Find(TenantId tenantId, ISpecification<Team, ITeamSpecificationVisitor> specification);
+        IReadOnlyList<Team> Find(TenantId tenantId, ISpecification<Team> specification);
 
         Team GetById(TenantId tenantId, TeamId teamId);
 

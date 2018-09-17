@@ -42,10 +42,10 @@ namespace ScrumPm.Persistence.Teams.Repositories
 
 
         public IReadOnlyList<Team> Find(TenantId tenantId,
-            ISpecification<Team, ITeamSpecificationVisitor> specification)
+            ISpecification<Team> specification)
         {
             var visitor = new TeamEFExpressionVisitor();
-            specification.Accept(visitor);
+            visitor.Visit((dynamic) specification);
             var expression = visitor.Expr;
 
 

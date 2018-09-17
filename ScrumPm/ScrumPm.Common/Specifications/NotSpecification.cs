@@ -1,10 +1,10 @@
 ﻿namespace ScrumPm.Domain.Common.Specifications
 {
-    public class NotSpecification<T, TVisitor> : ISpecification<T, TVisitor> where TVisitor : ISpecificationVisitor<T, TVisitor>
+    public class NotSpecification<T> : ISpecification<T> 
     {
-        public ISpecification<T, TVisitor> Specification { get; set; }
+        public ISpecification<T> Specification { get; set; }
 
-        public NotSpecification(ISpecification<T,TVisitor> specification)
+        public NotSpecification(ISpecification<T> specification)
         {
             Specification = specification;
         }
@@ -12,9 +12,6 @@
 
         public bool IsSatisfiedBy(T item) => !Specification.IsSatisfiedBy(item);
 
-        public void Accept(TVisitor visitor)
-        {
-            visitor.Visit(this);
-        }
+        
     }
 }

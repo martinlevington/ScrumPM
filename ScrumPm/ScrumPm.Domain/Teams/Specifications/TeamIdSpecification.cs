@@ -2,7 +2,7 @@
 
 namespace ScrumPm.Domain.Teams.Specifications
 {
-    public class TeamIdSpecification : ISpecification<Team, ITeamSpecificationVisitor>
+    public class TeamIdSpecification : ISpecification<Team>
     {
         public TeamId TeamId { get; }
 
@@ -11,10 +11,7 @@ namespace ScrumPm.Domain.Teams.Specifications
             TeamId = teamId;
         }
 
-        public void Accept(ITeamSpecificationVisitor visitor)
-        {
-            visitor.Visit (this); 
-        }
+       
 
         public bool IsSatisfiedBy(Team entity)
         {

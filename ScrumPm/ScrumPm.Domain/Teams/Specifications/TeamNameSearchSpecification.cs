@@ -2,7 +2,7 @@
 
 namespace ScrumPm.Domain.Teams.Specifications
 {
-    public class TeamNameSearchSpecification : ISpecification<Team, ITeamSpecificationVisitor>
+    public class TeamNameSearchSpecification : ISpecification<Team>
     {
         public readonly string SearchTerm;
 
@@ -16,9 +16,6 @@ namespace ScrumPm.Domain.Teams.Specifications
             return entity.Name.Contains(SearchTerm);
         }
 
-        public void Accept(ITeamSpecificationVisitor visitor)
-        {
-            visitor.Visit(this);
-        }
+       
     }
 }

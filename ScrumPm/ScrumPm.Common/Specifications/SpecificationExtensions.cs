@@ -2,22 +2,22 @@
 {
     public static class SpecificationExtensions
     {
-        public static ISpecification<T, TVisitor> And<T, TVisitor>(this ISpecification<T, TVisitor> left, ISpecification<T, TVisitor> right) 
-            where TVisitor : ISpecificationVisitor<T, TVisitor>
+        public static ISpecification<T> And<T>(this ISpecification<T> left, ISpecification<T> right) 
+           
         {
-            return new AndSpecification<T, TVisitor> (left, right);
+            return new AndSpecification<T> (left, right);
         }
 
-        public static ISpecification<T, TVisitor> Or<T, TVisitor>(this ISpecification<T, TVisitor> left, ISpecification<T, TVisitor> right) 
-            where TVisitor : ISpecificationVisitor<T, TVisitor>
+        public static ISpecification<T> Or<T>(this ISpecification<T> left, ISpecification<T> right) 
+            
         {
-            return new OrSpecification<T, TVisitor> (left, right);
+            return new OrSpecification<T> (left, right);
         }
 
-        public static ISpecification<T, TVisitor> Not<T, TVisitor>(this ISpecification<T, TVisitor> specification) 
-            where TVisitor : ISpecificationVisitor<T, TVisitor>
+        public static ISpecification<T> Not<T>(this ISpecification<T> specification) 
+          
         {
-            return new NotSpecification<T, TVisitor> (specification);
+            return new NotSpecification<T> (specification);
         }
     }
 }

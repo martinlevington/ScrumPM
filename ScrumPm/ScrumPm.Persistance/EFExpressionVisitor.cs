@@ -5,14 +5,14 @@ using ScrumPm.Domain.Common.Specifications;
 
 namespace ScrumPm.Persistence
 {
-    public abstract class EFExpressionVisitor<TEntity, TVisitor, TItem>
-        where TVisitor : ISpecificationVisitor<TItem, TVisitor >
+    public abstract class EFExpressionVisitor<TEntity, TItem>
+        
     {
         public Expression<Func<TEntity, bool>> Expr { get; protected set; }
 
-        public abstract Expression<Func<TEntity, bool>> ConvertSpecToExpression (ISpecification<TItem,TVisitor> spec);
+        public abstract Expression<Func<TEntity, bool>> ConvertSpecToExpression (ISpecification<TItem> spec);
 
-        public void Visit (AndSpecification<TItem, TVisitor> spec)
+        public void Visit (AndSpecification<TItem> spec)
         {
             var leftExpr = ConvertSpecToExpression (spec.Left);
             var rightExpr = ConvertSpecToExpression (spec.Right);
@@ -23,7 +23,7 @@ namespace ScrumPm.Persistence
             Expr = Expression.Lambda<Func<TEntity, bool>> (exprBody, rightExpr.Parameters);
         }
 
-        public void Visit(OrSpecification<TItem, TVisitor> spec)
+        public void Visit(OrSpecification<TItem> spec)
         {
             var leftExpr = ConvertSpecToExpression (spec.Left);
             var rightExpr = ConvertSpecToExpression (spec.Right);
@@ -35,7 +35,7 @@ namespace ScrumPm.Persistence
 
         }
 
-        public void Visit(NotSpecification<TItem, TVisitor> spec)
+        public void Visit(NotSpecification<TItem> spec)
         {
             var specExpr = ConvertSpecToExpression (spec.Specification);
 

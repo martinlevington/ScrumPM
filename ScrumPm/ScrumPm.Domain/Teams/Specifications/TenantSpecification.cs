@@ -3,7 +3,7 @@ using ScrumPm.Domain.Tenants;
 
 namespace ScrumPm.Domain.Teams.Specifications
 {
-    public class TenantSpecification : ISpecification<Team, ITeamSpecificationVisitor>
+    public class TenantSpecification : ISpecification<Team>
     {
         public readonly TenantId TenantId;
 
@@ -18,9 +18,6 @@ namespace ScrumPm.Domain.Teams.Specifications
             return entity.TenantId.Equals(TenantId);
         }
 
-        public void Accept(ITeamSpecificationVisitor visitor)
-        {
-           visitor.Visit(this);
-        }
+       
     }
 }
