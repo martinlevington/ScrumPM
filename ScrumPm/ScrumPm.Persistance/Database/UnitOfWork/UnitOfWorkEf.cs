@@ -10,7 +10,7 @@ namespace ScrumPm.Persistence.Database.UnitOfWork
     public class UnitOfWorkEf : IUnitOfWork
     {
         private readonly IContextFactory<ScrumPMContext> _contextFactory;
-        private ScrumPMContext _dataContext;
+        private readonly ScrumPMContext _dataContext;
 
         public UnitOfWorkEf(IContextFactory<ScrumPMContext> databaseFactory)
         {
