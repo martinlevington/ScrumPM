@@ -50,8 +50,8 @@ namespace ScrumPm
             services.AddTransient<ITeamRepository, TeamRepository>();
             services.AddTransient<ITeamAdapterFactory, TeamAdapterFactory>();
             
-            services.AddTransient<IUnitOfWork<ScrumPMContext>, UnitOfWorkEf<ScrumPMContext>>();
-            services.AddTransient<IContextFactory<ScrumPMContext>, ContextFactory>();
+            services.AddTransient<IUnitOfWork, UnitOfWorkEf>();
+            services.AddScoped<IContextFactory<ScrumPMContext>, ContextFactory>();
             
             
 

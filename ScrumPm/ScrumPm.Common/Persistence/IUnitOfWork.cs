@@ -2,9 +2,9 @@
 
 namespace ScrumPm.Domain.Common.Persistence
 {
-    public interface IUnitOfWork<T> where T : class
+    public interface IUnitOfWork 
     {
-        T GetContext();
+      
         void Start();
         Task StartAsync();
         void CommitAsync();

@@ -1,59 +1,63 @@
 ﻿using System;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ScrumPm.Domain.Common.Persistence;
 
 namespace ScrumPm.Persistence.Database.UnitOfWork
 {
-    public class UnitOfWorkEf<T> : IUnitOfWork<T> where T : DbContext
+    public class UnitOfWorkEf : IUnitOfWork
     {
-        private readonly IContextFactory<T> _contextFactory;
-        private T _dataContext;
+        private readonly IContextFactory<ScrumPMContext> _contextFactory;
+        private ScrumPMContext _dataContext;
 
-        public UnitOfWorkEf(IContextFactory<T> databaseFactory)
+        public UnitOfWorkEf(IContextFactory<ScrumPMContext> databaseFactory)
         {
             _contextFactory = databaseFactory;
+            _dataContext = databaseFactory.Create();
         }
 
-        private T DataContext
-        {
-            get { return _dataContext ?? (_dataContext = _contextFactory.Create()); }
-        }
+    
+        //private T DataContext
+        //{
+        //    get { return _dataContext ?? (_dataContext = _contextFactory.Create()); }
+        //}
 
-        public T GetContext()
-        {
-            return DataContext;
-        }
+        //public T GetContext()
+        //{
+        //    return DataContext;
+        //}
 
         public void Start()
         {
-            DataContext.Database.BeginTransaction();
+            _dataContext.Database.BeginTransaction();
         }
 
         public async Task StartAsync()
         {
-           await DataContext.Database.BeginTransactionAsync();
+           await _dataContext.Database.BeginTransactionAsync();
         }
 
         public void CommitAsync()
         {
-           DataContext.Database.CommitTransaction();
+            _dataContext.Database.CommitTransaction();
         }
 
         public void Commit()
-        {  DataContext.Database.CommitTransaction();
+        {  _dataContext.Database.CommitTransaction();
           
         }
 
 
         public void SaveChanges()
         {
-            DataContext.SaveChanges();
+            _dataContext.SaveChanges();
         }
 
         public async Task SaveChangesAsync()
         {
-            await DataContext.SaveChangesAsync();
+            await _dataContext.SaveChangesAsync();
         }
         
 

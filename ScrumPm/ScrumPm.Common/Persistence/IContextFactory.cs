@@ -4,7 +4,7 @@
     /// Context Factory Interface 
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IContextFactory<T>
+    public interface IContextFactory<out T>
     {
         T Create();
     }

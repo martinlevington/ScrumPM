@@ -16,20 +16,21 @@ namespace ScrumPm.Persistence.Teams.Repositories
 {
     public class TeamRepository : Repository<Team, int, TeamEf>, ITeamRepository
     {
+        private readonly ScrumPMContext _dbContext;
         private readonly IMapper _mapper;
         private readonly ITeamAdapterFactory _teamAdapterFactory;
 
 
-        public TeamRepository(IUnitOfWork<ScrumPMContext> unitOfWork, IMapper mapper,
-            ITeamAdapterFactory teamAdapterFactory) : base(unitOfWork)
+        public TeamRepository(IContextFactory<ScrumPMContext> contextFactory, IMapper mapper, ITeamAdapterFactory teamAdapterFactory) 
         {
+            _dbContext = contextFactory.Create();
             _mapper = mapper;
             _teamAdapterFactory = teamAdapterFactory;
         }
 
         public IEnumerable<Team> GetAllTeams(TenantId tenantId)
         {
-            var teams = UnitOfWork.GetContext().Teams.Include(t => t.ProductOwner).Select(x => x).ToList();
+            var teams = _dbContext.Teams.Include(t => t.ProductOwner).Select(x => x).ToList();
 
             var allTeams = new List<Team>();
             foreach (var team in teams)
@@ -49,7 +50,7 @@ namespace ScrumPm.Persistence.Teams.Repositories
             var expression = visitor.Expr;
 
 
-            var teams = UnitOfWork.GetContext().Teams.Include(t => t.ProductOwner).Where(expression).ToList();
+            var teams = _dbContext.Teams.Include(t => t.ProductOwner).Where(expression).ToList();
 
             var allTeams = new List<Team>();
             foreach (var team in teams)
@@ -62,7 +63,7 @@ namespace ScrumPm.Persistence.Teams.Repositories
 
         public Team GetById(TenantId tenantId, TeamId teamId)
         {
-            var team = UnitOfWork.GetContext().Teams.Include(t => t.ProductOwner)
+            var team = _dbContext.Teams.Include(t => t.ProductOwner)
                 .FirstOrDefault(x => x.Id == teamId.Id && x.TenantId == tenantId.Id);
             return _teamAdapterFactory.Create(tenantId, team);
         }

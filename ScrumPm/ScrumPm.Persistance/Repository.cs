@@ -11,14 +11,7 @@ namespace ScrumPm.Persistence
     public abstract class Repository <DomainType, IdType, PersistenceType>  where DomainType : IAggregateRoot
     {
 
-        protected readonly IUnitOfWork<ScrumPMContext> UnitOfWork;
-
-
-        protected Repository(IUnitOfWork<ScrumPMContext> unitOfWork)
-        {
-            UnitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
-
-        }
+      
 
       
     }

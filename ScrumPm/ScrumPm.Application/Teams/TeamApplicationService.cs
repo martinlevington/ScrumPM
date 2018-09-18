@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ScrumPm.Domain.Common.Persistence;
 using ScrumPm.Domain.Common.Specifications;
 using ScrumPm.Domain.Teams.Specifications;
 using ScrumPm.Domain.Tenants;
@@ -11,13 +12,15 @@ namespace ScrumPm.Application.Teams
     {
         private readonly ITeamMemberRepository _teamMemberRepository;
         private readonly ITeamRepository _teamRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IProductOwnerRepository _productOwnerRepository;
 
-        public TeamApplicationService(ITeamMemberRepository teamMemberRepository, IProductOwnerRepository productOwnerRepository, ITeamRepository teamRepository)
+        public TeamApplicationService(ITeamMemberRepository teamMemberRepository, IProductOwnerRepository productOwnerRepository, ITeamRepository teamRepository, IUnitOfWork unitOfWork)
         {
             _teamMemberRepository = teamMemberRepository;
             _productOwnerRepository = productOwnerRepository;
             _teamRepository = teamRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public TeamApplicationService(ITeamRepository teamRepository)
