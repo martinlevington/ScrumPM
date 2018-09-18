@@ -12,22 +12,18 @@ namespace ScrumPm.Persistence.Database.UnitOfWork
         private readonly IContextFactory<ScrumPMContext> _contextFactory;
         private readonly ScrumPMContext _dataContext;
 
-        public UnitOfWorkEf(IContextFactory<ScrumPMContext> databaseFactory)
+        public UnitOfWorkEf(IContextFactory<ScrumPMContext> contextFactory)
         {
-            _contextFactory = databaseFactory;
-            _dataContext = databaseFactory.Create();
+            _contextFactory = contextFactory;
+            _dataContext = _contextFactory.Create();
         }
 
-    
-        //private T DataContext
-        //{
-        //    get { return _dataContext ?? (_dataContext = _contextFactory.Create()); }
-        //}
+   
 
-        //public T GetContext()
-        //{
-        //    return DataContext;
-        //}
+        public ScrumPMContext GetContext()
+        {
+            return _dataContext;
+        }
 
         public void Start()
         {
