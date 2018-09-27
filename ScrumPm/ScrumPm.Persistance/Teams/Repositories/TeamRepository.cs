@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using ScrumPm.Domain.Common.Persistence;
 using ScrumPm.Domain.Common.Specifications;
@@ -16,14 +15,14 @@ namespace ScrumPm.Persistence.Teams.Repositories
 {
     public class TeamRepository : Repository<Team, int, TeamEf>, ITeamRepository
     {
-        private readonly IMapper _mapper;
+      
         private readonly ITeamAdapterFactory _teamAdapterFactory;
 
 
-        public TeamRepository(IUnitOfWork<ScrumPMContext> unitOfWork, IMapper mapper,
+        public TeamRepository(IUnitOfWork<ScrumPMContext> unitOfWork,
             ITeamAdapterFactory teamAdapterFactory) : base(unitOfWork)
         {
-            _mapper = mapper;
+          
             _teamAdapterFactory = teamAdapterFactory;
         }
 

@@ -1,8 +1,7 @@
-﻿using ScrumPm.Domain.Common;
-
-namespace ScrumPm.Domain.Teams
+﻿namespace ScrumPm.Domain.Teams
 {
     using System;
+    using ScrumPm.Domain.Common;
 
     public class MemberChangeTracker : ValueObject
     {

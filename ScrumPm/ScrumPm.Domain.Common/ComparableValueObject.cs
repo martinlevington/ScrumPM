@@ -1,8 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ScrumPm.Domain.Common
+﻿namespace ScrumPm.Domain.Common
 {
+
+
+    using System;
+    using System.Collections.Generic;
+    using ScrumPm.Domain.Common;
+
     public abstract class ComparableValueObject : ValueObject, IComparable
     {
         public int CompareTo(object obj)

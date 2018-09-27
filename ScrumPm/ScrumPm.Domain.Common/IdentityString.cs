@@ -1,7 +1,9 @@
-﻿using System;
-
-namespace ScrumPm.Domain.Common
+﻿namespace ScrumPm.Domain.Common
 {
+
+
+    using System;
+
     public abstract class IdentityString : IEquatable<IdentityString>, IIdentity<string>
     {
         public IdentityString()

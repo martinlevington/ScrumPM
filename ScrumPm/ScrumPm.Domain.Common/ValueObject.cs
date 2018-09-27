@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace ScrumPm.Domain.Common
+﻿namespace ScrumPm.Domain.Common
 {
+
+
+    using System.Collections.Generic;
+    using System.Linq;
+
     public abstract class ValueObject
     {
 
@@ -26,4 +28,5 @@ namespace ScrumPm.Domain.Common
             return HashCodeHelper.CombineHashCodes(GetEqualityComponents());
         }
     }
+
 }

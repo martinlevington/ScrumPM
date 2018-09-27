@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ScrumPm.Common\ScrumPm.Domain.Common.csproj" />
+    <ProjectReference Include="..\ScrumPm.Domain.Common\ScrumPm.Domain.Common.csproj" />
   </ItemGroup>
 
 </Project>
