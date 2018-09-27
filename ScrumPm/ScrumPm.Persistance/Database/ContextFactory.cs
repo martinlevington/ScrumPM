@@ -1,7 +1,8 @@
-﻿namespace ScrumPm.Persistence.Database
+﻿using ScrumPm.Domain.Common.Persistence;
+
+namespace ScrumPm.Persistence.Database
 {
     using System;
-    using ScrumPm.Common.Persistence;
 
     /// <summary>
     /// Factory to Create ScrumPMContext

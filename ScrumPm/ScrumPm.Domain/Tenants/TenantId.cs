@@ -1,6 +1,9 @@
-﻿namespace ScrumPm.Domain.Tenants
+﻿using System;
+using ScrumPm.Domain.Common;
+
+namespace ScrumPm.Domain.Tenants
 {
-    using ScrumPm.Common;
+
 
     public class TenantId : Identity
     {
@@ -9,7 +12,7 @@
         {
         }
 
-        public TenantId(string id)
+        public TenantId(Guid id)
             : base(id)
         {
         }

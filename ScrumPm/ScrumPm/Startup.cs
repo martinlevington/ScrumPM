@@ -2,14 +2,14 @@
 using AutoMapper;
 using CorrelationId;
 using Microsoft.EntityFrameworkCore;
-using ScrumPm.Application.Products;
 using ScrumPm.Application.Teams;
-using ScrumPm.Common.Persistence;
+using ScrumPm.Domain.Common.Persistence;
 using ScrumPm.Domain.Teams;
 using ScrumPm.Middleware;
 using ScrumPm.Migrations;
 using ScrumPm.Persistence.Database;
 using ScrumPm.Persistence.Database.UnitOfWork;
+using ScrumPm.Persistence.Teams;
 using ScrumPm.Persistence.Teams.Repositories;
 using Serilog;
 
@@ -48,6 +48,8 @@ namespace ScrumPm
             services.AddTransient<ITeamMemberRepository, TeamMemberRepository>();
             services.AddTransient<IProductOwnerRepository, ProductOwnerRepository>();
             services.AddTransient<ITeamRepository, TeamRepository>();
+            services.AddTransient<ITeamAdapterFactory, TeamAdapterFactory>();
+            
             services.AddTransient<IUnitOfWork<ScrumPMContext>, UnitOfWorkEf<ScrumPMContext>>();
             services.AddTransient<IContextFactory<ScrumPMContext>, ContextFactory>();
             
@@ -106,7 +108,7 @@ namespace ScrumPm
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Team}/{action=Index}/{id?}");
             });
         }
     }

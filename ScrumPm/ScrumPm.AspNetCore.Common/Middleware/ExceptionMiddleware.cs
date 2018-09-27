@@ -1,15 +1,16 @@
-﻿using ScrumPm.Common.Exceptions;
+﻿
 
-namespace ScrumPm.Middleware
+using System;
+using System.Net;
+using System.Net.Mime;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+using ScrumPm.Domain.Common.Exceptions;
+
+namespace ScrumPm.AspNetCore.Common.Middleware
 {
-    using System;
-    using System.Net;
-    using System.Net.Mime;
-    using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.Extensions.Logging;
-
     public class ExceptionMiddleware
     {
         private readonly IHostingEnvironment _environment;

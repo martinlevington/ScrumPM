@@ -1,7 +1,8 @@
-﻿namespace ScrumPm.Domain.Teams
+﻿using ScrumPm.Domain.Common;
+
+namespace ScrumPm.Domain.Teams
 {
     using System.Collections.Generic;
-    using ScrumPm.Common;
 
     public class TeamMemberId : ValueObject
     {
@@ -11,8 +12,8 @@
             AssertionConcern.AssertArgumentNotEmpty(id, "The id must be provided.");
             AssertionConcern.AssertArgumentLength(id, 36, "The id must be 36 characters or less.");
 
-            this.TenantId = tenantId;
-            this.Id = id;
+            TenantId = tenantId;
+            Id = id;
         }
 
         public Tenants.TenantId TenantId { get; private set; }
@@ -21,8 +22,8 @@
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
-            yield return this.TenantId;
-            yield return this.Id;
+            yield return TenantId;
+            yield return Id;
         }
     }
 }

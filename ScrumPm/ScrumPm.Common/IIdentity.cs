@@ -1,7 +1,7 @@
-﻿namespace ScrumPm.Common
+﻿namespace ScrumPm.Domain.Common
 {
-    public interface IIdentity
+    public interface IIdentity<T>
     {
-        string Id { get; }
+        T Id { get; }
     }
 }

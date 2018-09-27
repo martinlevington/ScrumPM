@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ScrumPm.Persistence.Teams.PersistenceModels
 {
-    public class ProductOwner
+    public class ProductOwnerEf
     {
         public int Id { get; set; }
         public string EmailAddress { get; set; }

@@ -1,4 +1,4 @@
-﻿namespace ScrumPm.Common.Persistence
+﻿namespace ScrumPm.Domain.Common.Persistence
 {
     /// <summary>
     /// Context Factory Interface 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using ScrumPm.Application.Products;
+using ScrumPm.Domain.Common.Specifications;
+using ScrumPm.Domain.Teams.Specifications;
 using ScrumPm.Domain.Tenants;
 
 namespace ScrumPm.Application.Teams
@@ -24,9 +25,24 @@ namespace ScrumPm.Application.Teams
             _teamRepository = teamRepository;
         }
 
-        public IEnumerable<Team> GetTeams()
+        public IEnumerable<Team> GetTeams(TenantId tenantId)
         {
-           var teams =  _teamRepository.GetAllTeams(new TenantId("1"));
+           var teams =  _teamRepository.GetAllTeams(tenantId);
+            return teams;
+        }
+     
+        public Team GetTeam(TenantId id, TeamId teamId)
+        {
+            return _teamRepository.GetById(id, teamId);
+        }
+
+        public IEnumerable<Team> Search(TenantId tenantId, string search)
+        {
+           var searchSpecification = new TenantSpecification(tenantId).And(new TeamNameSearchSpecification(search));
+
+         
+
+            var teams =  _teamRepository.Find(tenantId, searchSpecification );
             return teams;
         }
     }

@@ -1,9 +1,9 @@
-﻿namespace ScrumPm.Extensions
-{
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using ScrumPm.Middleware;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using ScrumPm.AspNetCore.Common.Middleware;
 
+namespace ScrumPm.AspNetCore.Common.Extensions
+{
     /// <summary>
     /// Extensions Methods to help organise building the application during start up
     /// </summary>

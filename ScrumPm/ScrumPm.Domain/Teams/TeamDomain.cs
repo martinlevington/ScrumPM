@@ -1,35 +1,42 @@
-﻿namespace ScrumPm.Domain.Teams
+﻿using ScrumPm.Domain.Common;
+
+namespace ScrumPm.Domain.Teams
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
-    using ScrumPm.Common;
-    using ScrumPm.Domain.Tenants;
+    using Tenants;
 
     public class Team : Entity, IAggregateRoot
     {
-        public Team(TenantId tenantId, string name, ProductOwner productOwner = null)
+        public Team(TenantId tenantId, TeamId  teamId, string name, ProductOwner productOwner = null)
         {
             AssertionConcern.AssertArgumentNotNull(tenantId, "The tenantId must be provided.");
 
-            this._tenantId = tenantId;
-            this.Name = name;
+            _tenantId = tenantId;
+            _id = teamId;
+            Name = name;
+
             if (productOwner != null)
             {
-                this.ProductOwner = productOwner;
+                ProductOwner = productOwner;
             }
 
-            this._teamMembers = new HashSet<TeamMember>();
+            _teamMembers = new HashSet<TeamMember>();
         }
 
         private readonly TenantId _tenantId;
+        private readonly TeamId _id;
+
+        public TeamId Id => _id;
+
         private string _name;
         private ProductOwner _productOwner;
         private readonly HashSet<TeamMember> _teamMembers;
 
         public TenantId TenantId
         {
-            get { return this._tenantId; }
+            get { return _tenantId; }
         }
 
         public string Name
@@ -40,33 +47,33 @@
             {
                 AssertionConcern.AssertArgumentNotEmpty(value, "The name must be provided.");
                 AssertionConcern.AssertArgumentLength(value, 100, "The name must be 100 characters or less.");
-                this._name = value;
+                _name = value;
             }
         }
 
         public ProductOwner ProductOwner
         {
-            get => this._productOwner;
+            get => _productOwner;
 
             private set
             {
                 AssertionConcern.AssertArgumentNotNull(value, "The productOwner must be provided.");
-                AssertionConcern.AssertArgumentEquals(this._tenantId, value.TenantId, "The productOwner must be of the same tenant.");
+                AssertionConcern.AssertArgumentEquals(_tenantId, value.TenantId, "The productOwner must be of the same tenant.");
                 _productOwner = value;
             }
         }
 
-        public ReadOnlyCollection<TeamMember> AllTeamMembers => new ReadOnlyCollection<TeamMember>(this._teamMembers.ToArray());
+        public ReadOnlyCollection<TeamMember> AllTeamMembers => new ReadOnlyCollection<TeamMember>(_teamMembers.ToArray());
 
         public void AssignProductOwner(ProductOwner productOwner)
         {
-            this.ProductOwner = productOwner;
+            ProductOwner = productOwner;
         }
 
         public void AssignTeamMember(TeamMember teamMember)
         {
             AssertValidTeamMember(teamMember);
-            this._teamMembers.Add(teamMember);
+            _teamMembers.Add(teamMember);
         }
 
         public bool IsTeamMember(TeamMember teamMember)
@@ -81,19 +88,19 @@
             var existingTeamMember = GetTeamMemberByUserName(teamMember.UserName);
             if (existingTeamMember != null)
             {
-                this._teamMembers.Remove(existingTeamMember);
+                _teamMembers.Remove(existingTeamMember);
             }
         }
 
         private void AssertValidTeamMember(TeamMember teamMember)
         {
             AssertionConcern.AssertArgumentNotNull(teamMember, "A team member must be provided.");
-            AssertionConcern.AssertArgumentEquals(this.TenantId, teamMember.TenantId, "Team member must be of the same tenant.");
+            AssertionConcern.AssertArgumentEquals(TenantId, teamMember.TenantId, "Team member must be of the same tenant.");
         }
 
         private TeamMember GetTeamMemberByUserName(string userName)
         {
-            return this._teamMembers.FirstOrDefault(x => x.UserName.Equals(userName));
+            return _teamMembers.FirstOrDefault(x => x.UserName.Equals(userName));
         }
     }
 }

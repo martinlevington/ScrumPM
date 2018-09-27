@@ -1,12 +1,12 @@
-﻿namespace ScrumPm.Common.Persistence
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Linq.Expressions;
-    using System.Threading.Tasks;
-    using ScrumPm.Common.PagedList;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
+using ScrumPm.Domain.Common.PagedList;
 
+namespace ScrumPm.Domain.Common.Persistence
+{
     public interface IRepository<TEntity> where TEntity : class
     {
         IQueryable<TEntity> Queryable { get; }

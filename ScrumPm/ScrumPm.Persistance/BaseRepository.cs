@@ -1,4 +1,7 @@
-﻿namespace ScrumPm.Persistence
+﻿using ScrumPm.Domain.Common.PagedList;
+using ScrumPm.Domain.Common.Persistence;
+
+namespace ScrumPm.Persistence
 {
     using System;
     using System.Collections.Generic;
@@ -6,8 +9,6 @@
     using System.Linq.Expressions;
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
-    using ScrumPm.Common.PagedList;
-    using ScrumPm.Common.Persistence;
 
     public abstract class EntityFrameworkCoreRepository<TContext, TEntity> : IRepository<TEntity>
         where TEntity : class

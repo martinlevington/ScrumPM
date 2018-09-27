@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ScrumPm.Domain.Teams;
+using ScrumPm.Persistence.Teams.PersistenceModels;
 using ScrumPm.ViewModels.Teams;
 
 namespace ScrumPm.Mapper
@@ -10,6 +11,10 @@ namespace ScrumPm.Mapper
         public TeamsProfile()
         {
             CreateMap<Team, TeamViewModel>();
+
+            CreateMap<TeamEf, Team>().ReverseMap();
+
+
         }
     }
 }

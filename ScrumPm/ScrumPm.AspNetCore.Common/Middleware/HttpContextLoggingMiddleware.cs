@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Serilog;
 using Serilog.Events;
 
-namespace ScrumPm.Middleware
+namespace ScrumPm.AspNetCore.Common.Middleware
 {
     public class HttpContextLoggingMiddleware
     {

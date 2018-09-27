@@ -1,9 +1,9 @@
-﻿namespace ScrumPm.Common.PagedList
-{
-    using System;
-    using System.Linq;
-    using System.Linq.Expressions;
+﻿using System;
+using System.Linq;
+using System.Linq.Expressions;
 
+namespace ScrumPm.Domain.Common.PagedList
+{
     public static class QueryableExtensions
     {
         public static IQueryable<T> Order<T>(this IQueryable<T> queryable, string property, bool isAscending)

@@ -1,9 +1,9 @@
-﻿namespace ScrumPm.Common.Exceptions
-{
-    using System;
-    using System.Runtime.Serialization;
-    using System.Security.Permissions;
+﻿using System;
+using System.Runtime.Serialization;
+using System.Security.Permissions;
 
+namespace ScrumPm.Domain.Common.Exceptions
+{
     [Serializable]
     public class DomainException : Exception
     {

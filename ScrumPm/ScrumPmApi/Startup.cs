@@ -13,7 +13,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ScrumPm.AspNetCore.Common.Middleware;
-using ScrumPm.Middleware;
 
 namespace ScrumPmApi
 {

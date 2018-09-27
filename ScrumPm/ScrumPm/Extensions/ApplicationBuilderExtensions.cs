@@ -2,7 +2,7 @@
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using ScrumPm.Middleware;
+    using Middleware;
 
     /// <summary>
     /// Extensions Methods to help organise building the application during start up

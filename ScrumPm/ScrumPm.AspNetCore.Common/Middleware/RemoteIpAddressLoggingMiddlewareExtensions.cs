@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 
-namespace ScrumPm.Middleware
+namespace ScrumPm.AspNetCore.Common.Middleware
 {
     public static class RemoteIpAddressLoggingMiddlewareExtensions
     {

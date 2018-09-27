@@ -1,8 +1,8 @@
-﻿namespace ScrumPm.Common.PagedList
-{
-    using System.Collections.Generic;
-    using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
+namespace ScrumPm.Domain.Common.PagedList
+{
     public class PagedList<T>
     {
         public PagedList(IQueryable<T> queryable, PagedListParameters parameters)
