@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ScrumPm.Common\ScrumPm.Common.csproj" />
+    <Folder Include="Products\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Products\" />
+    <ProjectReference Include="..\ScrumPm.Common\ScrumPm.Domain.Common.csproj" />
   </ItemGroup>
 
 </Project>

@@ -11,13 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPm.Application", "Scru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPm.Persistence", "ScrumPm.Persistance\ScrumPm.Persistence.csproj", "{784F14BA-E87E-4CD3-8FD2-3762A1324A4A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPm.Common", "ScrumPm.Common\ScrumPm.Common.csproj", "{8B78B0B0-A8C0-4BE4-9524-6E049D69E495}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPm.Domain.Common", "ScrumPm.Common\ScrumPm.Domain.Common.csproj", "{8B78B0B0-A8C0-4BE4-9524-6E049D69E495}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPm.Common.Logging", "ScrumPm.Common.Logging\ScrumPm.Common.Logging.csproj", "{AC39CB11-E5E2-4A8A-9DE7-56AB134E0399}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPmApi", "ScrumPmApi\ScrumPmApi.csproj", "{AA2C3E1C-43A7-4935-A6FA-42B0C7DF58FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumPm.AspNetCore.Common", "ScrumPm.AspNetCore.Common\ScrumPm.AspNetCore.Common.csproj", "{C4E96365-6E63-4EAA-987E-BEA64208FCF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPm.AspNetCore.Common", "ScrumPm.AspNetCore.Common\ScrumPm.AspNetCore.Common.csproj", "{C4E96365-6E63-4EAA-987E-BEA64208FCF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -24,24 +24,7 @@ namespace ScrumPm.Controllers
         [AutoMapFilter(SourceType = typeof(IEnumerable<Team>), DestinationType = typeof(IEnumerable<TeamViewModel>))]
         public IActionResult Index()
         {
-            _logger.LogInformation("TeamController: Index");
-            _logger.LogDebug("TeamController: Index");
-            _logger.LogError("TeamController: Index");
            
-            Log.Error("Team Error");
-
-            _logger.LogInformation("Before");
-
-            using (_logger.BeginScope("Some name"))
-            using (_logger.BeginScope(42))
-            using (_logger.BeginScope("Formatted {WithValue}", 12345))
-            using (_logger.BeginScope(new Dictionary<string, object> { ["ViaDictionary"] = 100 }))
-            {
-                _logger.LogInformation("Hello from the Index!");
-                _logger.LogDebug("Hello is done");
-            }
-
-            _logger.LogInformation("After");
 
             var Teams = _teamApplicationService.GetTeams();
 
