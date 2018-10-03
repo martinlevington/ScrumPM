@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using ScrumPm.Domain.Teams;
+using Xunit;
 
 namespace ScrumPm.Application.Tests.Unit.Teams
 {
