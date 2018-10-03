@@ -1,6 +1,8 @@
 ﻿namespace ScrumPm.Domain.Common
 {
-    public interface IAggregateRoot
+
+
+    public abstract class Entity
     {
     }
 }

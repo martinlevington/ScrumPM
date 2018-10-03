@@ -1,7 +1,9 @@
-﻿using System;
-
-namespace ScrumPm.Domain.Common
+﻿namespace ScrumPm.Domain.Common
 {
+
+
+    using System;
+
     public abstract class Identity : IEquatable<Identity>, IIdentity<Guid>
     {
         public Identity()
@@ -40,14 +42,14 @@ namespace ScrumPm.Domain.Common
             return (GetType().GetHashCode() * 907) + Id.GetHashCode();
         }
 
-        public  string ToNameString()
+        public string ToNameString()
         {
             return GetType().Name + " [Id=" + Id + "]";
         }
 
         public override string ToString()
         {
-            return  Id.ToString();
+            return Id.ToString();
         }
     }
 }

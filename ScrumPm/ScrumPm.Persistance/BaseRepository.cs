@@ -1,4 +1,6 @@
-﻿using ScrumPm.Domain.Common.PagedList;
+﻿
+
+using ScrumPm.Domain.Common.PagedList;
 using ScrumPm.Domain.Common.Persistence;
 
 namespace ScrumPm.Persistence

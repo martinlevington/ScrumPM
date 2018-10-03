@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace ScrumPm.Domain.Common
+﻿namespace ScrumPm.Domain.Common
 {
+
+
+    using System.Collections.Generic;
+    using System.Linq;
+
     public abstract class EntityWithCompositeId : Entity
     {
         /// <summary>
@@ -28,7 +30,8 @@ namespace ScrumPm.Domain.Common
                 return false;
             }
 
-            return obj is EntityWithCompositeId other && GetIdentityComponents().SequenceEqual(other.GetIdentityComponents());
+            return obj is EntityWithCompositeId other &&
+                   GetIdentityComponents().SequenceEqual(other.GetIdentityComponents());
         }
 
         public override int GetHashCode()

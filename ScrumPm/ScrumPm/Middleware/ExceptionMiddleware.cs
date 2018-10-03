@@ -1,4 +1,6 @@
-﻿using ScrumPm.Domain.Common.Exceptions;
+﻿
+
+using ScrumPm.Domain.Common.Exceptions;
 
 namespace ScrumPm.Middleware
 {
