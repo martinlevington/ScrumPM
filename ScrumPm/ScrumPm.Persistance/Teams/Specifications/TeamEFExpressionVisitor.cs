@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
-using Remotion.Linq.Parsing;
 using ScrumPm.Domain.Common.Specifications;
 using ScrumPm.Domain.Teams;
 using ScrumPm.Domain.Teams.Specifications;
@@ -10,11 +8,11 @@ using ScrumPm.Persistence.Teams.PersistenceModels;
 
 namespace ScrumPm.Persistence.Teams.Specifications
 {
-    public class TeamEFExpressionVisitor  : EFExpressionVisitor<TeamEf, ITeamSpecificationVisitor, Team>, ITeamSpecificationVisitor
+    public class TeamEfExpressionVisitor  : EfExpressionVisitor<TeamEf, ITeamSpecificationVisitor, Team>, ITeamSpecificationVisitor
     {
         public override Expression<Func<TeamEf, bool>> ConvertSpecToExpression (ISpecification<Team, ITeamSpecificationVisitor> spec)
         {
-            var visitor = new TeamEFExpressionVisitor ();
+            var visitor = new TeamEfExpressionVisitor ();
             spec.Accept (visitor);
             return visitor.Expr;
         }

@@ -10,13 +10,6 @@ namespace ScrumPm.Application.Tests.Unit.Teams
 
         public ITeamMemberRepository TeamMemberRepository;
 
-        public TeamApplicationServiceTests()
-        {
-
-
-
-        }
-
         [Fact]
         public void GetTeams_Should_ReturnTeam()
         {

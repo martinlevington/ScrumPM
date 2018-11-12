@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using ScrumPm.Domain.Common.Exceptions;
 
-
 namespace ScrumPm.AspNetCore.Common.Middleware
 {
     public class ExceptionMiddleware

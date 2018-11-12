@@ -1,5 +1,3 @@
-using System;
-
 namespace ScrumPm.Models
 {
     public class ErrorViewModel

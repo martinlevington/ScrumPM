@@ -1,8 +1,9 @@
-﻿namespace ScrumPm.Domain.Teams
-{
-    using System;
-    using Tenants;
+﻿using System;
+using System.Collections.Generic;
+using ScrumPm.Domain.Tenants;
 
+namespace ScrumPm.Domain.Teams
+{
     public class ProductOwner : Member
     {
         public ProductOwner(
@@ -25,7 +26,7 @@
                    + ", username()=" + UserName + "]";
         }
 
-        protected override System.Collections.Generic.IEnumerable<object> GetIdentityComponents()
+        protected override IEnumerable<object> GetIdentityComponents()
         {
             yield return TenantId;
             yield return UserName;

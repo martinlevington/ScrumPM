@@ -1,17 +1,16 @@
 ﻿
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using ScrumPm.Domain.Common.PagedList;
 using ScrumPm.Domain.Common.Persistence;
 
 namespace ScrumPm.Persistence
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Linq.Expressions;
-    using System.Threading.Tasks;
-    using Microsoft.EntityFrameworkCore;
-
     public abstract class EntityFrameworkCoreRepository<TContext, TEntity> : IRepository<TEntity>
         where TEntity : class
         where TContext : DbContext
@@ -24,7 +23,7 @@ namespace ScrumPm.Persistence
 
         protected EntityFrameworkCoreRepository(IContextFactory<TContext> contextFactory)
         {
-            Context = contextFactory.Create() as DbContext;
+            Context = contextFactory.Create();
             Context.ChangeTracker.AutoDetectChangesEnabled = false;
             Context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }

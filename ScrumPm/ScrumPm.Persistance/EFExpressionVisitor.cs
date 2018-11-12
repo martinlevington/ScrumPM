@@ -3,10 +3,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using ScrumPm.Domain.Common.Specifications;
 
-
 namespace ScrumPm.Persistence
 {
-    public abstract class EFExpressionVisitor<TEntity, TVisitor, TItem>
+    public abstract class EfExpressionVisitor<TEntity, TVisitor, TItem>
         where TVisitor : ISpecificationVisitor<TItem, TVisitor >
     {
         public Expression<Func<TEntity, bool>> Expr { get; protected set; }
@@ -50,17 +49,17 @@ namespace ScrumPm.Persistence
 
     public class SwapVisitor : ExpressionVisitor
     {
-        private readonly Expression from, to;
+        private readonly Expression _from, _to;
 
         public SwapVisitor(Expression from, Expression to)
         {
-            this.from = from;
-            this.to = to;
+            _from = from;
+            _to = to;
         }
 
         public override Expression Visit(Expression node)
         {
-            return node == from ? to : base.Visit(node);
+            return node == _from ? _to : base.Visit(node);
         }
     }
 }

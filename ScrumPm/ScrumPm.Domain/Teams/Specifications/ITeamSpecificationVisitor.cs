@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ScrumPm.Domain.Common.Specifications;
+﻿using ScrumPm.Domain.Common.Specifications;
 
 namespace ScrumPm.Domain.Teams.Specifications
 {

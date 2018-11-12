@@ -1,4 +1,5 @@
-﻿using ScrumPm.Domain.Common;
+﻿using System.Collections.Generic;
+using ScrumPm.Domain.Common;
 
 namespace ScrumPm.Domain.Discussions
 {
@@ -33,7 +34,7 @@ namespace ScrumPm.Domain.Discussions
             return "DiscussionDescriptor [id=" + Id + "]";
         }
 
-        protected override System.Collections.Generic.IEnumerable<object> GetEqualityComponents()
+        protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Id;
         }

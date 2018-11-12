@@ -1,5 +1,4 @@
-﻿using System;
-using ScrumPm.Domain.Common;
+﻿using ScrumPm.Domain.Common;
 
 namespace ScrumPm.Domain.Tenants
 {

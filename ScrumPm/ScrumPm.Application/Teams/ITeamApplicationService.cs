@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using ScrumPm.Domain.Common.Specifications;
 using ScrumPm.Domain.Teams;
 using ScrumPm.Domain.Tenants;
 

@@ -1,9 +1,8 @@
 ﻿using ScrumPm.Domain.Common;
+using ScrumPm.Domain.Tenants;
 
 namespace ScrumPm.Domain.Teams
 {
-    using Tenants;
-
     public class ProductOwnerId : IdentityString
     {
         public ProductOwnerId(TenantId tenantId, string id)

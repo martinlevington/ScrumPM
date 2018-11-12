@@ -1,11 +1,8 @@
-﻿namespace ScrumPm.Domain.Common
+﻿using System;
+using System.Collections.Generic;
+
+namespace ScrumPm.Domain.Common
 {
-
-
-    using System;
-    using System.Collections.Generic;
-    using ScrumPm.Domain.Common;
-
     public abstract class ComparableValueObject : ValueObject, IComparable
     {
         public int CompareTo(object obj)
@@ -69,16 +66,16 @@
 
         private class NonGenericComparable<T> : IComparable
         {
-            private readonly IComparable<T> comparable;
+            private readonly IComparable<T> _comparable;
 
             public NonGenericComparable(IComparable<T> comparable)
             {
-                this.comparable = comparable;
+                _comparable = comparable;
             }
 
             public int CompareTo(object obj)
             {
-                if (ReferenceEquals(comparable, obj))
+                if (ReferenceEquals(_comparable, obj))
                 {
                     return 0;
                 }
@@ -88,7 +85,7 @@
                     throw new ArgumentNullException();
                 }
 
-                return comparable.CompareTo((T) obj);
+                return _comparable.CompareTo((T) obj);
             }
         }
     }

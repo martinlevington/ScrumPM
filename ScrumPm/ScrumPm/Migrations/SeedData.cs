@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using ScrumPm.Domain.Tenants;
 using ScrumPm.Persistence.Database;
 using ScrumPm.Persistence.Teams.PersistenceModels;
-using TenantEf = ScrumPm.Persistence.Teams.PersistenceModels.TenantEf;
 
 namespace ScrumPm.Migrations
 {
@@ -16,11 +13,11 @@ namespace ScrumPm.Migrations
 
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            var context = serviceProvider.GetRequiredService<ScrumPMContext>();
+            var context = serviceProvider.GetRequiredService<ScrumPmContext>();
             context.Database.EnsureCreated();
 
             var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
-            var logger = loggerFactory.CreateLogger<ScrumPMContext>();
+            var logger = loggerFactory.CreateLogger<ScrumPmContext>();
 
             try
             {
@@ -41,7 +38,7 @@ namespace ScrumPm.Migrations
 
         }
 
-        private static void InitTenants(ScrumPMContext context)
+        private static void InitTenants(ScrumPmContext context)
         {
             if (context.Tenants.Any())
             {
@@ -53,8 +50,8 @@ namespace ScrumPm.Migrations
             var commandTextOn = "SET IDENTITY_INSERT [dbo].[Tenants] ON";
             context.Database.ExecuteSqlCommand(commandTextOn);
 
-            context.Tenants.Add(new TenantEf() {Id = 1, Name = "Tenant One"});
-            context.Tenants.Add(new TenantEf() {Id = 2, Name = "Tenant Two"});
+            context.Tenants.Add(new TenantEf {Id = 1, Name = "Tenant One"});
+            context.Tenants.Add(new TenantEf {Id = 2, Name = "Tenant Two"});
             context.SaveChanges();
 
       
@@ -62,7 +59,7 @@ namespace ScrumPm.Migrations
           
         }
 
-        private static void InitProductOwners(ScrumPMContext context)
+        private static void InitProductOwners(ScrumPmContext context)
         {
             if (context.ProductOwners.Any())
             {
@@ -73,12 +70,12 @@ namespace ScrumPm.Migrations
             var commandTextOn = "SET IDENTITY_INSERT [dbo].[ProductOwners] ON";
             context.Database.ExecuteSqlCommand(commandTextOn);
 
-            context.ProductOwners.Add(new ProductOwnerEf()
+            context.ProductOwners.Add(new ProductOwnerEf
             {
                 Id = 1, UserName = "bill.lone", FirstName = "Bill", LastName = "LOne", EmailAddress = "bill@email.com",
                 Created = DateTime.Now, Modified = DateTime.Now
             });
-            context.ProductOwners.Add(new ProductOwnerEf()
+            context.ProductOwners.Add(new ProductOwnerEf
             {
                 Id = 2, UserName = "gill.ltwo", FirstName = "Gill", LastName = "LTwo", EmailAddress = "Gill@email.com",
                 Created = DateTime.Now, Modified = DateTime.Now
@@ -89,7 +86,7 @@ namespace ScrumPm.Migrations
         }
 
 
-        private static void InitTeams(ScrumPMContext context)
+        private static void InitTeams(ScrumPmContext context)
         {
             if (context.Teams.Any())
             {
@@ -101,8 +98,8 @@ namespace ScrumPm.Migrations
           //  var commandTextOn = "SET IDENTITY_INSERT [dbo].[Teams] ON";
            // context.Database.ExecuteSqlCommand(commandTextOn);
 
-            context.Teams.Add(new TeamEf() {TenantId = tenantId, Id = new Guid("8730F86E-FD47-49EE-9356-29B4D941EA88"), ProductOwnerId = 1, Name = "Team One"});
-            context.Teams.Add(new TeamEf() {TenantId = tenantId, Id = new Guid("AF34D195-13C1-4A7A-9566-11B37E82A303"), ProductOwnerId = 2, Name = "Team Two"});
+            context.Teams.Add(new TeamEf {TenantId = tenantId, Id = new Guid("8730F86E-FD47-49EE-9356-29B4D941EA88"), ProductOwnerId = 1, Name = "Team One"});
+            context.Teams.Add(new TeamEf {TenantId = tenantId, Id = new Guid("AF34D195-13C1-4A7A-9566-11B37E82A303"), ProductOwnerId = 2, Name = "Team Two"});
             context.SaveChanges();
 
            // context.Database.ExecuteSqlCommand(commandTextOff);

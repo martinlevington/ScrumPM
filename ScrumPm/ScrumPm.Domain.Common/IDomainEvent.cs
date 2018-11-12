@@ -1,9 +1,7 @@
-﻿namespace ScrumPm.Domain.Common
+﻿using System;
+
+namespace ScrumPm.Domain.Common
 {
-
-
-    using System;
-
     public interface IDomainEvent
     {
         int EventVersion { get; set; }

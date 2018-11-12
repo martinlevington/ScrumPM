@@ -8,7 +8,6 @@ namespace ScrumPm.Domain.Tenants
     public class TenantId : Identity
     {
         public TenantId()
-            : base()
         {
         }
 

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ScrumPm.Application
+﻿namespace ScrumPm.Application
 {
     public class Class1
     {

@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using ScrumPm.Domain.Common.Specifications;
+using ScrumPm.Domain.Teams;
 using ScrumPm.Domain.Teams.Specifications;
 using ScrumPm.Domain.Tenants;
 
 namespace ScrumPm.Application.Teams
 {
-    using ScrumPm.Domain.Teams;
-
     public class TeamApplicationService : ITeamApplicationService
     {
         private readonly ITeamMemberRepository _teamMemberRepository;

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace ScrumPm.AspNetCore.Common.Attributes
 {
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Method)]
     public class AutoMapAttribute : ActionFilterAttribute
     {
         private readonly Type _sourceType;

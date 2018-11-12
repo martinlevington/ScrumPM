@@ -1,12 +1,11 @@
-﻿using ScrumPm.Domain.Common;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using ScrumPm.Domain.Common;
+using ScrumPm.Domain.Tenants;
 
 namespace ScrumPm.Domain.Teams
 {
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.Linq;
-    using Tenants;
-
     public class Team : Entity, IAggregateRoot
     {
         public Team(TenantId tenantId, TeamId  teamId, string name, ProductOwner productOwner = null)

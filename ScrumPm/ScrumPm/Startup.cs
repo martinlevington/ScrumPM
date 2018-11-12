@@ -1,7 +1,11 @@
 ﻿using System;
 using AutoMapper;
 using CorrelationId;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using ScrumPm.Application.Teams;
 using ScrumPm.Domain.Common.Persistence;
 using ScrumPm.Domain.Teams;
@@ -15,11 +19,6 @@ using Serilog;
 
 namespace ScrumPm
 {
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-
     public class Startup
     {
         
@@ -34,7 +33,7 @@ namespace ScrumPm
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ScrumPMContext>(options =>
+            services.AddDbContext<ScrumPmContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ScrumPMContext")));
 
           
@@ -50,8 +49,8 @@ namespace ScrumPm
             services.AddTransient<ITeamRepository, TeamRepository>();
             services.AddTransient<ITeamAdapterFactory, TeamAdapterFactory>();
             
-            services.AddTransient<IUnitOfWork<ScrumPMContext>, UnitOfWorkEf<ScrumPMContext>>();
-            services.AddTransient<IContextFactory<ScrumPMContext>, ContextFactory>();
+            services.AddTransient<IUnitOfWork<ScrumPmContext>, UnitOfWorkEf<ScrumPmContext>>();
+            services.AddTransient<IContextFactory<ScrumPmContext>, ContextFactory>();
             
             
 
@@ -68,7 +67,7 @@ namespace ScrumPm
                 // todo change to migrations ??
                 using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
                 {
-                    var context = serviceScope.ServiceProvider.GetRequiredService<ScrumPMContext>();
+                    var context = serviceScope.ServiceProvider.GetRequiredService<ScrumPmContext>();
                     context.Database.EnsureCreated();
                     //context.Database.Migrate();
                  

@@ -1,12 +1,12 @@
-﻿using ScrumPm.Domain.Common;
+﻿using System.Collections.Generic;
+using ScrumPm.Domain.Common;
+using ScrumPm.Domain.Tenants;
 
 namespace ScrumPm.Domain.Teams
 {
-    using System.Collections.Generic;
-
     public class TeamMemberId : ValueObject
     {
-        public TeamMemberId(Tenants.TenantId tenantId, string id)
+        public TeamMemberId(TenantId tenantId, string id)
         {
             AssertionConcern.AssertArgumentNotNull(tenantId, "The tenantId must be provided.");
             AssertionConcern.AssertArgumentNotEmpty(id, "The id must be provided.");
@@ -16,7 +16,7 @@ namespace ScrumPm.Domain.Teams
             Id = id;
         }
 
-        public Tenants.TenantId TenantId { get; private set; }
+        public TenantId TenantId { get; private set; }
 
         public string Id { get; private set; }
 

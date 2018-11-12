@@ -1,8 +1,8 @@
-﻿namespace ScrumPm.Domain
-{
-    using System;
-    using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 
+namespace ScrumPm.Domain
+{
     public class AssertionConcern
     {
         protected AssertionConcern()

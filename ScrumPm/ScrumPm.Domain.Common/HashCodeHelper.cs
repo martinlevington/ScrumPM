@@ -1,9 +1,7 @@
-﻿namespace ScrumPm.Domain.Common
+﻿using System.Collections.Generic;
+
+namespace ScrumPm.Domain.Common
 {
-
-
-    using System.Collections.Generic;
-
     internal static class HashCodeHelper
     {
         public static int CombineHashCodes(IEnumerable<object> objs)

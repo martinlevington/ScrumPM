@@ -19,7 +19,7 @@ namespace ScrumPm.Persistence.Teams.Repositories
         private readonly ITeamAdapterFactory _teamAdapterFactory;
 
 
-        public TeamRepository(IUnitOfWork<ScrumPMContext> unitOfWork,
+        public TeamRepository(IUnitOfWork<ScrumPmContext> unitOfWork,
             ITeamAdapterFactory teamAdapterFactory) : base(unitOfWork)
         {
           
@@ -43,7 +43,7 @@ namespace ScrumPm.Persistence.Teams.Repositories
         public IReadOnlyList<Team> Find(TenantId tenantId,
             ISpecification<Team, ITeamSpecificationVisitor> specification)
         {
-            var visitor = new TeamEFExpressionVisitor();
+            var visitor = new TeamEfExpressionVisitor();
             specification.Accept(visitor);
             var expression = visitor.Expr;
 

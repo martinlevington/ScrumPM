@@ -1,9 +1,7 @@
-﻿namespace ScrumPm.Domain.Common
+﻿using System;
+
+namespace ScrumPm.Domain.Common
 {
-
-
-    using System;
-
     public abstract class IdentityString : IEquatable<IdentityString>, IIdentity<string>
     {
         public IdentityString()
@@ -16,7 +14,7 @@
             Id = id;
         }
 
-        public string Id { get; set; }
+        public string Id { get; }
 
         public bool Equals(IdentityString id)
         {

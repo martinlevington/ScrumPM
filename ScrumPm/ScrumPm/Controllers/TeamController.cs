@@ -8,7 +8,6 @@ using ScrumPm.BindingModels;
 using ScrumPm.Domain.Teams;
 using ScrumPm.Domain.Tenants;
 using ScrumPm.ViewModels.Teams;
-using Serilog;
 
 namespace ScrumPm.Controllers
 {

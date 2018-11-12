@@ -14,7 +14,7 @@ namespace ScrumPm.Domain.Common.PagedList
 
             Count = queryable.LongCount();
 
-            parameters?.Orders?.ToList().ForEach(order => queryable = queryable.Order(order.Property, order.IsAscending));
+            parameters?.Orders?.ToList().ForEach(action: order => queryable = queryable.Order(order.Property, order.IsAscending));
 
             if (parameters?.Page != null)
             {

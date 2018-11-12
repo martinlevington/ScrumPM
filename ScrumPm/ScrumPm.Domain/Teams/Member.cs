@@ -1,12 +1,11 @@
 ﻿
 
+using System;
 using ScrumPm.Domain.Common;
+using ScrumPm.Domain.Tenants;
 
 namespace ScrumPm.Domain.Teams
 {
-    using System;
-    using Tenants;
-
     public abstract class Member : EntityWithCompositeId
     {
         private MemberChangeTracker _changeTracker;

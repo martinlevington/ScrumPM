@@ -1,8 +1,9 @@
-﻿namespace ScrumPm.Domain.Teams
-{
-    using System;
-    using ScrumPm.Domain.Common;
+﻿using System;
+using System.Collections.Generic;
+using ScrumPm.Domain.Common;
 
+namespace ScrumPm.Domain.Teams
+{
     public class MemberChangeTracker : ValueObject
     {
         private readonly DateTime _enablingOnDate;
@@ -46,7 +47,7 @@
             return new MemberChangeTracker(_enablingOnDate, asOfDateTime, _emailAddressChangedOnDate);
         }
 
-        protected override System.Collections.Generic.IEnumerable<object> GetEqualityComponents()
+        protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return _enablingOnDate;
             yield return _nameChangedOnDate;

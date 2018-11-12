@@ -1,10 +1,8 @@
-﻿namespace ScrumPm.Domain.Common
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace ScrumPm.Domain.Common
 {
-
-
-    using System.Collections.Generic;
-    using System.Linq;
-
     public abstract class EntityWithCompositeId : Entity
     {
         /// <summary>

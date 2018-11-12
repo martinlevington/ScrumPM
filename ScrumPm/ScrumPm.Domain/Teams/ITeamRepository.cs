@@ -3,8 +3,6 @@ using ScrumPm.Domain.Common.Specifications;
 using ScrumPm.Domain.Teams.Specifications;
 using ScrumPm.Domain.Tenants;
 
-
-
 namespace ScrumPm.Domain.Teams
 {
     public interface ITeamRepository
