@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Reflection;
 using AutoMapper;
 using CorrelationId;
 using Microsoft.AspNetCore.Builder;
@@ -6,15 +8,19 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyModel;
 using ScrumPm.Application.Teams;
+using ScrumPm.Domain.Common.DependencyInjection;
 using ScrumPm.Domain.Common.Persistence;
+using ScrumPm.Domain.Common.Uow;
 using ScrumPm.Domain.Teams;
 using ScrumPm.Middleware;
 using ScrumPm.Migrations;
 using ScrumPm.Persistence.Database;
-using ScrumPm.Persistence.Database.UnitOfWork;
+using ScrumPm.Persistence.EntityFrameworkCore;
 using ScrumPm.Persistence.Teams;
 using ScrumPm.Persistence.Teams.Repositories;
+using ScrumPm.Persistence.Uow;
 using Serilog;
 
 namespace ScrumPm
@@ -33,6 +39,17 @@ namespace ScrumPm
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            var assemblies = DependencyContext.Default.RuntimeLibraries
+                .SelectMany(library => library.GetDefaultAssemblyNames(DependencyContext.Default))
+                .Select(Assembly.Load)
+               
+                .ToArray();
+            new DefaultConventionalRegistrar().LoadFromAssembly(services, assemblies);
+          //  new DefaultConventionalRegistrar().LoadFromAssembly(services, Assembly.GetCallingAssembly());
+          //  new DefaultConventionalRegistrar().LoadFromAssembly(services, Assembly.GetAssembly(typeof(ApplicationBuilderExtensions)));
+          //  new DefaultConventionalRegistrar().LoadFromAssembly(services, Assembly.GetAssembly(typeof(UnitOfWorkManager)));
+
             services.AddDbContext<ScrumPmContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ScrumPMContext")));
 
@@ -49,7 +66,9 @@ namespace ScrumPm
             services.AddTransient<ITeamRepository, TeamRepository>();
             services.AddTransient<ITeamAdapterFactory, TeamAdapterFactory>();
             
-            services.AddTransient<IUnitOfWork<ScrumPmContext>, UnitOfWorkEf<ScrumPmContext>>();
+            
+            services.AddTransient<IDbContextProvider<ScrumPmContext>, UnitOfWorkDbContextProvider<ScrumPmContext> >();
+
             services.AddTransient<IContextFactory<ScrumPmContext>, ContextFactory>();
             
             

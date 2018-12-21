@@ -2,7 +2,8 @@
 {
 
 
-    public abstract class Entity
+    public abstract class Entity : IEntity
     {
+      
     }
 }

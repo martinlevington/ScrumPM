@@ -1,10 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ScrumPm.Domain.Common.Persistence;
 
 namespace ScrumPm.Persistence.Teams.PersistenceModels
 {
-    public class TeamEf
+    public class TeamEf : IDataEntity<Guid>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

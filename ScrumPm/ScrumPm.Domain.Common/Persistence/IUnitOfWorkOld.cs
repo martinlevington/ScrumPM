@@ -2,7 +2,7 @@
 
 namespace ScrumPm.Domain.Common.Persistence
 {
-    public interface IUnitOfWork<T> where T : class
+    public interface IUnitOfWorkOld<T> where T : class
     {
         T GetContext();
         void Start();

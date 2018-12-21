@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ScrumPm.Persistence.EntityFrameworkCore;
 using ScrumPm.Persistence.Teams.PersistenceModels;
 
 namespace ScrumPm.Persistence.Database
 {
-    public class ScrumPmContext : DbContext
+    public class ScrumPmContext : EfCoreContext<ScrumPmContext>
     {
         public  DbSet<TeamEf> Teams { get; set; }
         public  DbSet<ProductOwnerEf> ProductOwners { get; set; }

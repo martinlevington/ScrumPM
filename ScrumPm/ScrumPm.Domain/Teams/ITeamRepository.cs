@@ -13,14 +13,14 @@ namespace ScrumPm.Domain.Teams
 
         Team GetById(TenantId tenantId, TeamId teamId);
 
-        void Remove(Team team);
+        //void Remove(Team team);
 
-        void RemoveAll(IEnumerable<Team> teams);
+        //void RemoveAll(IEnumerable<Team> teams);
 
-        void Save(Team team);
+        //void Save(Team team);
 
-        void SaveAll(IEnumerable<Team> teams);
+        //void SaveAll(IEnumerable<Team> teams);
 
-        Team GetByName(TenantId tenantId, string name);
+        //Team GetByName(TenantId tenantId, string name);
     }
 }
