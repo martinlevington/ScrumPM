@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyModel;
 using ScrumPm.Application.Teams;
+using ScrumPm.AspNetCore.Common.Attributes;
 using ScrumPm.Domain.Common.DependencyInjection;
 using ScrumPm.Domain.Common.Persistence;
 using ScrumPm.Domain.Common.Uow;
@@ -53,10 +54,11 @@ namespace ScrumPm
             services.AddDbContext<ScrumPmContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ScrumPMContext")));
 
+            services.AddScoped<UowActionFilter>();
           
             services.AddAutoMapper();
 
-            services.AddMvc();
+            services.AddMvc(options => { options.Filters.AddService(typeof(UowActionFilter)); } );
 
             services.AddCorrelationId();
 
@@ -71,6 +73,7 @@ namespace ScrumPm
 
             services.AddTransient<IContextFactory<ScrumPmContext>, ContextFactory>();
             
+
             
 
         }

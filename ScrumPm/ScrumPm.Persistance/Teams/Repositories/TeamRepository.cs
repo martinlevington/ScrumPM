@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using ScrumPm.Domain.Common.Persistence;
 using ScrumPm.Domain.Common.Specifications;
 using ScrumPm.Domain.Teams;
 using ScrumPm.Domain.Teams.Specifications;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ScrumPm.Application.Teams;
-using ScrumPm.Attributes;
+using ScrumPm.AspNetCore.Common.Attributes;
 using ScrumPm.BindingModels;
 using ScrumPm.Domain.Common.Uow;
 using ScrumPm.Domain.Teams;
@@ -69,13 +69,14 @@ namespace ScrumPm.Controllers
 
         [HttpPost]
         [AutoMapFilter(SourceType = typeof(IEnumerable<Team>), DestinationType = typeof(IEnumerable<TeamViewModel>))]
-
+        [UnitOfWork]
         public IActionResult Search(SearchBindingModel searchTerm)
         {
+           
+                var teams = _teamApplicationService.Search(_tenantId, searchTerm.Search);
 
-            var teams = _teamApplicationService.Search(_tenantId, searchTerm.Search);
-
-            return View("Index", teams);
+                return View("Index", teams);
+            
         }
     }
 }

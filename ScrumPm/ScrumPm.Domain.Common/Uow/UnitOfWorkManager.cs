@@ -44,7 +44,7 @@ namespace ScrumPm.Domain.Common.Uow
         /// <returns></returns>
         public IUnitOfWork Create()
         {
-            return CreateNew(new UnitOfWorkOptions());
+            return Create(new UnitOfWorkOptions());
         }
 
  
@@ -58,10 +58,10 @@ namespace ScrumPm.Domain.Common.Uow
         {
             Check.NotNull(options, nameof(options));
 
-            var currentUow = Current;
-            if (currentUow != null )
+      
+            if (Current != null )
             {
-                return new ChildUnitOfWork(currentUow);
+               return  Current;
             }
 
             var unitOfWork = CreateNewUnitOfWork();
@@ -71,62 +71,12 @@ namespace ScrumPm.Domain.Common.Uow
         }
 
 
-        public IUnitOfWork Reserve(string reservationName)
-        {
-            Check.NotNull(reservationName, nameof(reservationName));
-
-            if (_ambientUnitOfWork.UnitOfWork != null &&
-                _ambientUnitOfWork.UnitOfWork.IsReservedFor(reservationName))
-            {
-                return new ChildUnitOfWork(_ambientUnitOfWork.UnitOfWork);
-            }
-
-            var unitOfWork = CreateNewUnitOfWork();
-            unitOfWork.Reserve(reservationName);
-
-            return unitOfWork;
-        }
-
-        public void BeginReserved(string reservationName, UnitOfWorkOptions options)
-        {
-            if (!TryBeginReserved(reservationName, options))
-            {
-                throw new Exception($"Could not find a reserved unit of work with reservation name: {reservationName}");
-            }
-        }
-
-        public bool TryBeginReserved(string reservationName, UnitOfWorkOptions options)
-        {
-            Check.NotNull(reservationName, nameof(reservationName));
-
-            var uow = _ambientUnitOfWork.UnitOfWork;
-
-            //Find reserved unit of work starting from current and going to outers
-            while (uow != null && !uow.IsReservedFor(reservationName))
-            {
-                uow = uow.Outer;
-            }
-
-            if (uow == null)
-            {
-                return false;
-            }
-
-            uow.Initialize(options);
-
-            return true;
-        }
 
 
         private IUnitOfWork GetCurrentUnitOfWork()
         {
             var uow = _ambientUnitOfWork.UnitOfWork;
 
-            //Skip reserved unit of work
-            while (uow != null && (uow.IsReserved || uow.IsDisposed || uow.IsCompleted))
-            {
-                uow = uow.Outer;
-            }
 
             return uow;
         }
@@ -141,19 +91,9 @@ namespace ScrumPm.Domain.Common.Uow
             try
             {
              
-                var outerUow = _ambientUnitOfWork.UnitOfWork;
 
                 var unitOfWork = scope.ServiceProvider.GetRequiredService<IUnitOfWork>();
-
-                unitOfWork.SetOuter(outerUow);
-
                 _ambientUnitOfWork.SetUnitOfWork(unitOfWork);
-
-                unitOfWork.Disposed += (sender, args) =>
-                {
-                    _ambientUnitOfWork.SetUnitOfWork(outerUow);
-                  
-                };
 
                 return unitOfWork;
             }

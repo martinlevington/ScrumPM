@@ -9,27 +9,14 @@ namespace ScrumPm.Domain.Common.Uow
     {
         Guid Id { get; }
 
-        event EventHandler<UnitOfWorkEventArgs> Disposed;
 
-        event EventHandler<UnitOfWorkFailedEventArgs> Failed;
 
         IUnitOfWorkOptions Options { get; }
 
-        IUnitOfWork Outer { get; }
-
-        bool IsReserved { get; }
-
-        bool IsDisposed { get; }
-
-        bool IsCompleted { get; }
-
-        string ReservationName { get; }
-
-        void SetOuter([CanBeNull] IUnitOfWork outer);
+        
 
         void Initialize([NotNull] UnitOfWorkOptions options);
 
-        void Reserve([NotNull] string reservationName);
 
         void SaveChanges();
 
@@ -43,8 +30,7 @@ namespace ScrumPm.Domain.Common.Uow
 
         Task RollbackAsync(CancellationToken cancellationToken = default);
 
-        void OnCompleted(Func<Task> handler);
+    
 
-        bool IsReservedFor(string reservationName);
     }
 }

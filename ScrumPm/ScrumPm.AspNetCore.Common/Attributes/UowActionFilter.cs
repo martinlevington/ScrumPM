@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Options;
 using ScrumPm.Domain.Common.DependancyInjection;
 using ScrumPm.Domain.Common.Uow;
-using System;
 using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.Abstractions;
 using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.Extensions.Options;
 using ScrumPm.AspNetCore.Common.Extensions;
 using ScrumPm.AspNetCore.Common.Helpers;
 
@@ -20,7 +13,6 @@ namespace ScrumPm.AspNetCore.Common.Attributes
 {
     public class UowActionFilter : IAsyncActionFilter, ITransientDependency
     {
-        public const string UnitOfWorkReservationName = "_ActionUnitOfWork";
 
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         private readonly UnitOfWorkDefaultOptions _defaultOptions;
@@ -42,11 +34,6 @@ namespace ScrumPm.AspNetCore.Common.Attributes
             var methodInfo = context.ActionDescriptor.AsControllerActionDescriptor().GetMethodInfo();
             var unitOfWorkAttr = UnitOfWorkHelper.GetUnitOfWorkAttributeOrNull(methodInfo);
 
-            context.HttpContext.Items["_ActionInfo"] = new ActionInfoInHttpContext
-            {
-                IsObjectResult = context.ActionDescriptor.HasObjectResult()
-            };
-
             if (unitOfWorkAttr?.IsDisabled == true)
             {
                 await next();
@@ -55,19 +42,8 @@ namespace ScrumPm.AspNetCore.Common.Attributes
 
             var options = CreateOptions(context, unitOfWorkAttr);
 
-            //Trying to begin a reserved UOW by AbpUnitOfWorkMiddleware
-            if (_unitOfWorkManager.TryBeginReserved(UnitOfWorkReservationName, options))
-            {
-                var result = await next();
-                if (!Succeed(result))
-                {
-                    await RollbackAsync(context);
-                }
+      
 
-                return;
-            }
-
-            //Begin a new, independent unit of work
             using (var uow = _unitOfWorkManager.Create(options))
             {
                 var result = await next();

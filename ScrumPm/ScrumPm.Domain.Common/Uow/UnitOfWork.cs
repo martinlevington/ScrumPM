@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using ScrumPm.Domain.Common.DependancyInjection;
 using ScrumPm.Domain.Common.DependencyInjection;
@@ -12,25 +13,17 @@ using ScrumPm.Domain.Common.Validation;
 
 namespace ScrumPm.Domain.Common.Uow
 {
-    [ServiceRegistrationLocator(typeof(IUnitOfWork), typeof(UnitOfWork))]
+    [ServiceRegistrationLocator(typeof(IUnitOfWork), typeof(UnitOfWork), ServiceLifetime.Scoped)]
   public class UnitOfWork : IUnitOfWork, ITransientDependency
     {
         public Guid Id { get; } = Guid.NewGuid();
 
         public IUnitOfWorkOptions Options { get; private set; }
 
-        public IUnitOfWork Outer { get; private set; }
-
-        public bool IsReserved { get; set; }
         public bool IsDisposed { get; set; }
         public bool IsCompleted { get; set; }
 
-        public string ReservationName { get; set; }
 
-        protected List<Func<Task>> CompletedHandlers { get; } = new List<Func<Task>>();
-
-        public event EventHandler<UnitOfWorkFailedEventArgs> Failed;
-        public event EventHandler<UnitOfWorkEventArgs> Disposed;
 
         public IServiceProvider ServiceProvider { get; }
 
@@ -62,21 +55,10 @@ namespace ScrumPm.Domain.Common.Uow
             }
 
             Options = _defaultOptions.Normalize(options.Clone());
-            IsReserved = false;
+ 
         }
 
-        public virtual void Reserve(string reservationName)
-        {
-            Check.NotNull(reservationName, nameof(reservationName));
-
-            ReservationName = reservationName;
-            IsReserved = true;
-        }
-
-        public virtual void SetOuter(IUnitOfWork outer)
-        {
-            Outer = outer;
-        }
+   
 
         public virtual void SaveChanges()
         {
@@ -219,40 +201,26 @@ namespace ScrumPm.Domain.Common.Uow
             return _transactionApis.GetOrAdd(key, factory);
         }
 
-        public void OnCompleted(Func<Task> handler)
-        {
-            CompletedHandlers.Add(handler);
-        }
-
-        public void OnFailed(Func<Task> handler)
-        {
-            throw new NotImplementedException();
-        }
+    
 
         protected virtual void OnCompleted()
         {
-            foreach (var handler in CompletedHandlers)
-            {
-                AsyncHelper.RunSync(handler);
-            }
+            IsCompleted = true;
         }
 
         protected virtual async Task OnCompletedAsync()
         {
-            foreach (var handler in CompletedHandlers)
-            {
-                await handler.Invoke();
-            }
+          
         }
 
         protected virtual void OnFailed()
         {
-            Failed.InvokeSafely(this, new UnitOfWorkFailedEventArgs(this, _exception, _isRolledback));
+            
         }
 
         protected virtual void OnDisposed()
         {
-            Disposed.InvokeSafely(this, new UnitOfWorkEventArgs(this));
+            IsDisposed = true;
         }
 
         public virtual void Dispose()
@@ -367,12 +335,6 @@ namespace ScrumPm.Domain.Common.Uow
             }
         }
 
-        public  bool IsReservedFor(string reservationName)
-        {
-            Check.NotNull(reservationName, nameof(reservationName));
-
-            return IsReserved && ReservationName == reservationName;
-        }
 
         public override string ToString()
         {

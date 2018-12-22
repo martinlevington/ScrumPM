@@ -16,11 +16,6 @@ namespace ScrumPm.Domain.Common.Uow
         [NotNull]
         IUnitOfWork Create();
 
-        [NotNull]
-        IUnitOfWork Reserve([NotNull] string reservationName);
-
-        void BeginReserved([NotNull] string reservationName, [NotNull] UnitOfWorkOptions options);
-
-        bool TryBeginReserved([NotNull] string reservationName, [NotNull] UnitOfWorkOptions options);
+      
     }
 }
