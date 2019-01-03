@@ -59,11 +59,13 @@ namespace ScrumPm.Persistence.Teams.Repositories
             {
                Id = owner.ProductOwnerId,
                TenantId = owner.TenantId.Id,
+               UserName = owner.UserName,
                Created = DateTime.Now,
                EmailAddress = owner.EmailAddress,
                FirstName = owner.FirstName,
                LastName = owner.LastName,
-               Modified = DateTime.Now
+               Modified = DateTime.Now,
+        
             };
 
             DbContext.ProductOwners.Add(ownerEf);

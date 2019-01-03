@@ -23,8 +23,6 @@ namespace ScrumPm.Domain.Common.Uow
         public bool IsCompleted { get; set; }
 
 
-
-
         private readonly Dictionary<string, IDatabaseApi> _databaseApis;
         private readonly Dictionary<string, ITransactionApi> _transactionApis;
         private readonly UnitOfWorkDefaultOptions _defaultOptions;

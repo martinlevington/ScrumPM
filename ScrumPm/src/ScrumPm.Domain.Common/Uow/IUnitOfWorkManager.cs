@@ -4,14 +4,13 @@ namespace ScrumPm.Domain.Common.Uow
 {
     public interface IUnitOfWorkManager<out T>
     {
-        [CanBeNull]
-        T Current { get; }
+
 
         [NotNull]
-        T CreateNew([NotNull] UnitOfWorkOptions options);
+        T Create([NotNull] string name,[NotNull] UnitOfWorkOptions options);
 
         [NotNull]
-        T Create([NotNull] UnitOfWorkOptions options);
+        T Create([NotNull] string name);
 
         [NotNull]
         T Create();

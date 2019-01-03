@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using FluentResults;
 using ScrumPm.Application.Teams.Commands;
 using ScrumPm.Domain.Common.Specifications;
@@ -21,6 +22,8 @@ namespace ScrumPm.Application.Teams
             _teamMemberRepository = teamMemberRepository;
             _productOwnerRepository = productOwnerRepository;
             _teamRepository = teamRepository;
+
+            CurrentUnitOfWork = UnitOfWorkManager.Create();
         }
 
         public IEnumerable<Team> GetTeams(TenantId tenantId)
@@ -39,7 +42,14 @@ namespace ScrumPm.Application.Teams
            var searchSpecification = new TenantSpecification(tenantId).And(new TeamNameSearchSpecification(search));
 
            var teams =  _teamRepository.Find(tenantId, searchSpecification );
-           return teams;
+
+           if (teams.IsSuccess)
+           {
+               return teams.Value;
+           }
+
+           return teams.ValueOrDefault;
+
         }
 
         public Result EnableProductOwner(EnableProductOwnerCommand command)
@@ -62,13 +72,30 @@ namespace ScrumPm.Application.Teams
                 }
 
                 _productOwnerRepository.Save(command.TenantId, productOwner);
-        
+                
+                var teamResult = _teamRepository.Find(command.TenantId, new TeamIdSpecification(new TeamId(command.TeamId)));
+                if (teamResult.IsSuccess)
+                {
+                    var teams = teamResult.Value;
+                    var team = teams.First();
+
+                    team.AssignProductOwner(productOwner);
+                    _teamRepository.Update(tenantId: command.TenantId, team:team);
+                }
+                else
+                {
+                    CurrentUnitOfWork.Rollback();
+                    return Results.Fail("Cannot find team: {command.TeamId}");
+                }
+                
+              
             }
             catch (Exception ex)
             {
                 CurrentUnitOfWork.Rollback();
             }
 
+            CurrentUnitOfWork.SaveChangesAsync();
             return Results.Ok();
         }
 

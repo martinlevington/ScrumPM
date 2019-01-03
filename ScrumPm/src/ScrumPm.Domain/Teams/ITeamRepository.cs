@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FluentResults;
 using ScrumPm.Domain.Common.Specifications;
 using ScrumPm.Domain.Teams.Specifications;
 using ScrumPm.Domain.Tenants;
@@ -9,7 +10,7 @@ namespace ScrumPm.Domain.Teams
     {
         IEnumerable<Team> GetAllTeams(TenantId tenantId);
 
-        IReadOnlyList<Team> Find(TenantId tenantId, ISpecification<Team, ITeamSpecificationVisitor> specification);
+        Result<IReadOnlyList<Team>> Find(TenantId tenantId, ISpecification<Team, ITeamSpecificationVisitor> specification);
 
         Team GetById(TenantId tenantId, TeamId teamId);
 
@@ -17,7 +18,9 @@ namespace ScrumPm.Domain.Teams
 
         //void RemoveAll(IEnumerable<Team> teams);
 
-        //void Save(Team team);
+        Result<Team> Save(TenantId tenantId, Team team);
+
+        Result<Team> Update(TenantId tenantId, Team team);
 
         //void SaveAll(IEnumerable<Team> teams);
 

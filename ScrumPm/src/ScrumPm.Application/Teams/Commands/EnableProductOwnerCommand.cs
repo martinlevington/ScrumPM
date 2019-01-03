@@ -9,8 +9,9 @@ namespace ScrumPm.Application.Teams.Commands
         {
         }
 
-        public EnableProductOwnerCommand(TenantId tenantId, string username, string firstName, string lastName, string emailAddress, DateTime occurredOn)
-            : base(tenantId, username, firstName, lastName, emailAddress, occurredOn)
+        public EnableProductOwnerCommand(TenantId tenantId, string username, string firstName, string lastName,
+            string emailAddress, DateTime occurredOn, Guid teamId)
+            : base(tenantId, username, firstName, lastName, emailAddress, occurredOn, teamId)
         {
         }
     }

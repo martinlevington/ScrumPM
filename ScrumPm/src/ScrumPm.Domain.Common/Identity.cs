@@ -21,6 +21,11 @@ namespace ScrumPm.Domain.Common
 
         public Guid Id { get; }
 
+        public Guid GetId()
+        {
+            return Id;
+        }
+
         public bool Equals(Identity id)
         {
             if (ReferenceEquals(this, id))

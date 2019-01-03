@@ -66,6 +66,8 @@ namespace ScrumPm.Domain.Teams
 
         public void AssignProductOwner(ProductOwner productOwner)
         {
+            AssertionConcern.AssertArgumentNotNull(productOwner, "The productOwner must be provided.");
+
             ProductOwner = productOwner;
         }
 

@@ -6,12 +6,12 @@ namespace ScrumPm.Application
     {
         public IUnitOfWorkManager<IUnitOfWork> UnitOfWorkManager { get; set; }
 
-        protected IUnitOfWork CurrentUnitOfWork => UnitOfWorkManager?.Current;
-
-
-        protected  BaseApplicationService(IUnitOfWorkManager<IUnitOfWork> unitOfWorkManager)
+        protected IUnitOfWork CurrentUnitOfWork { get; set; }
+       
+       protected  BaseApplicationService(IUnitOfWorkManager<IUnitOfWork> unitOfWorkManager)
         {
             UnitOfWorkManager = unitOfWorkManager;
+           
         }
 
 

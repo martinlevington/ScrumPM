@@ -76,10 +76,10 @@ namespace ScrumPm
             services.AddScoped<IDateTimeClock, DateTimeClock>();
             
             
-            services.AddTransient<IDbContextProvider<ScrumPmContext>, UnitOfWorkDbContextProvider<ScrumPmContext> >();
+            services.AddScoped<IDbContextProvider<ScrumPmContext>, UnitOfWorkDbContextProvider<ScrumPmContext> >();
 
-            services.AddTransient<IContextFactory<ScrumPmContext>, ContextFactory>();
-            services.AddSingleton<IUnitOfWorkManager<IUnitOfWork>, UnitOfWorkManager>();
+            services.AddScoped<IContextFactory<ScrumPmContext>, ContextFactory>();
+            services.AddScoped<IUnitOfWorkManager<IUnitOfWork>, UnitOfWorkManager>();
             
           
             

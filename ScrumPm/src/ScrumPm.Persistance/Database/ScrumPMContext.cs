@@ -30,9 +30,9 @@ namespace ScrumPm.Persistence.Database
 
             });
             modelBuilder.Entity<TeamEf>()
-                .HasOne(c => c.ProductOwner)
-                .WithOne(x => x.Team)
-                .HasForeignKey<ProductOwnerEf>(c => c.TeamId);
+                .HasOne(c => c.ProductOwnerEf)
+                .WithOne(x => x.TeamEf)
+                .HasForeignKey<TeamEf>(c => c.ProductOwnerId);
 
             modelBuilder.Entity<ProductOwnerEf>().HasKey(c => c.Id);
             modelBuilder.Entity<ProductOwnerEf>().Property(p => p.Id).ValueGeneratedNever();

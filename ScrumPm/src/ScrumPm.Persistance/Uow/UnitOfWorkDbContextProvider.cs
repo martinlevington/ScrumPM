@@ -27,7 +27,7 @@ namespace ScrumPm.Persistence.Uow
 
         public TDbContext GetDbContext()
         {
-            var unitOfWork = _unitOfWorkManager.Current;
+            var unitOfWork = _unitOfWorkManager.Create();
             if (unitOfWork == null)
             {
                 throw new Exception("A DbContext can only be created inside a unit of work!");

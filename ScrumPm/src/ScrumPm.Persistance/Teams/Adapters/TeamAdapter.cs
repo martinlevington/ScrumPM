@@ -16,7 +16,7 @@ namespace ScrumPm.Persistence.Teams.Adapters
 
         public Team ToDomain(TenantId tenantId, TeamEf persistenceModel)
         {
-            return new Team(tenantId, new TeamId(persistenceModel.Id), persistenceModel.Name, _productOwnerAdapter.ToDomain(tenantId,persistenceModel.ProductOwner)) ;
+            return new Team(tenantId, new TeamId(persistenceModel.Id), persistenceModel.Name, _productOwnerAdapter.ToDomain(tenantId,persistenceModel.ProductOwnerEf)) ;
         }
 
         public TeamEf ToPersistence(TenantId tenant, Team domain)

@@ -60,7 +60,7 @@ namespace ScrumPm.Controllers
         public IActionResult EnableProductOwner()
         {
             var cmd = new EnableProductOwnerCommand(
-                _tenantId,"owner1","fred","clause","me@email.com",_dateTimeClock.Now
+                _tenantId,"owner1","fred","clause","me@email.com",_dateTimeClock.Now, new Guid("8730F86E-FD47-49EE-9356-29B4D941EA88")
             );
 
             _teamApplicationService.EnableProductOwner(cmd);

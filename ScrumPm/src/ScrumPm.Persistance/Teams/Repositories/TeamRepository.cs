@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentResults;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using ScrumPm.Domain.Common.Specifications;
@@ -29,7 +30,7 @@ namespace ScrumPm.Persistence.Teams.Repositories
 
         public IEnumerable<Team> GetAllTeams(TenantId tenantId)
         {
-            var teams = DbContext.Teams.Include(t => t.ProductOwner).Select(x => x).ToList();
+            var teams = DbContext.Teams.Include(t => t.ProductOwnerEf).Select(x => x).ToList();
 
             var allTeams = new List<Team>();
             foreach (var team in teams)
@@ -41,15 +42,14 @@ namespace ScrumPm.Persistence.Teams.Repositories
         }
 
 
-        public IReadOnlyList<Team> Find(TenantId tenantId,
+        public Result<IReadOnlyList<Team>> Find(TenantId tenantId,
             ISpecification<Team, ITeamSpecificationVisitor> specification)
         {
             var visitor = new TeamEfExpressionVisitor();
             specification.Accept(visitor);
             var expression = visitor.Expr;
 
-
-            var teams = DbContext.Teams.Include(t => t.ProductOwner).Where(expression).ToList();
+            var teams = DbContext.Teams.Include(t => t.ProductOwnerEf).Where(expression).ToList();
 
             var allTeams = new List<Team>();
             foreach (var team in teams)
@@ -57,12 +57,17 @@ namespace ScrumPm.Persistence.Teams.Repositories
                 allTeams.Add(_teamAdapterFactory.Create(tenantId,team));
             }
 
-            return allTeams;
+            if (allTeams.Any())
+            {
+                return Results.Ok<IReadOnlyList<Team>>(allTeams);
+            }
+
+            return Results.Fail<IReadOnlyList<Team>>(errorMessage: "Unable To find " + nameof(Team) + " Object");
         }
 
         public Team GetById(TenantId tenantId, TeamId teamId)
         {
-            var team = DbContext.Teams.Include(t => t.ProductOwner)
+            var team = DbContext.Teams.Include(t => t.ProductOwnerEf)
                 .FirstOrDefault(x => x.Id == teamId.Id && x.TenantId == tenantId.Id);
             return _teamAdapterFactory.Create(tenantId, team);
         }
@@ -77,9 +82,34 @@ namespace ScrumPm.Persistence.Teams.Repositories
             throw new NotImplementedException();
         }
 
-        public void Save(Team team)
+        public Result<Team> Save(TenantId tenantId, Team team)
         {
-            throw new NotImplementedException();
+            var teamEf = new TeamEf()
+            {
+                Id = team.Id.GetId(),
+                Name = team.Name,
+                ProductOwnerId = team.ProductOwner.ProductOwnerId,
+                TenantId = team.TenantId.Id
+            };
+
+            DbContext.Teams.Add(teamEf);
+
+            return Results.Ok<Team>(_teamAdapterFactory.Create(tenantId,teamEf));
+        }
+
+        public Result<Team> Update(TenantId tenantId, Team team)
+        {
+            var teamEf = new TeamEf()
+            {
+                Id = team.Id.GetId(),
+                Name = team.Name,
+                ProductOwnerId = team.ProductOwner.ProductOwnerId,
+                TenantId = team.TenantId.Id
+            };
+
+            DbContext.Teams.Update(teamEf);
+
+            return Results.Ok<Team>(_teamAdapterFactory.Create(tenantId,teamEf));
         }
 
         public void SaveAll(IEnumerable<Team> teams)

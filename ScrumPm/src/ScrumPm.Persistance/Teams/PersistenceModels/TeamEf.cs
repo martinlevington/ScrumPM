@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using ScrumPm.Domain.Common.Persistence;
 
 namespace ScrumPm.Persistence.Teams.PersistenceModels
 {
-    public class TeamEf : IDataEntity<Guid>
+    public sealed class TeamEf : IDataEntity<Guid>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -16,6 +15,6 @@ namespace ScrumPm.Persistence.Teams.PersistenceModels
         public string Name { get; set; }
 
         public Guid ProductOwnerId { get; set; }
-        public virtual ProductOwnerEf ProductOwner { get; set; }
+        public ProductOwnerEf ProductOwnerEf { get; set; }
     }
 }

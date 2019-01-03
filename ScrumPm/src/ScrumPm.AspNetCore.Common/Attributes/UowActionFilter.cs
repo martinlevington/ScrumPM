@@ -44,7 +44,7 @@ namespace ScrumPm.AspNetCore.Common.Attributes
 
       
 
-            using (var uow = _unitOfWorkManager.Create(options))
+            using (var uow = _unitOfWorkManager.Create("default",options))
             {
                 var result = await next();
                 if (Succeed(result))
@@ -72,11 +72,8 @@ namespace ScrumPm.AspNetCore.Common.Attributes
 
         private async Task RollbackAsync(ActionExecutingContext context)
         {
-            var currentUow = _unitOfWorkManager.Current;
-            if (currentUow != null)
-            {
-                await currentUow.RollbackAsync(context.HttpContext.RequestAborted);
-            }
+            var currentUow = _unitOfWorkManager.Create();
+            await currentUow.RollbackAsync(context.HttpContext.RequestAborted);
         }
 
         private static bool Succeed(ActionExecutedContext result)
