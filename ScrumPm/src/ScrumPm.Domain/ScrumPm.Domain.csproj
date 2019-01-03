@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Products\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ScrumPm.Domain.Common\ScrumPm.Domain.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="FluentResults">
+      <HintPath>C:\Users\marti\.nuget\packages\fluentresults\1.1.1\lib\netstandard1.1\FluentResults.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

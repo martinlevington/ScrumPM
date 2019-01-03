@@ -1,0 +1,36 @@
+2018-08-28 21:41:49.058 +01:00 [Information] Starting web host
+
+Memory: 982688
+2018-08-28 21:41:49.474 +01:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1014880
+2018-08-28 21:45:59.278 +01:00 [Information] Starting web host
+
+Memory: 979128
+2018-08-28 21:45:59.542 +01:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1016304
+2018-08-28 21:51:34.679 +01:00 [Information] Starting web host
+
+Memory: 985000
+2018-08-28 21:51:34.938 +01:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1033728
+2018-08-28 21:53:19.114 +01:00 [Information] Starting web host
+
+Memory: 978248
+2018-08-28 21:53:19.392 +01:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1027400
+2018-08-28 21:55:23.670 +01:00 [Information] Starting web host
+
+Memory: 984040
+2018-08-28 21:55:23.971 +01:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1033192
+2018-08-28 21:55:30.567 +01:00 [Information] Starting web host
+
+Memory: 726400
+2018-08-28 21:55:30.631 +01:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 775552
