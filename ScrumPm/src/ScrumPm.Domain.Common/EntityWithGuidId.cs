@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ScrumPm.Domain.Common
+﻿namespace ScrumPm.Domain.Common
 {
     class EntityWithGuidId
     {

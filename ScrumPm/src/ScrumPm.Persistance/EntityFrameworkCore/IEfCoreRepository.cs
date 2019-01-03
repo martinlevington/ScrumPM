@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
-using ScrumPm.Domain.Common;
+﻿using Microsoft.EntityFrameworkCore;
 using ScrumPm.Domain.Common.Persistence;
 
 namespace ScrumPm.Persistence.EntityFrameworkCore

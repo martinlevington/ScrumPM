@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using ScrumPm.Domain.Common.DependencyInjection;
-using ScrumPm.Domain.Common.PagedList;
 using ScrumPm.Domain.Common.Uow;
 
 namespace ScrumPm.Domain.Common.Persistence

@@ -14,12 +14,12 @@ namespace ScrumPm.AspNetCore.Common.Attributes
     public class UowActionFilter : IAsyncActionFilter, ITransientDependency
     {
 
-        private readonly IUnitOfWorkManager<IUnitOfWork> _unitOfWorkManager;
+        private readonly IUnitOfWorkFactory<IUnitOfWork> _unitOfWorkFactory;
         private readonly UnitOfWorkDefaultOptions _defaultOptions;
 
-        public UowActionFilter(IUnitOfWorkManager<IUnitOfWork> unitOfWorkManager, IOptions<UnitOfWorkDefaultOptions> options)
+        public UowActionFilter(IUnitOfWorkFactory<IUnitOfWork> unitOfWorkFactory, IOptions<UnitOfWorkDefaultOptions> options)
         {
-            _unitOfWorkManager = unitOfWorkManager;
+            _unitOfWorkFactory = unitOfWorkFactory;
             _defaultOptions = options.Value;
         }
 
@@ -44,7 +44,7 @@ namespace ScrumPm.AspNetCore.Common.Attributes
 
       
 
-            using (var uow = _unitOfWorkManager.Create("default",options))
+            using (var uow = _unitOfWorkFactory.Create("default",options))
             {
                 var result = await next();
                 if (Succeed(result))
@@ -72,7 +72,7 @@ namespace ScrumPm.AspNetCore.Common.Attributes
 
         private async Task RollbackAsync(ActionExecutingContext context)
         {
-            var currentUow = _unitOfWorkManager.Create();
+            var currentUow = _unitOfWorkFactory.Create();
             await currentUow.RollbackAsync(context.HttpContext.RequestAborted);
         }
 

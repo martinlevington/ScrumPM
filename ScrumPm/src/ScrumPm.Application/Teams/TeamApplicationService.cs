@@ -17,13 +17,13 @@ namespace ScrumPm.Application.Teams
         private readonly ITeamRepository _teamRepository;
         private readonly IProductOwnerRepository _productOwnerRepository;
 
-        public TeamApplicationService(ITeamMemberRepository teamMemberRepository, IProductOwnerRepository productOwnerRepository, ITeamRepository teamRepository, IUnitOfWorkManager<IUnitOfWork> untUnitOfWorkManager) : base(untUnitOfWorkManager)
+        public TeamApplicationService(ITeamMemberRepository teamMemberRepository, IProductOwnerRepository productOwnerRepository, ITeamRepository teamRepository, IUnitOfWorkFactory<IUnitOfWork> untUnitOfWorkFactory) : base(untUnitOfWorkFactory)
         {
             _teamMemberRepository = teamMemberRepository;
             _productOwnerRepository = productOwnerRepository;
             _teamRepository = teamRepository;
 
-            CurrentUnitOfWork = UnitOfWorkManager.Create();
+            CurrentUnitOfWork = UnitOfWorkFactory.Create();
         }
 
         public IEnumerable<Team> GetTeams(TenantId tenantId)

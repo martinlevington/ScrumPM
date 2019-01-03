@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using JetBrains.Annotations;
-using ScrumPm.Domain.Common;
 using ScrumPm.Domain.Common.Extensions;
 using ScrumPm.Domain.Common.Persistence;
 using ScrumPm.Domain.Common.Validation;

@@ -1,6 +1,5 @@
 ﻿using System;
 using JetBrains.Annotations;
-using ScrumPm.Domain.Common.DependencyInjection;
 
 namespace ScrumPm.Domain.Common.Uow
 {

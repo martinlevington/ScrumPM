@@ -12,22 +12,22 @@ namespace ScrumPm.Persistence.Uow
    public class UnitOfWorkDbContextProvider<TDbContext> : IDbContextProvider<TDbContext>
         where TDbContext : IEfCoreDbContext
     {
-        private readonly IUnitOfWorkManager<IUnitOfWork> _unitOfWorkManager;
+        private readonly IUnitOfWorkFactory<IUnitOfWork> _unitOfWorkFactory;
         private readonly IConnectionStringResolver _connectionStringResolver;
         private readonly TDbContext _dbContext;
 
         public UnitOfWorkDbContextProvider(
-            IUnitOfWorkManager<IUnitOfWork> unitOfWorkManager,
+            IUnitOfWorkFactory<IUnitOfWork> unitOfWorkFactory,
             IConnectionStringResolver connectionStringResolver, TDbContext dbContext)
         {
-            _unitOfWorkManager = unitOfWorkManager;
+            _unitOfWorkFactory = unitOfWorkFactory;
             _connectionStringResolver = connectionStringResolver;
             _dbContext = dbContext;
         }
 
         public TDbContext GetDbContext()
         {
-            var unitOfWork = _unitOfWorkManager.Create();
+            var unitOfWork = _unitOfWorkFactory.Create();
             if (unitOfWork == null)
             {
                 throw new Exception("A DbContext can only be created inside a unit of work!");

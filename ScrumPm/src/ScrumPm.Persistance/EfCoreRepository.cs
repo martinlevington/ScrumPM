@@ -5,7 +5,6 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using ScrumPm.Domain.Common.Extensions;
 using ScrumPm.Domain.Common.Persistence;

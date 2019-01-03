@@ -2,7 +2,7 @@
 
 namespace ScrumPm.Domain.Common.Uow
 {
-    public interface IUnitOfWorkManager<out T>
+    public interface IUnitOfWorkFactory<out T>
     {
 
 

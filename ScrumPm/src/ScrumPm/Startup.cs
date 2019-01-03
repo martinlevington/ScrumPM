@@ -79,7 +79,7 @@ namespace ScrumPm
             services.AddScoped<IDbContextProvider<ScrumPmContext>, UnitOfWorkDbContextProvider<ScrumPmContext> >();
 
             services.AddScoped<IContextFactory<ScrumPmContext>, ContextFactory>();
-            services.AddScoped<IUnitOfWorkManager<IUnitOfWork>, UnitOfWorkManager>();
+            services.AddScoped<IUnitOfWorkFactory<IUnitOfWork>, UnitOfWorkFactory>();
             
           
             

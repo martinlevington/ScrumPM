@@ -5,9 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using ScrumPm.Domain.Common.DependencyInjection;
-using ScrumPm.Domain.Common.Events;
 using ScrumPm.Domain.Common.Extensions;
-using ScrumPm.Domain.Common.Threading;
 using ScrumPm.Domain.Common.Validation;
 
 namespace ScrumPm.Domain.Common.Uow

@@ -2,7 +2,6 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using ScrumPm.Domain.Common.DependencyInjection;
-using ScrumPm.Domain.Common.Guids;
 using ScrumPm.Domain.Common.MultiTenant;
 using ScrumPm.Persistence.Expressions;
 

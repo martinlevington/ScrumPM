@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Text;
-using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using ScrumPm.Domain.Common.Extensions;
 
 namespace ScrumPm.Domain.Common.DependencyInjection
 {

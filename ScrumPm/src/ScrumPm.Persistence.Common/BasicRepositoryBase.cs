@@ -1,8 +1,6 @@
 ﻿using ScrumPm.Domain.Common;
-using ScrumPm.Domain.Common.DependencyInjection;
 using ScrumPm.Domain.Common.Persistence;
 using ScrumPm.Domain.Common.Threading;
-using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;

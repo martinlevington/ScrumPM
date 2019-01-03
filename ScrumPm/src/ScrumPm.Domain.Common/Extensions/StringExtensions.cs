@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -8,7 +7,7 @@ using ScrumPm.Domain.Common.Validation;
 
 namespace ScrumPm.Domain.Common.Extensions
 {
-   /// <summary>
+    /// <summary>
     /// Extension methods for String class.
     /// </summary>
     public static class StringExtensions

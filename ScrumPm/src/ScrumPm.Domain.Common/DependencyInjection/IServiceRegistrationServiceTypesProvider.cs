@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ScrumPm.Domain.Common.DependencyInjection
+﻿namespace ScrumPm.Domain.Common.DependencyInjection
 {
     public interface IServiceRegistrationServiceTypesProvider
     {

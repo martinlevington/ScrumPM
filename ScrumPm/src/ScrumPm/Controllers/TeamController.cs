@@ -5,7 +5,6 @@ using Microsoft.Extensions.Logging;
 using ScrumPm.Application.Teams;
 using ScrumPm.Application.Teams.Commands;
 using ScrumPm.AspNetCore.Common.Attributes;
-using ScrumPm.AspNetCore.Common.DateTimes;
 using ScrumPm.BindingModels;
 using ScrumPm.Domain.Common.DateTimes;
 using ScrumPm.Domain.Common.Uow;
@@ -19,17 +18,17 @@ namespace ScrumPm.Controllers
     public class TeamController : Controller
     {
         private readonly ITeamApplicationService _teamApplicationService;
-        private readonly IUnitOfWorkManager<IUnitOfWork> _unitOfWorkManager;
+        private readonly IUnitOfWorkFactory<IUnitOfWork> _unitOfWorkFactory;
         private readonly ILogger<TeamController> _logger;
         private readonly IDateTimeClock _dateTimeClock;
 
         private TenantId _tenantId = new TenantId(new Guid("544060C5-4F5F-4EA6-AC8E-7100D7E87CCB"));
 
 
-        public TeamController(ITeamApplicationService teamApplicationService, IUnitOfWorkManager<IUnitOfWork> unitOfWorkManager, ILogger<TeamController> logger, IDateTimeClock dateTimeClock)
+        public TeamController(ITeamApplicationService teamApplicationService, IUnitOfWorkFactory<IUnitOfWork> unitOfWorkFactory, ILogger<TeamController> logger, IDateTimeClock dateTimeClock)
         {
             _teamApplicationService = teamApplicationService;
-            _unitOfWorkManager = unitOfWorkManager;
+            _unitOfWorkFactory = unitOfWorkFactory;
             _logger = logger;
             _dateTimeClock = dateTimeClock;
         }
@@ -43,7 +42,7 @@ namespace ScrumPm.Controllers
         public IActionResult Index()
         {
 
-            using (var unitOfWork = _unitOfWorkManager.Create())
+            using (var unitOfWork = _unitOfWorkFactory.Create())
             {
                 _logger.LogDebug("TeamController: Index");
 

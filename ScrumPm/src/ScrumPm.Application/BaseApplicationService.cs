@@ -4,13 +4,13 @@ namespace ScrumPm.Application
 {
     public abstract class BaseApplicationService
     {
-        public IUnitOfWorkManager<IUnitOfWork> UnitOfWorkManager { get; set; }
+        public IUnitOfWorkFactory<IUnitOfWork> UnitOfWorkFactory { get; set; }
 
         protected IUnitOfWork CurrentUnitOfWork { get; set; }
        
-       protected  BaseApplicationService(IUnitOfWorkManager<IUnitOfWork> unitOfWorkManager)
+       protected  BaseApplicationService(IUnitOfWorkFactory<IUnitOfWork> unitOfWorkFactory)
         {
-            UnitOfWorkManager = unitOfWorkManager;
+            UnitOfWorkFactory = unitOfWorkFactory;
            
         }
 

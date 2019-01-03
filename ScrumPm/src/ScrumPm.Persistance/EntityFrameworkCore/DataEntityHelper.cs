@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 using JetBrains.Annotations;
-using ScrumPm.Domain.Common;
 using ScrumPm.Domain.Common.Persistence;
 
 namespace ScrumPm.Persistence.EntityFrameworkCore

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Extensions.DependencyInjection;
+﻿using System.Collections.Generic;
 using Microsoft.Extensions.Options;
 using ScrumPm.Domain.Common.DependencyInjection;
 using ScrumPm.Domain.Common.Validation;
@@ -8,7 +6,7 @@ using ScrumPm.Domain.Common.Validation;
 namespace ScrumPm.Domain.Common.Uow
 {
     // todo move to mvc layer
-    public class UnitOfWorkManager : IUnitOfWorkManager<IUnitOfWork>, ISingletonDependency
+    public class UnitOfWorkFactory : IUnitOfWorkFactory<IUnitOfWork>, ISingletonDependency
           
     {
        
@@ -16,7 +14,7 @@ namespace ScrumPm.Domain.Common.Uow
         private readonly Dictionary<string, IUnitOfWork> _unitOfWorkDictionary;
         private readonly IOptions<UnitOfWorkDefaultOptions> _defaultUowOptions;
 
-        public UnitOfWorkManager(IOptions<UnitOfWorkDefaultOptions> defaultUowOptions)
+        public UnitOfWorkFactory(IOptions<UnitOfWorkDefaultOptions> defaultUowOptions)
         {
             _unitOfWorkDictionary = new Dictionary<string, IUnitOfWork>();
             _defaultUowOptions = defaultUowOptions;
