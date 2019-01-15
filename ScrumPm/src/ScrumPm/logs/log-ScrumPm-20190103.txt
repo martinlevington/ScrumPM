@@ -1,0 +1,2782 @@
+2019-01-03 00:02:36.036 +00:00 [Information] Starting web host
+
+Memory: 976424
+2019-01-03 00:02:36.433 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1089584
+2019-01-03 00:02:43.500 +00:00 [Information] User profile is available. Using '"C:\Users\marti\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 38198408
+2019-01-03 00:02:43.814 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 40469224
+2019-01-03 00:02:43.980 +00:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;"
+
+Memory: 41127736
+2019-01-03 00:02:44.015 +00:00 [Information] Executed DbCommand ("31"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""DROP DATABASE [ScrumPm];"
+
+Memory: 41144120
+2019-01-03 00:02:54.271 +00:00 [Information] Executed DbCommand ("238"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [ScrumPm];"
+
+Memory: 41510216
+2019-01-03 00:02:54.313 +00:00 [Information] Executed DbCommand ("42"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET READ_COMMITTED_SNAPSHOT ON;
+END;"
+
+Memory: 41518408
+2019-01-03 00:02:54.366 +00:00 [Information] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Teams] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [ProductOwnerId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Teams] PRIMARY KEY ([Id])
+);"
+
+Memory: 41946552
+2019-01-03 00:02:54.368 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Tenants] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Tenants] PRIMARY KEY ([Id])
+);"
+
+Memory: 41954744
+2019-01-03 00:02:54.369 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[ProductOwners] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [EmailAddress] nvarchar(max) NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    [UserName] nvarchar(max) NULL,
+    [Created] datetime2 NOT NULL,
+    [Modified] datetime2 NOT NULL,
+    [TeamId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_ProductOwners] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ProductOwners_Teams_TeamId] FOREIGN KEY ([TeamId]) REFERENCES [dbo].[Teams] ([Id]) ON DELETE CASCADE
+);"
+
+Memory: 41962936
+2019-01-03 00:02:54.370 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_ProductOwners_TeamId] ON [dbo].[ProductOwners] ([TeamId]);"
+
+Memory: 41979320
+2019-01-03 00:02:57.017 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [dbo].[Tenants] AS [t]"
+
+Memory: 42241464
+2019-01-03 00:02:57.069 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42470840
+2019-01-03 00:02:57.071 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42487224
+2019-01-03 00:02:57.080 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId]
+FROM [dbo].[Teams] AS [t]"
+
+Memory: 42610104
+2019-01-03 00:02:57.095 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 42831288
+2019-01-03 00:02:57.096 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 42847672
+2019-01-03 00:02:57.104 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[Created], [p].[EmailAddress], [p].[FirstName], [p].[LastName], [p].[Modified], [p].[TeamId], [p].[TenantId], [p].[UserName]
+FROM [dbo].[ProductOwners] AS [p]"
+
+Memory: 42986936
+2019-01-03 00:02:57.137 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (DbType = Guid), @p8='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TeamId], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);"
+
+Memory: 43363488
+2019-01-03 00:02:57.138 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (DbType = Guid), @p8='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TeamId], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);"
+
+Memory: 43396232
+2019-01-03 00:02:57.461 +00:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:51468/  0
+
+Memory: 44357144
+2019-01-03 00:02:57.461 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/  
+
+Memory: 44357144
+2019-01-03 00:02:57.481 +00:00 [Information] Request finished in 18.0137ms 200 
+
+Memory: 44414424
+2019-01-03 00:02:57.593 +00:00 [Information] Route matched with "{action = \"Index\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Index (ScrumPm)"
+
+Memory: 45446616
+2019-01-03 00:03:01.297 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)" - Validation state: Valid
+
+Memory: 45495768
+2019-01-03 00:04:09.633 +00:00 [Information] Starting web host
+
+Memory: 976584
+2019-01-03 00:04:10.001 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1095176
+2019-01-03 00:04:16.022 +00:00 [Information] User profile is available. Using '"C:\Users\marti\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 38197728
+2019-01-03 00:04:16.350 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 40483096
+2019-01-03 00:04:16.506 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;"
+
+Memory: 41135968
+2019-01-03 00:04:16.533 +00:00 [Information] Executed DbCommand ("24"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""DROP DATABASE [ScrumPm];"
+
+Memory: 41146704
+2019-01-03 00:04:26.806 +00:00 [Information] Executed DbCommand ("250"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [ScrumPm];"
+
+Memory: 41518408
+2019-01-03 00:04:26.853 +00:00 [Information] Executed DbCommand ("47"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET READ_COMMITTED_SNAPSHOT ON;
+END;"
+
+Memory: 41534792
+2019-01-03 00:04:26.908 +00:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Teams] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [ProductOwnerId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Teams] PRIMARY KEY ([Id])
+);"
+
+Memory: 41949480
+2019-01-03 00:04:26.910 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Tenants] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Tenants] PRIMARY KEY ([Id])
+);"
+
+Memory: 41965864
+2019-01-03 00:04:26.912 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[ProductOwners] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [EmailAddress] nvarchar(max) NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    [UserName] nvarchar(max) NULL,
+    [Created] datetime2 NOT NULL,
+    [Modified] datetime2 NOT NULL,
+    [TeamId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_ProductOwners] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ProductOwners_Teams_TeamId] FOREIGN KEY ([TeamId]) REFERENCES [dbo].[Teams] ([Id]) ON DELETE CASCADE
+);"
+
+Memory: 41974056
+2019-01-03 00:04:26.913 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_ProductOwners_TeamId] ON [dbo].[ProductOwners] ([TeamId]);"
+
+Memory: 41990440
+2019-01-03 00:04:29.228 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [dbo].[Tenants] AS [t]"
+
+Memory: 42227944
+2019-01-03 00:04:29.281 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42457320
+2019-01-03 00:04:29.283 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42473704
+2019-01-03 00:04:29.291 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId]
+FROM [dbo].[Teams] AS [t]"
+
+Memory: 42588392
+2019-01-03 00:04:29.306 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 42809512
+2019-01-03 00:04:29.307 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 42825896
+2019-01-03 00:04:29.315 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[Created], [p].[EmailAddress], [p].[FirstName], [p].[LastName], [p].[Modified], [p].[TeamId], [p].[TenantId], [p].[UserName]
+FROM [dbo].[ProductOwners] AS [p]"
+
+Memory: 42965160
+2019-01-03 00:04:29.349 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (DbType = Guid), @p8='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TeamId], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);"
+
+Memory: 43350184
+2019-01-03 00:04:29.350 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (DbType = Guid), @p8='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TeamId], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);"
+
+Memory: 43374760
+2019-01-03 00:04:29.617 +00:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:51468/  0
+
+Memory: 44357808
+2019-01-03 00:04:29.617 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/  
+
+Memory: 44357808
+2019-01-03 00:04:29.635 +00:00 [Information] Request finished in 17.3446ms 200 
+
+Memory: 44415104
+2019-01-03 00:04:29.735 +00:00 [Information] Route matched with "{action = \"Index\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Index (ScrumPm)"
+
+Memory: 45430856
+2019-01-03 00:04:35.509 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)" - Validation state: Valid
+
+Memory: 45496368
+2019-01-03 00:04:59.329 +00:00 [Information] Starting web host
+
+Memory: 983008
+2019-01-03 00:04:59.769 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1094408
+2019-01-03 00:05:05.602 +00:00 [Information] User profile is available. Using '"C:\Users\marti\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 38204112
+2019-01-03 00:05:05.920 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 40473176
+2019-01-03 00:05:06.075 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;"
+
+Memory: 41128528
+2019-01-03 00:05:06.104 +00:00 [Information] Executed DbCommand ("26"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""DROP DATABASE [ScrumPm];"
+
+Memory: 41144912
+2019-01-03 00:05:16.306 +00:00 [Information] Executed DbCommand ("183"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [ScrumPm];"
+
+Memory: 41513496
+2019-01-03 00:05:16.353 +00:00 [Information] Executed DbCommand ("47"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET READ_COMMITTED_SNAPSHOT ON;
+END;"
+
+Memory: 41521688
+2019-01-03 00:05:16.404 +00:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Teams] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [ProductOwnerId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Teams] PRIMARY KEY ([Id])
+);"
+
+Memory: 41939480
+2019-01-03 00:05:16.406 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Tenants] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Tenants] PRIMARY KEY ([Id])
+);"
+
+Memory: 41955864
+2019-01-03 00:05:16.408 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[ProductOwners] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [EmailAddress] nvarchar(max) NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    [UserName] nvarchar(max) NULL,
+    [Created] datetime2 NOT NULL,
+    [Modified] datetime2 NOT NULL,
+    [TeamId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_ProductOwners] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ProductOwners_Teams_TeamId] FOREIGN KEY ([TeamId]) REFERENCES [dbo].[Teams] ([Id]) ON DELETE CASCADE
+);"
+
+Memory: 41964056
+2019-01-03 00:05:16.409 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_ProductOwners_TeamId] ON [dbo].[ProductOwners] ([TeamId]);"
+
+Memory: 41980440
+2019-01-03 00:05:16.475 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [dbo].[Tenants] AS [t]"
+
+Memory: 42218008
+2019-01-03 00:05:16.531 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42447384
+2019-01-03 00:05:16.532 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42463528
+2019-01-03 00:05:16.541 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId]
+FROM [dbo].[Teams] AS [t]"
+
+Memory: 42578216
+2019-01-03 00:05:16.556 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 42799400
+2019-01-03 00:05:16.556 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 42815784
+2019-01-03 00:05:16.565 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[Created], [p].[EmailAddress], [p].[FirstName], [p].[LastName], [p].[Modified], [p].[TeamId], [p].[TenantId], [p].[UserName]
+FROM [dbo].[ProductOwners] AS [p]"
+
+Memory: 42955048
+2019-01-03 00:05:16.600 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (DbType = Guid), @p8='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TeamId], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);"
+
+Memory: 43340000
+2019-01-03 00:05:16.600 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (DbType = Guid), @p8='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TeamId], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);"
+
+Memory: 43364576
+2019-01-03 00:05:16.974 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/  
+
+Memory: 44331008
+2019-01-03 00:05:16.974 +00:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:51468/  0
+
+Memory: 44331008
+2019-01-03 00:05:16.992 +00:00 [Information] Request finished in 17.1574ms 200 
+
+Memory: 44396544
+2019-01-03 00:05:17.094 +00:00 [Information] Route matched with "{action = \"Index\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Index (ScrumPm)"
+
+Memory: 45420440
+2019-01-03 00:05:20.892 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)" - Validation state: Valid
+
+Memory: 45477784
+2019-01-03 00:05:22.917 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Index (ScrumPm)" in 5818.81ms
+
+Memory: 45731736
+2019-01-03 00:05:22.996 +00:00 [Error] HTTP "GET" "/" responded 500 in 5964.6347 ms
+System.MissingMethodException: No parameterless constructor defined for this object.
+   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean wrapExceptions, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor)
+   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean wrapExceptions, Boolean skipCheckThis, Boolean fillCache)
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic, Boolean wrapExceptions)
+   at ScrumPm.Domain.Common.Uow.UnitOfWorkManager.CreateNewUnitOfWork() in R:\dev\playtime\ScrumPM\ScrumPm\src\ScrumPm.Domain.Common\Uow\UnitOfWorkManager.cs:line 91
+   at ScrumPm.Domain.Common.Uow.UnitOfWorkManager.Create(UnitOfWorkOptions options) in R:\dev\playtime\ScrumPM\ScrumPm\src\ScrumPm.Domain.Common\Uow\UnitOfWorkManager.cs:line 64
+   at ScrumPm.Domain.Common.Uow.UnitOfWorkManager.Create() in R:\dev\playtime\ScrumPM\ScrumPm\src\ScrumPm.Domain.Common\Uow\UnitOfWorkManager.cs:line 44
+   at ScrumPm.Controllers.TeamController.Index() in R:\dev\playtime\ScrumPM\ScrumPm\src\ScrumPm\Controllers\TeamController.cs:line 46
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at ScrumPm.Middleware.UserLoggingMiddleware.Invoke(HttpContext context) in R:\dev\playtime\ScrumPM\ScrumPm\src\ScrumPm\Middleware\UserLoggingMiddleware.cs:line 22
+   at ScrumPm.Middleware.HttpContextLoggingMiddleware.Invoke(HttpContext context) in R:\dev\playtime\ScrumPM\ScrumPm\src\ScrumPm\Middleware\HttpContextLoggingMiddleware.cs:line 36
+
+Memory: 45756312
+2019-01-03 00:05:23.082 +00:00 [Error] An unhandled exception has occurred while executing the request.
+System.MissingMethodException: No parameterless constructor defined for this object.
+   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean wrapExceptions, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor)
+   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean wrapExceptions, Boolean skipCheckThis, Boolean fillCache)
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic, Boolean wrapExceptions)
+   at ScrumPm.Domain.Common.Uow.UnitOfWorkManager.CreateNewUnitOfWork() in R:\dev\playtime\ScrumPM\ScrumPm\src\ScrumPm.Domain.Common\Uow\UnitOfWorkManager.cs:line 91
+   at ScrumPm.Domain.Common.Uow.UnitOfWorkManager.Create(UnitOfWorkOptions options) in R:\dev\playtime\ScrumPM\ScrumPm\src\ScrumPm.Domain.Common\Uow\UnitOfWorkManager.cs:line 64
+   at ScrumPm.Domain.Common.Uow.UnitOfWorkManager.Create() in R:\dev\playtime\ScrumPM\ScrumPm\src\ScrumPm.Domain.Common\Uow\UnitOfWorkManager.cs:line 44
+   at ScrumPm.Controllers.TeamController.Index() in R:\dev\playtime\ScrumPM\ScrumPm\src\ScrumPm\Controllers\TeamController.cs:line 46
+   at lambda_method(Closure , Object , Object[] )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.SyncActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at ScrumPm.Middleware.UserLoggingMiddleware.Invoke(HttpContext context) in R:\dev\playtime\ScrumPM\ScrumPm\src\ScrumPm\Middleware\UserLoggingMiddleware.cs:line 22
+   at ScrumPm.Middleware.HttpContextLoggingMiddleware.Invoke(HttpContext context) in R:\dev\playtime\ScrumPM\ScrumPm\src\ScrumPm\Middleware\HttpContextLoggingMiddleware.cs:line 36
+   at ScrumPm.Middleware.CorrelationLoggingMiddleware.Invoke(HttpContext context) in R:\dev\playtime\ScrumPM\ScrumPm\src\ScrumPm\Middleware\CorrelationLoggingMiddleware.cs:line 23
+   at ScrumPm.Middleware.RemoteIpAddressLoggingMiddleware.Invoke(HttpContext context) in R:\dev\playtime\ScrumPM\ScrumPm\src\ScrumPm\Middleware\RemoteIpAddressLoggingMiddleware.cs:line 20
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at CorrelationId.CorrelationIdMiddleware.Invoke(HttpContext context, ICorrelationContextFactory correlationContextFactory)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+
+Memory: 46042904
+2019-01-03 00:05:23.292 +00:00 [Information] Request finished in 6319.4914ms 500 text/html; charset=utf-8
+
+Memory: 47236728
+2019-01-03 00:05:24.892 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.986426061197784  
+
+Memory: 47253024
+2019-01-03 00:05:24.898 +00:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 2.1516 ms
+
+Memory: 47318560
+2019-01-03 00:05:24.899 +00:00 [Information] Request finished in 7.4582ms 404 
+
+Memory: 47326752
+2019-01-03 00:09:22.032 +00:00 [Information] Starting web host
+
+Memory: 976680
+2019-01-03 00:09:22.453 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1090320
+2019-01-03 00:09:29.742 +00:00 [Information] User profile is available. Using '"C:\Users\marti\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 38211184
+2019-01-03 00:09:30.080 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 40480264
+2019-01-03 00:09:30.239 +00:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;"
+
+Memory: 41133136
+2019-01-03 00:09:30.267 +00:00 [Information] Executed DbCommand ("25"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""DROP DATABASE [ScrumPm];"
+
+Memory: 41141328
+2019-01-03 00:09:40.487 +00:00 [Information] Executed DbCommand ("198"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [ScrumPm];"
+
+Memory: 41507224
+2019-01-03 00:09:40.532 +00:00 [Information] Executed DbCommand ("45"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET READ_COMMITTED_SNAPSHOT ON;
+END;"
+
+Memory: 41515376
+2019-01-03 00:09:40.584 +00:00 [Information] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Teams] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [ProductOwnerId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Teams] PRIMARY KEY ([Id])
+);"
+
+Memory: 41936560
+2019-01-03 00:09:40.586 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Tenants] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Tenants] PRIMARY KEY ([Id])
+);"
+
+Memory: 41952944
+2019-01-03 00:09:40.589 +00:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[ProductOwners] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [EmailAddress] nvarchar(max) NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    [UserName] nvarchar(max) NULL,
+    [Created] datetime2 NOT NULL,
+    [Modified] datetime2 NOT NULL,
+    [TeamId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_ProductOwners] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ProductOwners_Teams_TeamId] FOREIGN KEY ([TeamId]) REFERENCES [dbo].[Teams] ([Id]) ON DELETE CASCADE
+);"
+
+Memory: 41962760
+2019-01-03 00:09:40.590 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_ProductOwners_TeamId] ON [dbo].[ProductOwners] ([TeamId]);"
+
+Memory: 41987336
+2019-01-03 00:09:40.659 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [dbo].[Tenants] AS [t]"
+
+Memory: 42216712
+2019-01-03 00:09:40.718 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42437896
+2019-01-03 00:09:40.719 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42462472
+2019-01-03 00:09:40.728 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId]
+FROM [dbo].[Teams] AS [t]"
+
+Memory: 42577160
+2019-01-03 00:09:40.747 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 42798344
+2019-01-03 00:09:40.748 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 42822920
+2019-01-03 00:09:40.757 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[Created], [p].[EmailAddress], [p].[FirstName], [p].[LastName], [p].[Modified], [p].[TeamId], [p].[TenantId], [p].[UserName]
+FROM [dbo].[ProductOwners] AS [p]"
+
+Memory: 42962184
+2019-01-03 00:09:40.796 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (DbType = Guid), @p8='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TeamId], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);"
+
+Memory: 43339016
+2019-01-03 00:09:40.797 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (DbType = Guid), @p8='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TeamId], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);"
+
+Memory: 43363592
+2019-01-03 00:09:41.242 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/  
+
+Memory: 44354768
+2019-01-03 00:09:41.242 +00:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:51468/  0
+
+Memory: 44354768
+2019-01-03 00:09:41.258 +00:00 [Information] Request finished in 16.3404ms 200 
+
+Memory: 44420304
+2019-01-03 00:09:41.354 +00:00 [Information] Route matched with "{action = \"Index\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Index (ScrumPm)"
+
+Memory: 45436064
+2019-01-03 00:09:48.167 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)" - Validation state: Valid
+
+Memory: 45485216
+2019-01-03 00:09:48.171 +00:00 [Debug] TeamController: Index
+
+Memory: 45493408
+2019-01-03 00:09:51.445 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 45583496
+2019-01-03 00:09:51.533 +00:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwner].[Id], [t.ProductOwner].[Created], [t.ProductOwner].[EmailAddress], [t.ProductOwner].[FirstName], [t.ProductOwner].[LastName], [t.ProductOwner].[Modified], [t.ProductOwner].[TeamId], [t.ProductOwner].[TenantId], [t.ProductOwner].[UserName]
+FROM [dbo].[Teams] AS [t]
+LEFT JOIN [dbo].[ProductOwners] AS [t.ProductOwner] ON [t].[Id] = [t.ProductOwner].[TeamId]"
+
+Memory: 47213576
+2019-01-03 00:09:51.554 +00:00 [Information] End TeamController: Index
+
+Memory: 47328264
+2019-01-03 00:09:51.559 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 3389.5035ms.
+
+Memory: 47360992
+2019-01-03 00:09:51.618 +00:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 47721440
+2019-01-03 00:09:51.808 +00:00 [Information] Executed ViewResult - view "Index" executed in 202.6497ms.
+
+Memory: 48690088
+2019-01-03 00:09:51.815 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Index (ScrumPm)" in 10459.8926ms
+
+Memory: 48698280
+2019-01-03 00:09:51.829 +00:00 [Information] HTTP "GET" "/" responded 200 in 10537.5770 ms
+
+Memory: 48714664
+2019-01-03 00:09:51.863 +00:00 [Information] Request finished in 10622.9352ms 200 text/html; charset=utf-8
+
+Memory: 48755624
+2019-01-03 00:09:53.277 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.11646085151059671  
+
+Memory: 48763792
+2019-01-03 00:09:53.283 +00:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 1.5057 ms
+
+Memory: 48837520
+2019-01-03 00:09:53.284 +00:00 [Information] Request finished in 7.2995ms 404 
+
+Memory: 48845712
+2019-01-03 00:09:57.253 +00:00 [Information] Request starting HTTP/1.1 POST http://localhost:51468/Team/Search application/x-www-form-urlencoded 193
+
+Memory: 48853880
+2019-01-03 00:09:57.278 +00:00 [Information] Route matched with "{action = \"Search\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Search (ScrumPm)"
+
+Memory: 49015512
+2019-01-03 00:10:00.779 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Search (ScrumPm)" with arguments (["ScrumPm.BindingModels.SearchBindingModel"]) - Validation state: Valid
+
+Memory: 49146560
+2019-01-03 00:10:04.347 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 49179240
+2019-01-03 00:10:04.379 +00:00 [Information] Executed DbCommand ("14"ms) [Parameters=["@__ToString_0='?' (Size = 4000), @__specification_SearchTerm_2='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwner].[Id], [t.ProductOwner].[Created], [t.ProductOwner].[EmailAddress], [t.ProductOwner].[FirstName], [t.ProductOwner].[LastName], [t.ProductOwner].[Modified], [t.ProductOwner].[TeamId], [t.ProductOwner].[TenantId], [t.ProductOwner].[UserName]
+FROM [dbo].[Teams] AS [t]
+LEFT JOIN [dbo].[ProductOwners] AS [t.ProductOwner] ON [t].[Id] = [t.ProductOwner].[TeamId]
+WHERE (CONVERT(VARCHAR(36), [t].[TenantId]) = @__ToString_0) AND [t].[Name] LIKE (N'%' + @__specification_SearchTerm_2) + N'%'"
+
+Memory: 49760872
+2019-01-03 00:10:06.026 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Search (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 5240.954ms.
+
+Memory: 49793640
+2019-01-03 00:10:06.034 +00:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 49810024
+2019-01-03 00:10:06.051 +00:00 [Information] Executed ViewResult - view "Index" executed in 16.5453ms.
+
+Memory: 50072904
+2019-01-03 00:10:06.051 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Search (ScrumPm)" in 8773.0171ms
+
+Memory: 50081096
+2019-01-03 00:10:06.052 +00:00 [Information] HTTP "POST" "/Team/Search" responded 200 in 8797.4868 ms
+
+Memory: 50089288
+2019-01-03 00:10:06.057 +00:00 [Information] Request finished in 8804.4537ms 200 text/html; charset=utf-8
+
+Memory: 50119960
+2019-01-03 00:10:07.241 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.8527182615903619  
+
+Memory: 50136344
+2019-01-03 00:10:07.243 +00:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 0.1317 ms
+
+Memory: 50201880
+2019-01-03 00:10:07.243 +00:00 [Information] Request finished in 1.5282ms 404 
+
+Memory: 50210072
+2019-01-03 00:17:38.049 +00:00 [Information] Starting web host
+
+Memory: 979152
+2019-01-03 00:17:38.501 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1089528
+2019-01-03 00:17:45.577 +00:00 [Information] User profile is available. Using '"C:\Users\marti\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 38194968
+2019-01-03 00:17:45.916 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 40463864
+2019-01-03 00:17:46.073 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;"
+
+Memory: 41124928
+2019-01-03 00:17:46.102 +00:00 [Information] Executed DbCommand ("26"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""DROP DATABASE [ScrumPm];"
+
+Memory: 41135664
+2019-01-03 00:17:56.305 +00:00 [Information] Executed DbCommand ("185"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [ScrumPm];"
+
+Memory: 41507408
+2019-01-03 00:17:56.355 +00:00 [Information] Executed DbCommand ("50"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET READ_COMMITTED_SNAPSHOT ON;
+END;"
+
+Memory: 41515600
+2019-01-03 00:17:56.404 +00:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Teams] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [ProductOwnerId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Teams] PRIMARY KEY ([Id])
+);"
+
+Memory: 41938480
+2019-01-03 00:17:56.406 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Tenants] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Tenants] PRIMARY KEY ([Id])
+);"
+
+Memory: 41946672
+2019-01-03 00:17:56.409 +00:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[ProductOwners] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [EmailAddress] nvarchar(max) NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    [UserName] nvarchar(max) NULL,
+    [Created] datetime2 NOT NULL,
+    [Modified] datetime2 NOT NULL,
+    [TeamId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_ProductOwners] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ProductOwners_Teams_TeamId] FOREIGN KEY ([TeamId]) REFERENCES [dbo].[Teams] ([Id]) ON DELETE CASCADE
+);"
+
+Memory: 41963056
+2019-01-03 00:17:56.411 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_ProductOwners_TeamId] ON [dbo].[ProductOwners] ([TeamId]);"
+
+Memory: 41971248
+2019-01-03 00:17:56.467 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [dbo].[Tenants] AS [t]"
+
+Memory: 42217008
+2019-01-03 00:17:56.520 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42438192
+2019-01-03 00:17:56.521 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42454576
+2019-01-03 00:17:56.530 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId]
+FROM [dbo].[Teams] AS [t]"
+
+Memory: 42569264
+2019-01-03 00:17:56.545 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 42790448
+2019-01-03 00:17:56.546 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 42815024
+2019-01-03 00:17:56.556 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[Created], [p].[EmailAddress], [p].[FirstName], [p].[LastName], [p].[Modified], [p].[TeamId], [p].[TenantId], [p].[UserName]
+FROM [dbo].[ProductOwners] AS [p]"
+
+Memory: 42954288
+2019-01-03 00:17:56.590 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (DbType = Guid), @p8='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TeamId], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);"
+
+Memory: 43331008
+2019-01-03 00:17:56.590 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (DbType = Guid), @p8='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TeamId], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);"
+
+Memory: 43363776
+2019-01-03 00:17:56.876 +00:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:51468/  0
+
+Memory: 44340856
+2019-01-03 00:17:56.876 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/  
+
+Memory: 44340856
+2019-01-03 00:17:56.893 +00:00 [Information] Request finished in 15.9901ms 200 
+
+Memory: 44406392
+2019-01-03 00:17:57.003 +00:00 [Information] Route matched with "{action = \"Index\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Index (ScrumPm)"
+
+Memory: 45422200
+2019-01-03 00:18:01.877 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)" - Validation state: Valid
+
+Memory: 45479544
+2019-01-03 00:18:01.882 +00:00 [Debug] TeamController: Index
+
+Memory: 45487736
+2019-01-03 00:18:01.903 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 45692504
+2019-01-03 00:18:01.997 +00:00 [Information] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwner].[Id], [t.ProductOwner].[Created], [t.ProductOwner].[EmailAddress], [t.ProductOwner].[FirstName], [t.ProductOwner].[LastName], [t.ProductOwner].[Modified], [t.ProductOwner].[TeamId], [t.ProductOwner].[TenantId], [t.ProductOwner].[UserName]
+FROM [dbo].[Teams] AS [t]
+LEFT JOIN [dbo].[ProductOwners] AS [t.ProductOwner] ON [t].[Id] = [t.ProductOwner].[TeamId]"
+
+Memory: 47224640
+2019-01-03 00:18:02.020 +00:00 [Information] End TeamController: Index
+
+Memory: 47347520
+2019-01-03 00:18:02.026 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 146.6397ms.
+
+Memory: 47380288
+2019-01-03 00:18:02.101 +00:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 47748928
+2019-01-03 00:18:02.312 +00:00 [Information] Executed ViewResult - view "Index" executed in 234.8115ms.
+
+Memory: 48700792
+2019-01-03 00:18:02.320 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Index (ScrumPm)" in 5316.1424ms
+
+Memory: 48717120
+2019-01-03 00:18:02.334 +00:00 [Information] HTTP "GET" "/" responded 200 in 5405.6677 ms
+
+Memory: 48733504
+2019-01-03 00:18:02.367 +00:00 [Information] Request finished in 5492.3147ms 200 text/html; charset=utf-8
+
+Memory: 48774464
+2019-01-03 00:18:03.869 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.1295027615209008  
+
+Memory: 48782504
+2019-01-03 00:18:03.873 +00:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 1.0221 ms
+
+Memory: 48839848
+2019-01-03 00:18:03.873 +00:00 [Information] Request finished in 4.7041ms 404 
+
+Memory: 48856232
+2019-01-03 00:18:24.919 +00:00 [Information] Request starting HTTP/1.1 POST http://localhost:51468/Team/Search application/x-www-form-urlencoded 193
+
+Memory: 48872568
+2019-01-03 00:18:24.941 +00:00 [Information] Route matched with "{action = \"Search\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Search (ScrumPm)"
+
+Memory: 49017744
+2019-01-03 00:18:27.770 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Search (ScrumPm)" with arguments (["ScrumPm.BindingModels.SearchBindingModel"]) - Validation state: Valid
+
+Memory: 49157056
+2019-01-03 00:18:27.783 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 49189776
+2019-01-03 00:18:27.807 +00:00 [Information] Executed DbCommand ("5"ms) [Parameters=["@__ToString_0='?' (Size = 4000), @__specification_SearchTerm_2='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwner].[Id], [t.ProductOwner].[Created], [t.ProductOwner].[EmailAddress], [t.ProductOwner].[FirstName], [t.ProductOwner].[LastName], [t.ProductOwner].[Modified], [t.ProductOwner].[TeamId], [t.ProductOwner].[TenantId], [t.ProductOwner].[UserName]
+FROM [dbo].[Teams] AS [t]
+LEFT JOIN [dbo].[ProductOwners] AS [t.ProductOwner] ON [t].[Id] = [t.ProductOwner].[TeamId]
+WHERE (CONVERT(VARCHAR(36), [t].[TenantId]) = @__ToString_0) AND [t].[Name] LIKE (N'%' + @__specification_SearchTerm_2) + N'%'"
+
+Memory: 49787792
+2019-01-03 00:18:28.945 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Search (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 1169.4751ms.
+
+Memory: 49812368
+2019-01-03 00:18:28.954 +00:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 49836944
+2019-01-03 00:18:28.964 +00:00 [Information] Executed ViewResult - view "Index" executed in 9.4416ms.
+
+Memory: 50115744
+2019-01-03 00:18:28.964 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Search (ScrumPm)" in 4023.1203ms
+
+Memory: 50123936
+2019-01-03 00:18:28.965 +00:00 [Information] HTTP "POST" "/Team/Search" responded 200 in 4044.3212 ms
+
+Memory: 50132128
+2019-01-03 00:18:28.967 +00:00 [Information] Request finished in 4047.8422ms 200 text/html; charset=utf-8
+
+Memory: 50170952
+2019-01-03 00:18:30.133 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.908029088329017  
+
+Memory: 50179144
+2019-01-03 00:18:30.135 +00:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 0.1248 ms
+
+Memory: 50236488
+2019-01-03 00:18:30.135 +00:00 [Information] Request finished in 1.6392ms 404 
+
+Memory: 50252800
+2019-01-03 00:19:07.159 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/team/EnableProductOwner  
+
+Memory: 50293640
+2019-01-03 00:19:07.162 +00:00 [Information] Route matched with "{action = \"EnableProductOwner\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)"
+
+Memory: 50391944
+2019-01-03 00:19:19.838 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)" - Validation state: Valid
+
+Memory: 50408328
+2019-01-03 00:19:22.330 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 50441096
+2019-01-03 00:19:22.348 +00:00 [Information] Executed DbCommand ("6"ms) [Parameters=["@__tenantId_Id_0='?' (DbType = Guid), @__userName_1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [x].[Id], [x].[Created], [x].[EmailAddress], [x].[FirstName], [x].[LastName], [x].[Modified], [x].[TeamId], [x].[TenantId], [x].[UserName]
+FROM [dbo].[ProductOwners] AS [x]
+WHERE ([x].[TenantId] = @__tenantId_Id_0) AND ([x].[UserName] = @__userName_1)"
+
+Memory: 50613128
+2019-01-03 00:19:24.253 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=["@__ownerEf_Id_0='?' (DbType = Guid), @__ownerEf_TenantId_1='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Created], [x].[EmailAddress], [x].[FirstName], [x].[LastName], [x].[Modified], [x].[TeamId], [x].[TenantId], [x].[UserName]
+FROM [dbo].[ProductOwners] AS [x]
+WHERE ([x].[Id] = @__ownerEf_Id_0) AND ([x].[TenantId] = @__ownerEf_TenantId_1)"
+
+Memory: 50776968
+2019-01-03 00:19:24.287 +00:00 [Error] An exception occurred in the database while iterating the results of a query for context type '"ScrumPm.Persistence.Database.ScrumPmContext"'."
+""System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()"
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+
+Memory: 50858888
+2019-01-03 00:19:24.288 +00:00 [Error] An exception occurred in the database while iterating the results of a query for context type '"ScrumPm.Persistence.Database.ScrumPmContext"'."
+""System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass15_1`1.<CompileQueryCore>b__0(QueryContext qc)"
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass15_1`1.<CompileQueryCore>b__0(QueryContext qc)
+
+Memory: 50924424
+2019-01-03 00:19:27.463 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 7625.0724ms.
+
+Memory: 50998152
+2019-01-03 00:19:27.481 +00:00 [Information] Executing ViewResult, running view "EnableProductOwner".
+
+Memory: 51063648
+2019-01-03 00:19:27.555 +00:00 [Information] Executed ViewResult - view "EnableProductOwner" executed in 91.2805ms.
+
+Memory: 51336080
+2019-01-03 00:19:27.561 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)" in 20393.3979ms
+
+Memory: 51344272
+2019-01-03 00:19:27.562 +00:00 [Information] HTTP "GET" "/team/EnableProductOwner" responded 200 in 20400.8975 ms
+
+Memory: 51360656
+2019-01-03 00:19:27.570 +00:00 [Information] Request finished in 20410.7322ms 200 text/html; charset=utf-8
+
+Memory: 51391168
+2019-01-03 00:19:28.910 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.7368965698236392  
+
+Memory: 51407400
+2019-01-03 00:19:28.913 +00:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 0.0966 ms
+
+Memory: 51461752
+2019-01-03 00:19:28.913 +00:00 [Information] Request finished in 3.3586ms 404 
+
+Memory: 51478136
+2019-01-03 00:20:21.604 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/team/EnableProductOwner  
+
+Memory: 51502640
+2019-01-03 00:20:21.606 +00:00 [Information] Route matched with "{action = \"EnableProductOwner\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)"
+
+Memory: 51559984
+2019-01-03 00:20:25.203 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)" - Validation state: Valid
+
+Memory: 51576368
+2019-01-03 00:20:27.820 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 51625488
+2019-01-03 00:20:27.823 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@__tenantId_Id_0='?' (DbType = Guid), @__userName_1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [x].[Id], [x].[Created], [x].[EmailAddress], [x].[FirstName], [x].[LastName], [x].[Modified], [x].[TeamId], [x].[TenantId], [x].[UserName]
+FROM [dbo].[ProductOwners] AS [x]
+WHERE ([x].[TenantId] = @__tenantId_Id_0) AND ([x].[UserName] = @__userName_1)"
+
+Memory: 51650064
+2019-01-03 00:22:34.921 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=["@__ownerEf_Id_0='?' (DbType = Guid), @__ownerEf_TenantId_1='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Created], [x].[EmailAddress], [x].[FirstName], [x].[LastName], [x].[Modified], [x].[TeamId], [x].[TenantId], [x].[UserName]
+FROM [dbo].[ProductOwners] AS [x]
+WHERE ([x].[Id] = @__ownerEf_Id_0) AND ([x].[TenantId] = @__ownerEf_TenantId_1)"
+
+Memory: 51781136
+2019-01-03 00:22:34.922 +00:00 [Error] An exception occurred in the database while iterating the results of a query for context type '"ScrumPm.Persistence.Database.ScrumPmContext"'."
+""System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()"
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+
+Memory: 51805712
+2019-01-03 00:22:34.924 +00:00 [Error] An exception occurred in the database while iterating the results of a query for context type '"ScrumPm.Persistence.Database.ScrumPmContext"'."
+""System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass15_1`1.<CompileQueryCore>b__0(QueryContext qc)"
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass15_1`1.<CompileQueryCore>b__0(QueryContext qc)
+
+Memory: 51870992
+2019-01-03 00:22:36.729 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 131526.0073ms.
+
+Memory: 51944720
+2019-01-03 00:22:36.730 +00:00 [Information] Executing ViewResult, running view "EnableProductOwner".
+
+Memory: 51952912
+2019-01-03 00:22:36.744 +00:00 [Information] Executed ViewResult - view "EnableProductOwner" executed in 14.3325ms.
+
+Memory: 52143424
+2019-01-03 00:22:36.745 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)" in 135138.2426ms
+
+Memory: 52159768
+2019-01-03 00:22:36.745 +00:00 [Information] HTTP "GET" "/team/EnableProductOwner" responded 200 in 135138.9820 ms
+
+Memory: 52167960
+2019-01-03 00:22:36.747 +00:00 [Information] Request finished in 135142.4203ms 200 text/html; charset=utf-8
+
+Memory: 52200728
+2019-01-03 00:22:38.115 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.5268001342441064  
+
+Memory: 52217112
+2019-01-03 00:22:38.116 +00:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 0.0469 ms
+
+Memory: 52274456
+2019-01-03 00:22:38.116 +00:00 [Information] Request finished in 1.3242ms 404 
+
+Memory: 52282648
+2019-01-03 00:22:40.210 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/team/EnableProductOwner  
+
+Memory: 52307200
+2019-01-03 00:22:40.211 +00:00 [Information] Route matched with "{action = \"EnableProductOwner\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)"
+
+Memory: 52364464
+2019-01-03 00:22:42.610 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)" - Validation state: Valid
+
+Memory: 52380848
+2019-01-03 00:22:46.871 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 52413616
+2019-01-03 00:22:46.873 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@__tenantId_Id_0='?' (DbType = Guid), @__userName_1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [x].[Id], [x].[Created], [x].[EmailAddress], [x].[FirstName], [x].[LastName], [x].[Modified], [x].[TeamId], [x].[TenantId], [x].[UserName]
+FROM [dbo].[ProductOwners] AS [x]
+WHERE ([x].[TenantId] = @__tenantId_Id_0) AND ([x].[UserName] = @__userName_1)"
+
+Memory: 52438192
+2019-01-03 00:23:30.774 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@__ownerEf_Id_0='?' (DbType = Guid), @__ownerEf_TenantId_1='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [x].[Id], [x].[Created], [x].[EmailAddress], [x].[FirstName], [x].[LastName], [x].[Modified], [x].[TeamId], [x].[TenantId], [x].[UserName]
+FROM [dbo].[ProductOwners] AS [x]
+WHERE ([x].[Id] = @__ownerEf_Id_0) AND ([x].[TenantId] = @__ownerEf_TenantId_1)"
+
+Memory: 52495536
+2019-01-03 00:23:30.775 +00:00 [Error] An exception occurred in the database while iterating the results of a query for context type '"ScrumPm.Persistence.Database.ScrumPmContext"'."
+""System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()"
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+
+Memory: 52528256
+2019-01-03 00:23:30.776 +00:00 [Error] An exception occurred in the database while iterating the results of a query for context type '"ScrumPm.Persistence.Database.ScrumPmContext"'."
+""System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass15_1`1.<CompileQueryCore>b__0(QueryContext qc)"
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass15_1`1.<CompileQueryCore>b__0(QueryContext qc)
+
+Memory: 52585600
+2019-01-03 00:24:36.503 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 113892.5118ms.
+
+Memory: 52839552
+2019-01-03 00:24:36.510 +00:00 [Information] Executing ViewResult, running view "EnableProductOwner".
+
+Memory: 52855936
+2019-01-03 00:24:36.530 +00:00 [Information] Executed ViewResult - view "EnableProductOwner" executed in 20.5772ms.
+
+Memory: 53054640
+2019-01-03 00:24:36.530 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)" in 116319.0276ms
+
+Memory: 53062832
+2019-01-03 00:24:36.530 +00:00 [Information] HTTP "GET" "/team/EnableProductOwner" responded 200 in 116319.4251 ms
+
+Memory: 53077120
+2019-01-03 00:24:36.532 +00:00 [Information] Request finished in 116321.7836ms 200 text/html; charset=utf-8
+
+Memory: 53109888
+2019-01-03 00:24:37.886 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.9373109142954517  
+
+Memory: 53118080
+2019-01-03 00:24:37.887 +00:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 0.0428 ms
+
+Memory: 53183544
+2019-01-03 00:24:37.887 +00:00 [Information] Request finished in 1.3683ms 404 
+
+Memory: 53191736
+2019-01-03 00:25:39.028 +00:00 [Information] Starting web host
+
+Memory: 977072
+2019-01-03 00:25:39.500 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1095528
+2019-01-03 00:25:46.135 +00:00 [Information] User profile is available. Using '"C:\Users\marti\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 38194784
+2019-01-03 00:25:46.472 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 40462136
+2019-01-03 00:25:49.595 +00:00 [Information] Executed DbCommand ("3,006"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;"
+
+Memory: 41115008
+2019-01-03 00:25:49.624 +00:00 [Information] Executed DbCommand ("26"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""DROP DATABASE [ScrumPm];"
+
+Memory: 41131392
+2019-01-03 00:25:59.890 +00:00 [Information] Executed DbCommand ("247"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [ScrumPm];"
+
+Memory: 41502680
+2019-01-03 00:25:59.934 +00:00 [Information] Executed DbCommand ("44"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET READ_COMMITTED_SNAPSHOT ON;
+END;"
+
+Memory: 41510872
+2019-01-03 00:25:59.985 +00:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Teams] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [ProductOwnerId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Teams] PRIMARY KEY ([Id])
+);"
+
+Memory: 41928664
+2019-01-03 00:25:59.986 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Tenants] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Tenants] PRIMARY KEY ([Id])
+);"
+
+Memory: 41945048
+2019-01-03 00:25:59.988 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[ProductOwners] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [EmailAddress] nvarchar(max) NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    [UserName] nvarchar(max) NULL,
+    [Created] datetime2 NOT NULL,
+    [Modified] datetime2 NOT NULL,
+    [TeamId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_ProductOwners] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ProductOwners_Teams_TeamId] FOREIGN KEY ([TeamId]) REFERENCES [dbo].[Teams] ([Id]) ON DELETE CASCADE
+);"
+
+Memory: 41953184
+2019-01-03 00:25:59.989 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_ProductOwners_TeamId] ON [dbo].[ProductOwners] ([TeamId]);"
+
+Memory: 41969568
+2019-01-03 00:26:00.052 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [dbo].[Tenants] AS [t]"
+
+Memory: 42204032
+2019-01-03 00:26:00.107 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42433408
+2019-01-03 00:26:00.107 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42449792
+2019-01-03 00:26:00.116 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId]
+FROM [dbo].[Teams] AS [t]"
+
+Memory: 42564384
+2019-01-03 00:26:00.131 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 42785512
+2019-01-03 00:26:00.132 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 42810088
+2019-01-03 00:26:00.140 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[Created], [p].[EmailAddress], [p].[FirstName], [p].[LastName], [p].[Modified], [p].[TeamId], [p].[TenantId], [p].[UserName]
+FROM [dbo].[ProductOwners] AS [p]"
+
+Memory: 42949352
+2019-01-03 00:26:00.171 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (DbType = Guid), @p8='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TeamId], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);"
+
+Memory: 43326120
+2019-01-03 00:26:00.172 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (DbType = Guid), @p8='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TeamId], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);"
+
+Memory: 43358888
+2019-01-03 00:26:00.474 +00:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:51468/  0
+
+Memory: 44372064
+2019-01-03 00:26:00.474 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/  
+
+Memory: 44372064
+2019-01-03 00:26:00.474 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/team/EnableProductOwner  
+
+Memory: 44372064
+2019-01-03 00:26:00.501 +00:00 [Information] Request finished in 20.2635ms 200 
+
+Memory: 44470368
+2019-01-03 00:26:00.624 +00:00 [Information] Route matched with "{action = \"Index\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Index (ScrumPm)"
+
+Memory: 46379080
+2019-01-03 00:26:00.624 +00:00 [Information] Route matched with "{action = \"EnableProductOwner\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)"
+
+Memory: 46379080
+2019-01-03 00:26:07.249 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)" - Validation state: Valid
+
+Memory: 46534600
+2019-01-03 00:26:07.252 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)" - Validation state: Valid
+
+Memory: 46550984
+2019-01-03 00:26:07.252 +00:00 [Debug] TeamController: Index
+
+Memory: 46550984
+2019-01-03 00:26:11.696 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 46772168
+2019-01-03 00:26:11.696 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 46772168
+2019-01-03 00:26:11.735 +00:00 [Information] Executed DbCommand ("5"ms) [Parameters=["@__tenantId_Id_0='?' (DbType = Guid), @__userName_1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [x].[Id], [x].[Created], [x].[EmailAddress], [x].[FirstName], [x].[LastName], [x].[Modified], [x].[TeamId], [x].[TenantId], [x].[UserName]
+FROM [dbo].[ProductOwners] AS [x]
+WHERE ([x].[TenantId] = @__tenantId_Id_0) AND ([x].[UserName] = @__userName_1)"
+
+Memory: 48410728
+2019-01-03 00:43:19.094 +00:00 [Information] Starting web host
+
+Memory: 976256
+2019-01-03 00:43:19.508 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1090904
+2019-01-03 00:43:25.935 +00:00 [Information] User profile is available. Using '"C:\Users\marti\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 37794968
+2019-01-03 00:43:26.262 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 40047288
+2019-01-03 00:43:29.408 +00:00 [Information] Executed DbCommand ("3,008"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;"
+
+Memory: 40702704
+2019-01-03 00:43:29.451 +00:00 [Information] Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""DROP DATABASE [ScrumPm];"
+
+Memory: 40710896
+2019-01-03 00:43:39.691 +00:00 [Information] Executed DbCommand ("218"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [ScrumPm];"
+
+Memory: 41082640
+2019-01-03 00:43:39.743 +00:00 [Information] Executed DbCommand ("52"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET READ_COMMITTED_SNAPSHOT ON;
+END;"
+
+Memory: 41090832
+2019-01-03 00:43:39.794 +00:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Teams] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [ProductOwnerId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Teams] PRIMARY KEY ([Id])
+);"
+
+Memory: 41513712
+2019-01-03 00:43:39.795 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Tenants] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Tenants] PRIMARY KEY ([Id])
+);"
+
+Memory: 41530096
+2019-01-03 00:43:39.797 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[ProductOwners] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [EmailAddress] nvarchar(max) NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    [UserName] nvarchar(max) NULL,
+    [Created] datetime2 NOT NULL,
+    [Modified] datetime2 NOT NULL,
+    [TeamEfId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_ProductOwners] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_ProductOwners_Teams_TeamEfId] FOREIGN KEY ([TeamEfId]) REFERENCES [dbo].[Teams] ([Id]) ON DELETE CASCADE
+);"
+
+Memory: 41538288
+2019-01-03 00:43:39.798 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_ProductOwners_TeamEfId] ON [dbo].[ProductOwners] ([TeamEfId]);"
+
+Memory: 41554672
+2019-01-03 00:43:39.854 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [dbo].[Tenants] AS [t]"
+
+Memory: 41792216
+2019-01-03 00:43:39.908 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42013400
+2019-01-03 00:43:39.909 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42029784
+2019-01-03 00:43:39.918 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId]
+FROM [dbo].[Teams] AS [t]"
+
+Memory: 42144472
+2019-01-03 00:43:39.935 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 42373816
+2019-01-03 00:43:39.935 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 42390200
+2019-01-03 00:43:39.943 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[Created], [p].[EmailAddress], [p].[FirstName], [p].[LastName], [p].[Modified], [p].[TeamEfId], [p].[TenantId], [p].[UserName]
+FROM [dbo].[ProductOwners] AS [p]"
+
+Memory: 42529464
+2019-01-03 00:43:39.979 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (DbType = Guid), @p8='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TeamEfId], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);"
+
+Memory: 42914448
+2019-01-03 00:43:39.979 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (DbType = Guid), @p8='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TeamEfId], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);"
+
+Memory: 42939024
+2019-01-03 00:43:40.181 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/  
+
+Memory: 43921904
+2019-01-03 00:43:40.181 +00:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:51468/  0
+
+Memory: 43921904
+2019-01-03 00:43:40.198 +00:00 [Information] Request finished in 15.8207ms 200 
+
+Memory: 43979248
+2019-01-03 00:43:40.302 +00:00 [Information] Route matched with "{action = \"Index\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Index (ScrumPm)"
+
+Memory: 45001952
+2019-01-03 00:43:45.630 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)" - Validation state: Valid
+
+Memory: 45059176
+2019-01-03 00:43:45.634 +00:00 [Debug] TeamController: Index
+
+Memory: 45067368
+2019-01-03 00:43:45.657 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 45231120
+2019-01-03 00:43:45.726 +00:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwnerEf].[Id], [t.ProductOwnerEf].[Created], [t.ProductOwnerEf].[EmailAddress], [t.ProductOwnerEf].[FirstName], [t.ProductOwnerEf].[LastName], [t.ProductOwnerEf].[Modified], [t.ProductOwnerEf].[TeamEfId], [t.ProductOwnerEf].[TenantId], [t.ProductOwnerEf].[UserName]
+FROM [dbo].[Teams] AS [t]
+LEFT JOIN [dbo].[ProductOwners] AS [t.ProductOwnerEf] ON [t].[Id] = [t.ProductOwnerEf].[TeamEfId]"
+
+Memory: 46779672
+2019-01-03 00:43:45.750 +00:00 [Information] End TeamController: Index
+
+Memory: 46902552
+2019-01-03 00:43:45.755 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 122.3821ms.
+
+Memory: 46935320
+2019-01-03 00:43:45.814 +00:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 47287576
+2019-01-03 00:43:46.009 +00:00 [Information] Executed ViewResult - view "Index" executed in 208.667ms.
+
+Memory: 48272288
+2019-01-03 00:43:46.017 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Index (ScrumPm)" in 5713.5128ms
+
+Memory: 48288616
+2019-01-03 00:43:46.031 +00:00 [Information] HTTP "GET" "/" responded 200 in 5797.4481 ms
+
+Memory: 48305000
+2019-01-03 00:43:46.068 +00:00 [Information] Request finished in 5887.8822ms 200 text/html; charset=utf-8
+
+Memory: 48343728
+2019-01-03 00:43:47.480 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.5337200023026254  
+
+Memory: 48343728
+2019-01-03 00:43:47.484 +00:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 1.1569 ms
+
+Memory: 48409232
+2019-01-03 00:43:47.485 +00:00 [Information] Request finished in 4.7833ms 404 
+
+Memory: 48417424
+2019-01-03 16:55:12.297 +00:00 [Information] Starting web host
+
+Memory: 976784
+2019-01-03 16:55:12.723 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1091344
+2019-01-03 16:55:21.105 +00:00 [Information] User profile is available. Using '"C:\Users\marti\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 37813128
+2019-01-03 16:55:41.945 +00:00 [Information] Starting web host
+
+Memory: 723584
+2019-01-03 16:55:42.043 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 835944
+2019-01-03 16:55:43.358 +00:00 [Information] User profile is available. Using '"C:\Users\marti\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 37557872
+2019-01-03 16:55:43.572 +00:00 [Fatal] Application startup exception
+System.InvalidOperationException: The child/dependent side could not be determined for the one-to-one relationship between 'ProductOwnerEf.TeamEf' and 'TeamEf.ProductOwnerEf'. To identify the child/dependent side of the relationship, configure the foreign key property. If these navigations should not be part of the same relationship configure them without specifying the inverse. See http://go.microsoft.com/fwlink/?LinkId=724062 for more details.
+   at Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal.RelationshipValidationConvention.Apply(InternalModelBuilder modelBuilder)
+   at Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal.ConventionDispatcher.ImmediateConventionScope.OnModelBuilt(InternalModelBuilder modelBuilder)
+   at Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal.ConventionDispatcher.OnModelBuilt(InternalModelBuilder modelBuilder)
+   at Microsoft.EntityFrameworkCore.Metadata.Internal.Model.Validate()
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, IConventionSetBuilder conventionSetBuilder, IModelValidator validator)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.<>c__DisplayClass5_0.<GetModel>b__1()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.GetModel(DbContext context, IConventionSetBuilder conventionSetBuilder, IModelValidator validator)
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.CreateModel()
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.get_Model()
+   at Microsoft.EntityFrameworkCore.Infrastructure.EntityFrameworkServicesBuilder.<>c.<TryAddCoreServices>b__7_1(IServiceProvider p)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitFactory(FactoryCallSite factoryCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<System.IServiceProvider>.get_Instance()
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure<System.IServiceProvider>.get_Instance()
+   at Microsoft.EntityFrameworkCore.Internal.InternalAccessorExtensions.GetService[TService](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.AccessorExtensions.GetService[TService](IInfrastructure`1 accessor)
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_DatabaseCreator()
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.EnsureDeleted()
+   at ScrumPm.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env) in R:\dev\playtime\ScrumPM\ScrumPm\src\ScrumPm\Startup.cs:line 103
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Server.IISIntegration.IISSetupFilter.<>c__DisplayClass4_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.HostFilteringStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.AutoRequestServicesStartupFilter.<>c__DisplayClass0_0.<Configure>b__0(IApplicationBuilder builder)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+
+Memory: 39441616
+2019-01-03 16:55:43.831 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/  
+
+Memory: 40071928
+2019-01-03 16:55:43.854 +00:00 [Information] Request finished in 23.545ms 500 text/html; charset=utf-8
+
+Memory: 40835888
+2019-01-03 16:59:23.062 +00:00 [Information] Starting web host
+
+Memory: 981272
+2019-01-03 16:59:23.428 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1095256
+2019-01-03 16:59:29.278 +00:00 [Information] User profile is available. Using '"C:\Users\marti\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 37799112
+2019-01-03 16:59:29.610 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 40182912
+2019-01-03 16:59:32.777 +00:00 [Information] Executed DbCommand ("3,008"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;"
+
+Memory: 40835112
+2019-01-03 16:59:32.817 +00:00 [Information] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""DROP DATABASE [ScrumPm];"
+
+Memory: 40851496
+2019-01-03 16:59:43.059 +00:00 [Information] Executed DbCommand ("219"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [ScrumPm];"
+
+Memory: 41220096
+2019-01-03 16:59:43.110 +00:00 [Information] Executed DbCommand ("51"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET READ_COMMITTED_SNAPSHOT ON;
+END;"
+
+Memory: 41228288
+2019-01-03 16:59:43.169 +00:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[ProductOwners] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [EmailAddress] nvarchar(max) NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    [UserName] nvarchar(max) NULL,
+    [Created] datetime2 NOT NULL,
+    [Modified] datetime2 NOT NULL,
+    CONSTRAINT [PK_ProductOwners] PRIMARY KEY ([Id])
+);"
+
+Memory: 41633056
+2019-01-03 16:59:43.171 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Tenants] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Tenants] PRIMARY KEY ([Id])
+);"
+
+Memory: 41649440
+2019-01-03 16:59:43.174 +00:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Teams] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [ProductOwnerId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Teams] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Teams_ProductOwners_ProductOwnerId] FOREIGN KEY ([ProductOwnerId]) REFERENCES [dbo].[ProductOwners] ([Id]) ON DELETE CASCADE
+);"
+
+Memory: 41657632
+2019-01-03 16:59:43.175 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_Teams_ProductOwnerId] ON [dbo].[Teams] ([ProductOwnerId]);"
+
+Memory: 41673944
+2019-01-03 16:59:43.233 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [dbo].[Tenants] AS [t]"
+
+Memory: 41911480
+2019-01-03 16:59:43.286 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42132592
+2019-01-03 16:59:43.287 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42148976
+2019-01-03 16:59:43.296 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId]
+FROM [dbo].[Teams] AS [t]"
+
+Memory: 42263664
+2019-01-03 16:59:43.320 +00:00 [Error] Failed executing DbCommand ("7"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Teams_ProductOwners_ProductOwnerId". The conflict occurred in database "ScrumPm", table "dbo.ProductOwners", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:a12d87e9-f6e6-41b1-8e47-ed9f53cfcd63
+Error Number:547,State:0,Class:16
+
+Memory: 42525808
+2019-01-03 16:59:43.359 +00:00 [Error] An exception occurred in the database while saving changes for context type '"ScrumPm.Persistence.Database.ScrumPmContext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The INSERT statement conflicted with the FOREIGN KEY constraint \"FK_Teams_ProductOwners_ProductOwnerId\". The conflict occurred in database \"ScrumPm\", table \"dbo.ProductOwners\", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)"
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Teams_ProductOwners_ProductOwnerId". The conflict occurred in database "ScrumPm", table "dbo.ProductOwners", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+
+Memory: 42853488
+2019-01-03 16:59:46.763 +00:00 [Error] Failed to init or seed DB
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Teams_ProductOwners_ProductOwnerId". The conflict occurred in database "ScrumPm", table "dbo.ProductOwners", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at ScrumPm.Migrations.SeedData.InitTeams(ScrumPmContext context) in R:\dev\playtime\ScrumPM\ScrumPm\src\ScrumPm\Migrations\SeedData.cs:line 109
+   at ScrumPm.Migrations.SeedData.Initialize(ScrumPmContext context, IServiceProvider serviceProvider) in R:\dev\playtime\ScrumPM\ScrumPm\src\ScrumPm\Migrations\SeedData.cs:line 28
+
+Memory: 43287576
+2019-01-03 16:59:47.095 +00:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:51468/  0
+
+Memory: 44466392
+2019-01-03 16:59:47.095 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/  
+
+Memory: 44466392
+2019-01-03 16:59:47.112 +00:00 [Information] Request finished in 16.2099ms 200 
+
+Memory: 44540088
+2019-01-03 16:59:47.220 +00:00 [Information] Route matched with "{action = \"Index\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Index (ScrumPm)"
+
+Memory: 45555832
+2019-01-03 16:59:51.119 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)" - Validation state: Valid
+
+Memory: 45604984
+2019-01-03 16:59:51.123 +00:00 [Debug] TeamController: Index
+
+Memory: 45613176
+2019-01-03 16:59:51.145 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 45801480
+2019-01-03 16:59:51.241 +00:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwnerEf].[Id], [t.ProductOwnerEf].[Created], [t.ProductOwnerEf].[EmailAddress], [t.ProductOwnerEf].[FirstName], [t.ProductOwnerEf].[LastName], [t.ProductOwnerEf].[Modified], [t.ProductOwnerEf].[TenantId], [t.ProductOwnerEf].[UserName]
+FROM [dbo].[Teams] AS [t]
+INNER JOIN [dbo].[ProductOwners] AS [t.ProductOwnerEf] ON [t].[ProductOwnerId] = [t.ProductOwnerEf].[Id]"
+
+Memory: 47317704
+2019-01-03 16:59:51.249 +00:00 [Information] End TeamController: Index
+
+Memory: 47424168
+2019-01-03 16:59:51.256 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 133.7769ms.
+
+Memory: 47456936
+2019-01-03 16:59:51.320 +00:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 47792808
+2019-01-03 16:59:51.512 +00:00 [Information] Executed ViewResult - view "Index" executed in 211.911ms.
+
+Memory: 48687616
+2019-01-03 16:59:51.520 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Index (ScrumPm)" in 4299.0314ms
+
+Memory: 48695808
+2019-01-03 16:59:51.536 +00:00 [Information] HTTP "GET" "/" responded 200 in 4389.1352 ms
+
+Memory: 48712192
+2019-01-03 16:59:51.575 +00:00 [Information] Request finished in 4480.5805ms 200 text/html; charset=utf-8
+
+Memory: 48753152
+2019-01-03 16:59:53.060 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.270786420442545  
+
+Memory: 48753152
+2019-01-03 16:59:53.065 +00:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 1.2761 ms
+
+Memory: 48826808
+2019-01-03 16:59:53.066 +00:00 [Information] Request finished in 5.4858ms 404 
+
+Memory: 48843192
+2019-01-03 17:01:16.433 +00:00 [Information] Starting web host
+
+Memory: 975120
+2019-01-03 17:01:16.855 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1089728
+2019-01-03 17:01:22.393 +00:00 [Information] User profile is available. Using '"C:\Users\marti\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 37805776
+2019-01-03 17:01:22.733 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 40197840
+2019-01-03 17:01:25.870 +00:00 [Information] Executed DbCommand ("3,005"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;"
+
+Memory: 40850712
+2019-01-03 17:01:25.910 +00:00 [Information] Executed DbCommand ("32"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""DROP DATABASE [ScrumPm];"
+
+Memory: 40858904
+2019-01-03 17:01:36.186 +00:00 [Information] Executed DbCommand ("257"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [ScrumPm];"
+
+Memory: 41224968
+2019-01-03 17:01:36.247 +00:00 [Information] Executed DbCommand ("61"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET READ_COMMITTED_SNAPSHOT ON;
+END;"
+
+Memory: 41233160
+2019-01-03 17:01:36.299 +00:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[ProductOwners] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [EmailAddress] nvarchar(max) NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    [UserName] nvarchar(max) NULL,
+    [Created] datetime2 NOT NULL,
+    [Modified] datetime2 NOT NULL,
+    CONSTRAINT [PK_ProductOwners] PRIMARY KEY ([Id])
+);"
+
+Memory: 41642760
+2019-01-03 17:01:36.300 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Tenants] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Tenants] PRIMARY KEY ([Id])
+);"
+
+Memory: 41659144
+2019-01-03 17:01:36.303 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Teams] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [ProductOwnerId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Teams] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Teams_ProductOwners_ProductOwnerId] FOREIGN KEY ([ProductOwnerId]) REFERENCES [dbo].[ProductOwners] ([Id]) ON DELETE CASCADE
+);"
+
+Memory: 41667336
+2019-01-03 17:01:36.303 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_Teams_ProductOwnerId] ON [dbo].[Teams] ([ProductOwnerId]);"
+
+Memory: 41683720
+2019-01-03 17:01:36.366 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [dbo].[Tenants] AS [t]"
+
+Memory: 41913096
+2019-01-03 17:01:36.434 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42142472
+2019-01-03 17:01:36.435 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42158856
+2019-01-03 17:01:36.445 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId]
+FROM [dbo].[Teams] AS [t]"
+
+Memory: 42273544
+2019-01-03 17:01:36.467 +00:00 [Error] Failed executing DbCommand ("3"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Teams_ProductOwners_ProductOwnerId". The conflict occurred in database "ScrumPm", table "dbo.ProductOwners", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:11304a69-7a77-4bc6-bfd1-a5526bd2899c
+Error Number:547,State:0,Class:16
+
+Memory: 42543880
+2019-01-03 17:01:36.505 +00:00 [Error] An exception occurred in the database while saving changes for context type '"ScrumPm.Persistence.Database.ScrumPmContext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The INSERT statement conflicted with the FOREIGN KEY constraint \"FK_Teams_ProductOwners_ProductOwnerId\". The conflict occurred in database \"ScrumPm\", table \"dbo.ProductOwners\", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)"
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Teams_ProductOwners_ProductOwnerId". The conflict occurred in database "ScrumPm", table "dbo.ProductOwners", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(DbContext _, ValueTuple`2 parameters)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IReadOnlyList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IReadOnlyList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+
+Memory: 42859000
+2019-01-03 17:02:49.816 +00:00 [Information] Starting web host
+
+Memory: 718920
+2019-01-03 17:02:49.941 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 834456
+2019-01-03 17:02:58.318 +00:00 [Information] Starting web host
+
+Memory: 976880
+2019-01-03 17:02:58.621 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1094752
+2019-01-03 17:03:04.149 +00:00 [Information] User profile is available. Using '"C:\Users\marti\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 37803312
+2019-01-03 17:03:04.496 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 40178904
+2019-01-03 17:03:04.650 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;"
+
+Memory: 40831280
+2019-01-03 17:03:04.680 +00:00 [Information] Executed DbCommand ("26"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""DROP DATABASE [ScrumPm];"
+
+Memory: 40839320
+2019-01-03 17:03:14.915 +00:00 [Information] Executed DbCommand ("214"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [ScrumPm];"
+
+Memory: 41216152
+2019-01-03 17:03:14.962 +00:00 [Information] Executed DbCommand ("46"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET READ_COMMITTED_SNAPSHOT ON;
+END;"
+
+Memory: 41224344
+2019-01-03 17:03:15.014 +00:00 [Information] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[ProductOwners] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [EmailAddress] nvarchar(max) NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    [UserName] nvarchar(max) NULL,
+    [Created] datetime2 NOT NULL,
+    [Modified] datetime2 NOT NULL,
+    CONSTRAINT [PK_ProductOwners] PRIMARY KEY ([Id])
+);"
+
+Memory: 41625752
+2019-01-03 17:03:15.016 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Tenants] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Tenants] PRIMARY KEY ([Id])
+);"
+
+Memory: 41642136
+2019-01-03 17:03:15.018 +00:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Teams] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [ProductOwnerId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Teams] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Teams_ProductOwners_ProductOwnerId] FOREIGN KEY ([ProductOwnerId]) REFERENCES [dbo].[ProductOwners] ([Id]) ON DELETE CASCADE
+);"
+
+Memory: 41650328
+2019-01-03 17:03:15.019 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_Teams_ProductOwnerId] ON [dbo].[Teams] ([ProductOwnerId]);"
+
+Memory: 41666712
+2019-01-03 17:03:15.073 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [dbo].[Tenants] AS [t]"
+
+Memory: 41904280
+2019-01-03 17:03:15.126 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42125464
+2019-01-03 17:03:15.128 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42141848
+2019-01-03 17:03:15.138 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[Created], [p].[EmailAddress], [p].[FirstName], [p].[LastName], [p].[Modified], [p].[TenantId], [p].[UserName]
+FROM [dbo].[ProductOwners] AS [p]"
+
+Memory: 42281112
+2019-01-03 17:03:15.170 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);"
+
+Memory: 42625176
+2019-01-03 17:03:15.171 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);"
+
+Memory: 42657944
+2019-01-03 17:03:15.180 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId]
+FROM [dbo].[Teams] AS [t]"
+
+Memory: 42772632
+2019-01-03 17:03:15.202 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 43010200
+2019-01-03 17:03:15.203 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 43026584
+2019-01-03 17:03:15.510 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/  
+
+Memory: 43995672
+2019-01-03 17:03:15.510 +00:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:51468/  0
+
+Memory: 43995672
+2019-01-03 17:03:15.528 +00:00 [Information] Request finished in 16.7167ms 200 
+
+Memory: 44053016
+2019-01-03 17:03:15.643 +00:00 [Information] Route matched with "{action = \"Index\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Index (ScrumPm)"
+
+Memory: 45077016
+2019-01-03 17:03:19.990 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)" - Validation state: Valid
+
+Memory: 45150648
+2019-01-03 17:03:19.994 +00:00 [Debug] TeamController: Index
+
+Memory: 45158840
+2019-01-03 17:03:20.007 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 45388184
+2019-01-03 17:03:20.079 +00:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwnerEf].[Id], [t.ProductOwnerEf].[Created], [t.ProductOwnerEf].[EmailAddress], [t.ProductOwnerEf].[FirstName], [t.ProductOwnerEf].[LastName], [t.ProductOwnerEf].[Modified], [t.ProductOwnerEf].[TenantId], [t.ProductOwnerEf].[UserName]
+FROM [dbo].[Teams] AS [t]
+INNER JOIN [dbo].[ProductOwners] AS [t.ProductOwnerEf] ON [t].[ProductOwnerId] = [t.ProductOwnerEf].[Id]"
+
+Memory: 46846104
+2019-01-03 17:03:20.101 +00:00 [Information] End TeamController: Index
+
+Memory: 46968984
+2019-01-03 17:03:20.106 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 112.9855ms.
+
+Memory: 47001752
+2019-01-03 17:03:20.169 +00:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 47353944
+2019-01-03 17:03:20.354 +00:00 [Information] Executed ViewResult - view "Index" executed in 200.1528ms.
+
+Memory: 48311872
+2019-01-03 17:03:20.362 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Index (ScrumPm)" in 4718.1393ms
+
+Memory: 48328232
+2019-01-03 17:03:20.376 +00:00 [Information] HTTP "GET" "/" responded 200 in 4807.0247 ms
+
+Memory: 48344616
+2019-01-03 17:03:20.420 +00:00 [Information] Request finished in 4910.9988ms 200 text/html; charset=utf-8
+
+Memory: 48385576
+2019-01-03 17:03:21.840 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.7941466601310578  
+
+Memory: 48393768
+2019-01-03 17:03:21.844 +00:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 1.2356 ms
+
+Memory: 48459208
+2019-01-03 17:03:21.845 +00:00 [Information] Request finished in 4.7709ms 404 
+
+Memory: 48467400
+2019-01-03 20:21:18.526 +00:00 [Information] Starting web host
+
+Memory: 980696
+2019-01-03 20:21:18.989 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1094424
+2019-01-03 20:21:26.085 +00:00 [Information] User profile is available. Using '"C:\Users\marti\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 37887544
+2019-01-03 20:21:26.416 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 40254656
+2019-01-03 20:21:29.553 +00:00 [Information] Executed DbCommand ("3,007"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;"
+
+Memory: 40907528
+2019-01-03 20:21:29.604 +00:00 [Information] Executed DbCommand ("47"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""DROP DATABASE [ScrumPm];"
+
+Memory: 40923912
+2019-01-03 20:21:39.860 +00:00 [Information] Executed DbCommand ("226"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [ScrumPm];"
+
+Memory: 41295048
+2019-01-03 20:21:39.903 +00:00 [Information] Executed DbCommand ("43"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET READ_COMMITTED_SNAPSHOT ON;
+END;"
+
+Memory: 41303240
+2019-01-03 20:21:39.953 +00:00 [Information] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[ProductOwners] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [EmailAddress] nvarchar(max) NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    [UserName] nvarchar(max) NULL,
+    [Created] datetime2 NOT NULL,
+    [Modified] datetime2 NOT NULL,
+    CONSTRAINT [PK_ProductOwners] PRIMARY KEY ([Id])
+);"
+
+Memory: 41704648
+2019-01-03 20:21:39.955 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Tenants] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Tenants] PRIMARY KEY ([Id])
+);"
+
+Memory: 41721032
+2019-01-03 20:21:39.958 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Teams] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [ProductOwnerId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Teams] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Teams_ProductOwners_ProductOwnerId] FOREIGN KEY ([ProductOwnerId]) REFERENCES [dbo].[ProductOwners] ([Id]) ON DELETE CASCADE
+);"
+
+Memory: 41729224
+2019-01-03 20:21:39.959 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_Teams_ProductOwnerId] ON [dbo].[Teams] ([ProductOwnerId]);"
+
+Memory: 41745608
+2019-01-03 20:21:40.012 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [dbo].[Tenants] AS [t]"
+
+Memory: 41983176
+2019-01-03 20:21:40.067 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42204360
+2019-01-03 20:21:40.068 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42220712
+2019-01-03 20:21:40.078 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[Created], [p].[EmailAddress], [p].[FirstName], [p].[LastName], [p].[Modified], [p].[TenantId], [p].[UserName]
+FROM [dbo].[ProductOwners] AS [p]"
+
+Memory: 42359976
+2019-01-03 20:21:40.108 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);"
+
+Memory: 42712232
+2019-01-03 20:21:40.108 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);"
+
+Memory: 42736808
+2019-01-03 20:21:40.116 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId]
+FROM [dbo].[Teams] AS [t]"
+
+Memory: 42859688
+2019-01-03 20:21:40.135 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 43089064
+2019-01-03 20:21:40.136 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 43113640
+2019-01-03 20:21:40.354 +00:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:51468/  0
+
+Memory: 44088520
+2019-01-03 20:21:40.354 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/  
+
+Memory: 44088520
+2019-01-03 20:21:40.371 +00:00 [Information] Request finished in 15.2213ms 200 
+
+Memory: 44154056
+2019-01-03 20:21:40.482 +00:00 [Information] Route matched with "{action = \"Index\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Index (ScrumPm)"
+
+Memory: 45169712
+2019-01-03 20:21:49.084 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)" - Validation state: Valid
+
+Memory: 45227056
+2019-01-03 20:21:49.085 +00:00 [Debug] TeamController: Index
+
+Memory: 45235248
+2019-01-03 20:21:49.105 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 45399000
+2019-01-03 20:21:49.183 +00:00 [Information] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwnerEf].[Id], [t.ProductOwnerEf].[Created], [t.ProductOwnerEf].[EmailAddress], [t.ProductOwnerEf].[FirstName], [t.ProductOwnerEf].[LastName], [t.ProductOwnerEf].[Modified], [t.ProductOwnerEf].[TenantId], [t.ProductOwnerEf].[UserName]
+FROM [dbo].[Teams] AS [t]
+INNER JOIN [dbo].[ProductOwners] AS [t.ProductOwnerEf] ON [t].[ProductOwnerId] = [t.ProductOwnerEf].[Id]"
+
+Memory: 46938720
+2019-01-03 20:21:49.206 +00:00 [Information] End TeamController: Index
+
+Memory: 47061600
+2019-01-03 20:21:49.211 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 124.8467ms.
+
+Memory: 47086176
+2019-01-03 20:21:49.277 +00:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 47454816
+2019-01-03 20:21:49.465 +00:00 [Information] Executed ViewResult - view "Index" executed in 207.7512ms.
+
+Memory: 48417504
+2019-01-03 20:21:49.472 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Index (ScrumPm)" in 8988.7413ms
+
+Memory: 48433648
+2019-01-03 20:21:49.486 +00:00 [Information] HTTP "GET" "/" responded 200 in 9078.3974 ms
+
+Memory: 48450032
+2019-01-03 20:21:49.525 +00:00 [Information] Request finished in 9171.3157ms 200 text/html; charset=utf-8
+
+Memory: 48490992
+2019-01-03 20:21:50.974 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.9398604028493163  
+
+Memory: 48490992
+2019-01-03 20:21:50.980 +00:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 1.3859 ms
+
+Memory: 48556032
+2019-01-03 20:21:50.981 +00:00 [Information] Request finished in 6.6389ms 404 
+
+Memory: 48572416
+2019-01-03 20:22:03.952 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/team/EnableProductOwner  
+
+Memory: 48588776
+2019-01-03 20:22:03.955 +00:00 [Information] Route matched with "{action = \"EnableProductOwner\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)"
+
+Memory: 48694992
+2019-01-03 20:22:08.414 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)" - Validation state: Valid
+
+Memory: 48784984
+2019-01-03 20:24:05.650 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 117236.2012ms.
+
+Memory: 49137152
+2019-01-03 20:24:05.664 +00:00 [Information] Executing ViewResult, running view "EnableProductOwner".
+
+Memory: 49194432
+2019-01-03 20:24:05.748 +00:00 [Information] Executed ViewResult - view "EnableProductOwner" executed in 94.383ms.
+
+Memory: 49579872
+2019-01-03 20:24:05.748 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)" in 121792.6938ms
+
+Memory: 49594160
+2019-01-03 20:24:05.748 +00:00 [Information] HTTP "GET" "/team/EnableProductOwner" responded 200 in 121795.0658 ms
+
+Memory: 49602352
+2019-01-03 20:24:05.750 +00:00 [Information] Request finished in 121797.8402ms 200 text/html; charset=utf-8
+
+Memory: 49643248
+2019-01-03 20:24:06.918 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.13195503971713451  
+
+Memory: 49659632
+2019-01-03 20:24:06.919 +00:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 0.1471 ms
+
+Memory: 49716976
+2019-01-03 20:24:06.920 +00:00 [Information] Request finished in 1.6103ms 404 
+
+Memory: 49725168
+2019-01-03 20:24:08.491 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/team/EnableProductOwner  
+
+Memory: 49741552
+2019-01-03 20:24:08.492 +00:00 [Information] Route matched with "{action = \"EnableProductOwner\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)"
+
+Memory: 49806920
+2019-01-03 20:24:13.441 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)" - Validation state: Valid
+
+Memory: 49823304
+2019-01-03 20:27:12.991 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 179550.2076ms.
+
+Memory: 49905224
+2019-01-03 20:27:12.992 +00:00 [Information] Executing ViewResult, running view "EnableProductOwner".
+
+Memory: 49921568
+2019-01-03 20:27:13.007 +00:00 [Information] Executed ViewResult - view "EnableProductOwner" executed in 15.533ms.
+
+Memory: 50105720
+2019-01-03 20:27:13.007 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)" in 184515.4902ms
+
+Memory: 50122104
+2019-01-03 20:27:13.008 +00:00 [Information] HTTP "GET" "/team/EnableProductOwner" responded 200 in 184516.0939 ms
+
+Memory: 50130296
+2019-01-03 20:27:13.024 +00:00 [Information] Request finished in 184533.9053ms 200 text/html; charset=utf-8
+
+Memory: 50163064
+2019-01-03 20:27:14.365 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.6976644265363678  
+
+Memory: 50187224
+2019-01-03 20:27:14.367 +00:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 0.0455 ms
+
+Memory: 50244568
+2019-01-03 20:27:14.367 +00:00 [Information] Request finished in 1.3111ms 404 
+
+Memory: 50252760
+2019-01-03 20:27:16.148 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/team/EnableProductOwner  
+
+Memory: 50277296
+2019-01-03 20:27:16.150 +00:00 [Information] Route matched with "{action = \"EnableProductOwner\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)"
+
+Memory: 50334640
+2019-01-03 20:27:18.900 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)" - Validation state: Valid
+
+Memory: 50350976
+2019-01-03 20:29:26.114 +00:00 [Information] Starting web host
+
+Memory: 975856
+2019-01-03 20:29:26.509 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1090544
+2019-01-03 20:29:32.249 +00:00 [Information] User profile is available. Using '"C:\Users\marti\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 37894480
+2019-01-03 20:29:32.591 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 40271984
+2019-01-03 20:29:32.747 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+END;"
+
+Memory: 40927400
+2019-01-03 20:29:32.777 +00:00 [Information] Executed DbCommand ("27"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""DROP DATABASE [ScrumPm];"
+
+Memory: 40935592
+2019-01-03 20:29:43.024 +00:00 [Information] Executed DbCommand ("220"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [ScrumPm];"
+
+Memory: 41307312
+2019-01-03 20:29:43.068 +00:00 [Information] Executed DbCommand ("43"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET READ_COMMITTED_SNAPSHOT ON;
+END;"
+
+Memory: 41315504
+2019-01-03 20:29:43.119 +00:00 [Information] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[ProductOwners] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [EmailAddress] nvarchar(max) NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    [UserName] nvarchar(max) NULL,
+    [Created] datetime2 NOT NULL,
+    [Modified] datetime2 NOT NULL,
+    CONSTRAINT [PK_ProductOwners] PRIMARY KEY ([Id])
+);"
+
+Memory: 41722000
+2019-01-03 20:29:43.121 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Tenants] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Tenants] PRIMARY KEY ([Id])
+);"
+
+Memory: 41738384
+2019-01-03 20:29:43.123 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Teams] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [ProductOwnerId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Teams] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Teams_ProductOwners_ProductOwnerId] FOREIGN KEY ([ProductOwnerId]) REFERENCES [dbo].[ProductOwners] ([Id]) ON DELETE CASCADE
+);"
+
+Memory: 41746576
+2019-01-03 20:29:43.124 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_Teams_ProductOwnerId] ON [dbo].[Teams] ([ProductOwnerId]);"
+
+Memory: 41762960
+2019-01-03 20:29:43.179 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [dbo].[Tenants] AS [t]"
+
+Memory: 42000528
+2019-01-03 20:29:43.237 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42221648
+2019-01-03 20:29:43.238 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 42238032
+2019-01-03 20:29:43.250 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[Created], [p].[EmailAddress], [p].[FirstName], [p].[LastName], [p].[Modified], [p].[TenantId], [p].[UserName]
+FROM [dbo].[ProductOwners] AS [p]"
+
+Memory: 42377296
+2019-01-03 20:29:43.279 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);"
+
+Memory: 42721360
+2019-01-03 20:29:43.280 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);"
+
+Memory: 42745864
+2019-01-03 20:29:43.288 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId]
+FROM [dbo].[Teams] AS [t]"
+
+Memory: 42868744
+2019-01-03 20:29:43.309 +00:00 [Information] Executed DbCommand ("1"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 43098120
+2019-01-03 20:29:43.310 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 43122696
+2019-01-03 20:29:43.692 +00:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:51468/  0
+
+Memory: 44089256
+2019-01-03 20:29:43.692 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/  
+
+Memory: 44089256
+2019-01-03 20:29:43.710 +00:00 [Information] Request finished in 16.7579ms 200 
+
+Memory: 44146600
+2019-01-03 20:29:43.813 +00:00 [Information] Route matched with "{action = \"Index\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Index (ScrumPm)"
+
+Memory: 45170600
+2019-01-03 20:29:47.724 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)" - Validation state: Valid
+
+Memory: 45235952
+2019-01-03 20:29:47.725 +00:00 [Debug] TeamController: Index
+
+Memory: 45244144
+2019-01-03 20:29:52.079 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 45448920
+2019-01-03 20:29:52.147 +00:00 [Information] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwnerEf].[Id], [t.ProductOwnerEf].[Created], [t.ProductOwnerEf].[EmailAddress], [t.ProductOwnerEf].[FirstName], [t.ProductOwnerEf].[LastName], [t.ProductOwnerEf].[Modified], [t.ProductOwnerEf].[TenantId], [t.ProductOwnerEf].[UserName]
+FROM [dbo].[Teams] AS [t]
+INNER JOIN [dbo].[ProductOwners] AS [t.ProductOwnerEf] ON [t].[ProductOwnerId] = [t.ProductOwnerEf].[Id]"
+
+Memory: 46918904
+2019-01-03 20:29:52.173 +00:00 [Information] End TeamController: Index
+
+Memory: 47033592
+2019-01-03 20:29:52.178 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 4451.4864ms.
+
+Memory: 47066360
+2019-01-03 20:29:52.245 +00:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 47435000
+2019-01-03 20:29:52.432 +00:00 [Information] Executed ViewResult - view "Index" executed in 206.8055ms.
+
+Memory: 48393808
+2019-01-03 20:29:52.441 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Index (ScrumPm)" in 8626.1915ms
+
+Memory: 48410160
+2019-01-03 20:29:52.454 +00:00 [Information] HTTP "GET" "/" responded 200 in 8708.9616 ms
+
+Memory: 48434464
+2019-01-03 20:29:52.495 +00:00 [Information] Request finished in 8803.9581ms 200 text/html; charset=utf-8
+
+Memory: 48465136
+2019-01-03 20:29:53.889 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.8804832036748675  
+
+Memory: 48481320
+2019-01-03 20:29:53.893 +00:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 1.1492 ms
+
+Memory: 48546856
+2019-01-03 20:29:53.894 +00:00 [Information] Request finished in 5.0828ms 404 
+
+Memory: 48555048
+2019-01-03 20:29:55.081 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/  
+
+Memory: 48579592
+2019-01-03 20:29:55.082 +00:00 [Information] Route matched with "{action = \"Index\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Index (ScrumPm)"
+
+Memory: 48661448
+2019-01-03 20:29:55.084 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)" - Validation state: Valid
+
+Memory: 48759560
+2019-01-03 20:29:55.084 +00:00 [Debug] TeamController: Index
+
+Memory: 48784136
+2019-01-03 20:29:57.555 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 48833288
+2019-01-03 20:29:57.556 +00:00 [Information] Executed DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwnerEf].[Id], [t.ProductOwnerEf].[Created], [t.ProductOwnerEf].[EmailAddress], [t.ProductOwnerEf].[FirstName], [t.ProductOwnerEf].[LastName], [t.ProductOwnerEf].[Modified], [t.ProductOwnerEf].[TenantId], [t.ProductOwnerEf].[UserName]
+FROM [dbo].[Teams] AS [t]
+INNER JOIN [dbo].[ProductOwners] AS [t.ProductOwnerEf] ON [t].[ProductOwnerId] = [t.ProductOwnerEf].[Id]"
+
+Memory: 48866056
+2019-01-03 20:29:57.557 +00:00 [Information] End TeamController: Index
+
+Memory: 48890632
+2019-01-03 20:29:57.559 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 2474.7038ms.
+
+Memory: 48906984
+2019-01-03 20:29:57.560 +00:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 48931560
+2019-01-03 20:29:57.575 +00:00 [Information] Executed ViewResult - view "Index" executed in 15.3764ms.
+
+Memory: 49210840
+2019-01-03 20:29:57.576 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Index (ScrumPm)" in 2493.1749ms
+
+Memory: 49219032
+2019-01-03 20:29:57.576 +00:00 [Information] HTTP "GET" "/" responded 200 in 2494.0939 ms
+
+Memory: 49233320
+2019-01-03 20:29:57.577 +00:00 [Information] Request finished in 2496.6382ms 200 text/html; charset=utf-8
+
+Memory: 49266088
+2019-01-03 20:29:57.749 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/favicon.ico  
+
+Memory: 49282472
+2019-01-03 20:29:57.775 +00:00 [Information] Sending file. Request path: '"/favicon.ico"'. Physical path: '"R:\dev\playtime\ScrumPM\ScrumPm\src\ScrumPm\wwwroot\favicon.ico"'
+
+Memory: 49372440
+2019-01-03 20:29:57.775 +00:00 [Information] Request finished in 26.4296ms 200 image/x-icon
+
+Memory: 49380632
+2019-01-03 20:29:58.744 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.0652013138394194  
+
+Memory: 49388824
+2019-01-03 20:29:58.745 +00:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 0.1079 ms
+
+Memory: 49446168
+2019-01-03 20:29:58.745 +00:00 [Information] Request finished in 1.5176ms 404 
+
+Memory: 49454360
+2019-01-03 20:30:04.479 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/team/EnableProductOwner  
+
+Memory: 49470672
+2019-01-03 20:30:04.483 +00:00 [Information] Route matched with "{action = \"EnableProductOwner\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)"
+
+Memory: 49576424
+2019-01-03 20:30:04.486 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)" - Validation state: Valid
+
+Memory: 49601000
+2019-01-03 20:30:10.401 +00:00 [Information] Entity Framework Core "2.1.4-rtm-31024" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 49625576
+2019-01-03 20:30:10.422 +00:00 [Information] Executed DbCommand ("5"ms) [Parameters=["@__tenantId_Id_0='?' (DbType = Guid), @__userName_1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [x].[Id], [x].[Created], [x].[EmailAddress], [x].[FirstName], [x].[LastName], [x].[Modified], [x].[TenantId], [x].[UserName]
+FROM [dbo].[ProductOwners] AS [x]
+WHERE ([x].[TenantId] = @__tenantId_Id_0) AND ([x].[UserName] = @__userName_1)"
+
+Memory: 49797608
+2019-01-03 20:30:23.826 +00:00 [Warning] The LINQ expression '"where [t].Id.ToString().Equals(__ToString_0, OrdinalIgnoreCase)"' could not be translated and will be evaluated locally.
+
+Memory: 50321896
+2019-01-03 20:30:23.837 +00:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwnerEf].[Id], [t.ProductOwnerEf].[Created], [t.ProductOwnerEf].[EmailAddress], [t.ProductOwnerEf].[FirstName], [t.ProductOwnerEf].[LastName], [t.ProductOwnerEf].[Modified], [t.ProductOwnerEf].[TenantId], [t.ProductOwnerEf].[UserName]
+FROM [dbo].[Teams] AS [t]
+INNER JOIN [dbo].[ProductOwners] AS [t.ProductOwnerEf] ON [t].[ProductOwnerId] = [t.ProductOwnerEf].[Id]"
+
+Memory: 50412008
+2019-01-03 20:30:27.644 +00:00 [Information] Executed DbCommand ("12"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);"
+
+Memory: 50887240
+2019-01-03 20:30:31.886 +00:00 [Information] Executed DbCommand ("15"ms) [Parameters=["@p11='?' (DbType = Guid), @p8='?' (Size = 4000), @p9='?' (DbType = Guid), @p10='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [dbo].[Teams] SET [Name] = @p8, [ProductOwnerId] = @p9, [TenantId] = @p10
+WHERE [Id] = @p11;
+SELECT @@ROWCOUNT;"
+
+Memory: 50936224
+2019-01-03 20:30:31.886 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 27399.9363ms.
+
+Memory: 50944384
+2019-01-03 20:30:31.903 +00:00 [Information] Executing ViewResult, running view "EnableProductOwner".
+
+Memory: 51001728
+2019-01-03 20:30:31.983 +00:00 [Information] Executed ViewResult - view "EnableProductOwner" executed in 93.4118ms.
+
+Memory: 51408968
+2019-01-03 20:30:31.983 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.EnableProductOwner (ScrumPm)" in 27500.4133ms
+
+Memory: 51417160
+2019-01-03 20:30:31.984 +00:00 [Information] HTTP "GET" "/team/EnableProductOwner" responded 200 in 27503.3252 ms
+
+Memory: 51425352
+2019-01-03 20:30:31.995 +00:00 [Information] Request finished in 27516.5685ms 200 text/html; charset=utf-8
+
+Memory: 51466312
+2019-01-03 20:30:33.347 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.9956367086636289  
+
+Memory: 51482576
+2019-01-03 20:30:33.348 +00:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 0.0355 ms
+
+Memory: 51539920
+2019-01-03 20:30:33.349 +00:00 [Information] Request finished in 1.5807ms 404 
+
+Memory: 51548112

@@ -1,0 +1,48 @@
+2018-08-29 00:11:22.985 +01:00 [Information] Starting web host
+
+Memory: 965552
+2018-08-29 00:11:23.294 +01:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1031040
+2018-08-29 00:11:25.204 +01:00 [Information] User profile is available. Using '"C:\Users\marti\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 9908544
+2018-08-29 00:11:25.849 +01:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:53294/  0
+
+Memory: 11185696
+2018-08-29 00:11:25.849 +01:00 [Information] Request starting HTTP/1.1 GET http://localhost:44386/api/values  
+
+Memory: 11185696
+2018-08-29 00:11:25.870 +01:00 [Information] Request finished in 23.2887ms 200 
+
+Memory: 11234800
+2018-08-29 00:11:26.041 +01:00 [Information] Route matched with "{action = \"Get\", controller = \"Values\"}". Executing action "ScrumPmApi.Controllers.ValuesController.Get (ScrumPmApi)"
+
+Memory: 11791632
+2018-08-29 00:11:26.053 +01:00 [Information] Executing action method "ScrumPmApi.Controllers.ValuesController.Get (ScrumPmApi)" - Validation state: Valid
+
+Memory: 11799824
+2018-08-29 00:11:26.059 +01:00 [Information] Executed action method "ScrumPmApi.Controllers.ValuesController.Get (ScrumPmApi)", returned result "Microsoft.AspNetCore.Mvc.ObjectResult" in 0.4953ms.
+
+Memory: 11816152
+2018-08-29 00:11:26.066 +01:00 [Information] Executing ObjectResult, writing value of type '"System.String[]"'.
+
+Memory: 11832440
+2018-08-29 00:11:26.080 +01:00 [Information] Executed action "ScrumPmApi.Controllers.ValuesController.Get (ScrumPmApi)" in 33.9498ms
+
+Memory: 12029048
+2018-08-29 00:11:26.105 +01:00 [Information] HTTP "GET" "/api/values" responded 200 in 199.2312 ms
+
+Memory: 12045432
+2018-08-29 00:11:26.110 +01:00 [Information] Request finished in 263.0726ms 200 application/json; charset=utf-8
+
+Memory: 12053624
+2018-08-29 00:11:26.478 +01:00 [Information] Request starting HTTP/1.1 GET http://localhost:44386/favicon.ico  
+
+Memory: 12061816
+2018-08-29 00:11:26.480 +01:00 [Information] HTTP "GET" "/favicon.ico" responded 404 in 0.5587 ms
+
+Memory: 12078200
+2018-08-29 00:11:26.480 +01:00 [Information] Request finished in 1.8608ms 404 
+
+Memory: 12094552

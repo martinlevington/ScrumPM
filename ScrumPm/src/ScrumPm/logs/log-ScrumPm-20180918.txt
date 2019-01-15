@@ -1,0 +1,511 @@
+2018-09-18 22:57:03.702 +01:00 [Information] Starting web host
+
+Memory: 974680
+2018-09-18 22:57:03.995 +01:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1054544
+2018-09-18 22:57:07.037 +01:00 [Information] User profile is available. Using '"C:\Users\marti\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 12939352
+2018-09-18 22:57:07.379 +01:00 [Information] Entity Framework Core "2.1.2-rtm-30932" initialized '"ScrumPMContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 14896112
+2018-09-18 22:57:08.153 +01:00 [Information] Executed DbCommand ("18"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0"
+
+Memory: 15248328
+2018-09-18 22:57:08.159 +01:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0"
+
+Memory: 15264712
+2018-09-18 22:57:08.162 +01:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0"
+
+Memory: 15297480
+2018-09-18 22:57:08.239 +01:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [Tenants] AS [t]"
+
+Memory: 15617024
+2018-09-18 22:57:08.280 +01:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[Created], [p].[EmailAddress], [p].[FirstName], [p].[LastName], [p].[Modified], [p].[UserName]
+FROM [ProductOwners] AS [p]"
+
+Memory: 15895552
+2018-09-18 22:57:08.302 +01:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId]
+FROM [Teams] AS [t]"
+
+Memory: 16190464
+2018-09-18 22:57:08.663 +01:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/  
+
+Memory: 17290240
+2018-09-18 22:57:08.663 +01:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:51468/  0
+
+Memory: 17290240
+2018-09-18 22:57:08.685 +01:00 [Information] Request finished in 21.2151ms 200 
+
+Memory: 17363280
+2018-09-18 22:57:08.863 +01:00 [Information] Route matched with "{action = \"Index\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Index (ScrumPm)"
+
+Memory: 18370768
+2018-09-18 22:57:08.876 +01:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)" - Validation state: Valid
+
+Memory: 18395344
+2018-09-18 22:57:08.877 +01:00 [Debug] TeamController: Index
+
+Memory: 18403536
+2018-09-18 22:57:08.884 +01:00 [Information] Entity Framework Core "2.1.2-rtm-30932" initialized '"ScrumPMContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 18599992
+2018-09-18 22:57:08.958 +01:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwner].[Id], [t.ProductOwner].[Created], [t.ProductOwner].[EmailAddress], [t.ProductOwner].[FirstName], [t.ProductOwner].[LastName], [t.ProductOwner].[Modified], [t.ProductOwner].[UserName]
+FROM [Teams] AS [t]
+INNER JOIN [ProductOwners] AS [t.ProductOwner] ON [t].[ProductOwnerId] = [t.ProductOwner].[Id]"
+
+Memory: 20116536
+2018-09-18 22:57:08.987 +01:00 [Information] End TeamController: Index
+
+Memory: 20263864
+2018-09-18 22:57:08.990 +01:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 111.6163ms.
+
+Memory: 20288440
+2018-09-18 22:57:09.043 +01:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 20648864
+2018-09-18 22:57:09.238 +01:00 [Information] Executed ViewResult - view "Index" executed in 206.0926ms.
+
+Memory: 21574480
+2018-09-18 22:57:09.247 +01:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Index (ScrumPm)" in 382.3369ms
+
+Memory: 21582672
+2018-09-18 22:57:09.263 +01:00 [Information] HTTP "GET" "/" responded 200 in 540.0956 ms
+
+Memory: 21599056
+2018-09-18 22:57:09.298 +01:00 [Information] Request finished in 635.8611ms 200 text/html; charset=utf-8
+
+Memory: 21640016
+2018-09-18 22:57:10.744 +01:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.030602596792542514  
+
+Memory: 21656376
+2018-09-18 22:57:10.748 +01:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 1.1798 ms
+
+Memory: 21721912
+2018-09-18 22:57:10.748 +01:00 [Information] Request finished in 4.1789ms 404 
+
+Memory: 21730104
+2018-09-18 22:57:16.916 +01:00 [Information] Request starting HTTP/1.1 POST http://localhost:51468/Team/Search application/x-www-form-urlencoded 193
+
+Memory: 21754568
+2018-09-18 22:57:16.936 +01:00 [Information] Route matched with "{action = \"Search\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Search (ScrumPm)"
+
+Memory: 21893792
+2018-09-18 22:57:16.976 +01:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Search (ScrumPm)" with arguments (["ScrumPm.BindingModels.SearchBindingModel"]) - Validation state: Valid
+
+Memory: 22000336
+2018-09-18 22:57:17.060 +01:00 [Information] Entity Framework Core "2.1.2-rtm-30932" initialized '"ScrumPMContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 22844072
+2018-09-18 22:57:17.082 +01:00 [Information] Executed DbCommand ("4"ms) [Parameters=["@__ToString_0='?' (Size = 4000), @__specification_SearchTerm_2='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwner].[Id], [t.ProductOwner].[Created], [t.ProductOwner].[EmailAddress], [t.ProductOwner].[FirstName], [t.ProductOwner].[LastName], [t.ProductOwner].[Modified], [t.ProductOwner].[UserName]
+FROM [Teams] AS [t]
+INNER JOIN [ProductOwners] AS [t.ProductOwner] ON [t].[ProductOwnerId] = [t.ProductOwner].[Id]
+WHERE (CONVERT(VARCHAR(36), [t].[TenantId]) = @__ToString_0) AND [t].[Name] LIKE (N'%' + @__specification_SearchTerm_2) + N'%'"
+
+Memory: 23409320
+2018-09-18 22:57:17.084 +01:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Search (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 102.4925ms.
+
+Memory: 23433896
+2018-09-18 22:57:17.085 +01:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 23450280
+2018-09-18 22:57:17.098 +01:00 [Information] Executed ViewResult - view "Index" executed in 12.494ms.
+
+Memory: 23700904
+2018-09-18 22:57:17.098 +01:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Search (ScrumPm)" in 162.3088ms
+
+Memory: 23709096
+2018-09-18 22:57:17.099 +01:00 [Information] HTTP "POST" "/Team/Search" responded 200 in 180.6217 ms
+
+Memory: 23723384
+2018-09-18 22:57:17.104 +01:00 [Information] Request finished in 187.3371ms 200 text/html; charset=utf-8
+
+Memory: 23772536
+2018-09-18 22:57:18.256 +01:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.6040846687970878  
+
+Memory: 23780704
+2018-09-18 22:57:18.257 +01:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 0.1254 ms
+
+Memory: 23838048
+2018-09-18 22:57:18.257 +01:00 [Information] Request finished in 1.5612ms 404 
+
+Memory: 23846240
+2018-09-18 22:57:20.712 +01:00 [Information] Request starting HTTP/1.1 POST http://localhost:51468/Team/Search application/x-www-form-urlencoded 194
+
+Memory: 23862624
+2018-09-18 22:57:20.714 +01:00 [Information] Route matched with "{action = \"Search\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Search (ScrumPm)"
+
+Memory: 23928160
+2018-09-18 22:57:20.715 +01:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Search (ScrumPm)" with arguments (["ScrumPm.BindingModels.SearchBindingModel"]) - Validation state: Valid
+
+Memory: 23960928
+2018-09-18 22:57:20.715 +01:00 [Information] Entity Framework Core "2.1.2-rtm-30932" initialized '"ScrumPMContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 23993696
+2018-09-18 22:57:20.718 +01:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@__ToString_0='?' (Size = 4000), @__specification_SearchTerm_2='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwner].[Id], [t.ProductOwner].[Created], [t.ProductOwner].[EmailAddress], [t.ProductOwner].[FirstName], [t.ProductOwner].[LastName], [t.ProductOwner].[Modified], [t.ProductOwner].[UserName]
+FROM [Teams] AS [t]
+INNER JOIN [ProductOwners] AS [t.ProductOwner] ON [t].[ProductOwnerId] = [t.ProductOwner].[Id]
+WHERE (CONVERT(VARCHAR(36), [t].[TenantId]) = @__ToString_0) AND [t].[Name] LIKE (N'%' + @__specification_SearchTerm_2) + N'%'"
+
+Memory: 24026464
+2018-09-18 22:57:20.718 +01:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Search (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 2.8842ms.
+
+Memory: 24051040
+2018-09-18 22:57:20.718 +01:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 24075616
+2018-09-18 22:57:20.725 +01:00 [Information] Executed ViewResult - view "Index" executed in 6.5988ms.
+
+Memory: 24298176
+2018-09-18 22:57:20.725 +01:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Search (ScrumPm)" in 11.2933ms
+
+Memory: 24306368
+2018-09-18 22:57:20.725 +01:00 [Information] HTTP "POST" "/Team/Search" responded 200 in 11.9124 ms
+
+Memory: 24328848
+2018-09-18 22:57:20.727 +01:00 [Information] Request finished in 14.5336ms 200 text/html; charset=utf-8
+
+Memory: 24361520
+2018-09-18 22:57:21.874 +01:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.251753707273237  
+
+Memory: 24369536
+2018-09-18 22:57:21.876 +01:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 0.0575 ms
+
+Memory: 24426880
+2018-09-18 22:57:21.876 +01:00 [Information] Request finished in 2.419ms 404 
+
+Memory: 24435072
+2018-09-18 23:05:06.360 +01:00 [Information] Starting web host
+
+Memory: 968576
+2018-09-18 23:05:06.724 +01:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1058616
+2018-09-18 23:05:08.990 +01:00 [Information] User profile is available. Using '"C:\Users\marti\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 12958456
+2018-09-18 23:05:09.314 +01:00 [Information] Entity Framework Core "2.1.2-rtm-30932" initialized '"ScrumPMContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 14891736
+2018-09-18 23:05:10.168 +01:00 [Information] Executed DbCommand ("23"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0"
+
+Memory: 15242616
+2018-09-18 23:05:10.175 +01:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0"
+
+Memory: 15259000
+2018-09-18 23:05:10.180 +01:00 [Information] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0"
+
+Memory: 15308152
+2018-09-18 23:05:10.258 +01:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [Tenants] AS [t]"
+
+Memory: 15635816
+2018-09-18 23:05:10.305 +01:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[Created], [p].[EmailAddress], [p].[FirstName], [p].[LastName], [p].[Modified], [p].[UserName]
+FROM [ProductOwners] AS [p]"
+
+Memory: 15906152
+2018-09-18 23:05:10.328 +01:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId]
+FROM [Teams] AS [t]"
+
+Memory: 16192872
+2018-09-18 23:05:10.592 +01:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:51468/  0
+
+Memory: 17291088
+2018-09-18 23:05:10.592 +01:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/  
+
+Memory: 17291088
+2018-09-18 23:05:10.621 +01:00 [Information] Request finished in 27.6504ms 200 
+
+Memory: 17348432
+2018-09-18 23:05:10.770 +01:00 [Information] Route matched with "{action = \"Index\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Index (ScrumPm)"
+
+Memory: 18364240
+2018-09-18 23:05:10.782 +01:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Index (ScrumPm)" in 8.4731ms
+
+Memory: 18397008
+2018-09-18 23:05:10.867 +01:00 [Error] HTTP "GET" "/" responded 500 in 210.6393 ms
+System.InvalidOperationException: Unable to resolve service for type 'ScrumPm.Persistence.Database.UnitOfWork.UnitOfWorkEf' while attempting to activate 'ScrumPm.Persistence.Teams.Repositories.TeamRepository'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.CreateServiceAccessor(Type serviceType)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at ScrumPm.Middleware.UserLoggingMiddleware.Invoke(HttpContext context) in R:\dev\playtime\ScrumPM\ScrumPm\ScrumPm\Middleware\UserLoggingMiddleware.cs:line 22
+   at ScrumPm.Middleware.HttpContextLoggingMiddleware.Invoke(HttpContext context) in R:\dev\playtime\ScrumPM\ScrumPm\ScrumPm\Middleware\HttpContextLoggingMiddleware.cs:line 37
+
+Memory: 18429776
+2018-09-18 23:05:10.988 +01:00 [Error] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Unable to resolve service for type 'ScrumPm.Persistence.Database.UnitOfWork.UnitOfWorkEf' while attempting to activate 'ScrumPm.Persistence.Teams.Repositories.TeamRepository'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.CreateServiceAccessor(Type serviceType)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.GetService(IServiceProvider sp, Type type, Type requiredBy, Boolean isDefaultParameterRequired)
+   at lambda_method(Closure , IServiceProvider , Object[] )
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerActivatorProvider.<>c__DisplayClass4_0.<CreateActivator>b__0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass5_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at ScrumPm.Middleware.UserLoggingMiddleware.Invoke(HttpContext context) in R:\dev\playtime\ScrumPM\ScrumPm\ScrumPm\Middleware\UserLoggingMiddleware.cs:line 22
+   at ScrumPm.Middleware.HttpContextLoggingMiddleware.Invoke(HttpContext context) in R:\dev\playtime\ScrumPM\ScrumPm\ScrumPm\Middleware\HttpContextLoggingMiddleware.cs:line 37
+   at ScrumPm.Middleware.CorrelationLoggingMiddleware.Invoke(HttpContext context) in R:\dev\playtime\ScrumPM\ScrumPm\ScrumPm\Middleware\CorrelationLoggingMiddleware.cs:line 23
+   at ScrumPm.Middleware.RemoteIpAddressLoggingMiddleware.Invoke(HttpContext context) in R:\dev\playtime\ScrumPM\ScrumPm\ScrumPm\Middleware\RemoteIpAddressLoggingMiddleware.cs:line 20
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at CorrelationId.CorrelationIdMiddleware.Invoke(HttpContext context, ICorrelationContextFactory correlationContextFactory)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+
+Memory: 18806680
+2018-09-18 23:05:11.122 +01:00 [Information] Request finished in 531.5926ms 500 text/html; charset=utf-8
+
+Memory: 20102928
+2018-09-18 23:05:12.704 +01:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.5085343843653729  
+
+Memory: 20102928
+2018-09-18 23:05:12.708 +01:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 1.1396 ms
+
+Memory: 20168464
+2018-09-18 23:05:12.708 +01:00 [Information] Request finished in 4.6376ms 404 
+
+Memory: 20193040
+2018-09-18 23:05:50.082 +01:00 [Information] Starting web host
+
+Memory: 965064
+2018-09-18 23:05:50.450 +01:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1061304
+2018-09-18 23:05:52.738 +01:00 [Information] User profile is available. Using '"C:\Users\marti\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 12957816
+2018-09-18 23:05:53.076 +01:00 [Information] Entity Framework Core "2.1.2-rtm-30932" initialized '"ScrumPMContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 14905160
+2018-09-18 23:05:53.911 +01:00 [Information] Executed DbCommand ("19"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0"
+
+Memory: 15263064
+2018-09-18 23:05:53.917 +01:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0"
+
+Memory: 15281992
+2018-09-18 23:05:53.920 +01:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0"
+
+Memory: 15314760
+2018-09-18 23:05:53.983 +01:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [Tenants] AS [t]"
+
+Memory: 15634304
+2018-09-18 23:05:54.026 +01:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[Created], [p].[EmailAddress], [p].[FirstName], [p].[LastName], [p].[Modified], [p].[UserName]
+FROM [ProductOwners] AS [p]"
+
+Memory: 15912832
+2018-09-18 23:05:54.048 +01:00 [Information] Executed DbCommand ("1"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId]
+FROM [Teams] AS [t]"
+
+Memory: 16199552
+2018-09-18 23:05:54.424 +01:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:51468/  0
+
+Memory: 17315920
+2018-09-18 23:05:54.424 +01:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/  
+
+Memory: 17315920
+2018-09-18 23:05:54.447 +01:00 [Information] Request finished in 22.5657ms 200 
+
+Memory: 17381456
+2018-09-18 23:05:54.598 +01:00 [Information] Route matched with "{action = \"Index\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Index (ScrumPm)"
+
+Memory: 18380880
+2018-09-18 23:05:54.611 +01:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)" - Validation state: Valid
+
+Memory: 18413648
+2018-09-18 23:05:54.611 +01:00 [Debug] TeamController: Index
+
+Memory: 18421840
+2018-09-18 23:05:54.622 +01:00 [Information] Entity Framework Core "2.1.2-rtm-30932" initialized '"ScrumPMContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 18634656
+2018-09-18 23:05:54.688 +01:00 [Information] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwner].[Id], [t.ProductOwner].[Created], [t.ProductOwner].[EmailAddress], [t.ProductOwner].[FirstName], [t.ProductOwner].[LastName], [t.ProductOwner].[Modified], [t.ProductOwner].[UserName]
+FROM [Teams] AS [t]
+INNER JOIN [ProductOwners] AS [t.ProductOwner] ON [t].[ProductOwnerId] = [t.ProductOwner].[Id]"
+
+Memory: 20142128
+2018-09-18 23:05:54.717 +01:00 [Information] End TeamController: Index
+
+Memory: 20273200
+2018-09-18 23:05:54.722 +01:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 107.8314ms.
+
+Memory: 20305904
+2018-09-18 23:05:54.794 +01:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 20666352
+2018-09-18 23:05:54.996 +01:00 [Information] Executed ViewResult - view "Index" executed in 219.2587ms.
+
+Memory: 21581712
+2018-09-18 23:05:55.004 +01:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Index (ScrumPm)" in 404.9877ms
+
+Memory: 21589904
+2018-09-18 23:05:55.022 +01:00 [Information] HTTP "GET" "/" responded 200 in 537.1755 ms
+
+Memory: 21606256
+2018-09-18 23:05:55.065 +01:00 [Information] Request finished in 642.1306ms 200 text/html; charset=utf-8
+
+Memory: 21647072
+2018-09-18 23:05:56.511 +01:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.6721642784714008  
+
+Memory: 21663416
+2018-09-18 23:05:56.514 +01:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 1.1068 ms
+
+Memory: 21737088
+2018-09-18 23:05:56.514 +01:00 [Information] Request finished in 3.4521ms 404 
+
+Memory: 21745280
+2018-09-18 23:05:57.424 +01:00 [Information] Request starting HTTP/1.1 POST http://localhost:51468/Team/Search application/x-www-form-urlencoded 193
+
+Memory: 21753472
+2018-09-18 23:05:57.443 +01:00 [Information] Route matched with "{action = \"Search\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Search (ScrumPm)"
+
+Memory: 21876304
+2018-09-18 23:05:57.490 +01:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Search (ScrumPm)" with arguments (["ScrumPm.BindingModels.SearchBindingModel"]) - Validation state: Valid
+
+Memory: 21982848
+2018-09-18 23:05:57.571 +01:00 [Information] Entity Framework Core "2.1.2-rtm-30932" initialized '"ScrumPMContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 22826632
+2018-09-18 23:05:57.593 +01:00 [Information] Executed DbCommand ("4"ms) [Parameters=["@__ToString_0='?' (Size = 4000), @__specification_SearchTerm_2='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwner].[Id], [t.ProductOwner].[Created], [t.ProductOwner].[EmailAddress], [t.ProductOwner].[FirstName], [t.ProductOwner].[LastName], [t.ProductOwner].[Modified], [t.ProductOwner].[UserName]
+FROM [Teams] AS [t]
+INNER JOIN [ProductOwners] AS [t.ProductOwner] ON [t].[ProductOwnerId] = [t.ProductOwner].[Id]
+WHERE (CONVERT(VARCHAR(36), [t].[TenantId]) = @__ToString_0) AND [t].[Name] LIKE (N'%' + @__specification_SearchTerm_2) + N'%'"
+
+Memory: 23391880
+2018-09-18 23:05:57.596 +01:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Search (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 101.0438ms.
+
+Memory: 23424648
+2018-09-18 23:05:57.597 +01:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 23441032
+2018-09-18 23:05:57.609 +01:00 [Information] Executed ViewResult - view "Index" executed in 12.3692ms.
+
+Memory: 23729704
+2018-09-18 23:05:57.610 +01:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Search (ScrumPm)" in 166.2683ms
+
+Memory: 23737896
+2018-09-18 23:05:57.611 +01:00 [Information] HTTP "POST" "/Team/Search" responded 200 in 185.1189 ms
+
+Memory: 23752184
+2018-09-18 23:05:57.613 +01:00 [Information] Request finished in 188.9686ms 200 text/html; charset=utf-8
+
+Memory: 23784912
+2018-09-18 23:05:58.768 +01:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.4409292727357861  
+
+Memory: 23801248
+2018-09-18 23:05:58.771 +01:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 0.2861 ms
+
+Memory: 23866784
+2018-09-18 23:05:58.772 +01:00 [Information] Request finished in 4.6601ms 404 
+
+Memory: 23874976
+2018-09-18 23:06:00.035 +01:00 [Information] Request starting HTTP/1.1 POST http://localhost:51468/Team/Search application/x-www-form-urlencoded 194
+
+Memory: 23883104
+2018-09-18 23:06:00.036 +01:00 [Information] Route matched with "{action = \"Search\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Search (ScrumPm)"
+
+Memory: 23940448
+2018-09-18 23:06:00.037 +01:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Search (ScrumPm)" with arguments (["ScrumPm.BindingModels.SearchBindingModel"]) - Validation state: Valid
+
+Memory: 23989648
+2018-09-18 23:06:00.038 +01:00 [Information] Entity Framework Core "2.1.2-rtm-30932" initialized '"ScrumPMContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 24030608
+2018-09-18 23:06:00.041 +01:00 [Information] Executed DbCommand ("0"ms) [Parameters=["@__ToString_0='?' (Size = 4000), @__specification_SearchTerm_2='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwner].[Id], [t.ProductOwner].[Created], [t.ProductOwner].[EmailAddress], [t.ProductOwner].[FirstName], [t.ProductOwner].[LastName], [t.ProductOwner].[Modified], [t.ProductOwner].[UserName]
+FROM [Teams] AS [t]
+INNER JOIN [ProductOwners] AS [t.ProductOwner] ON [t].[ProductOwnerId] = [t.ProductOwner].[Id]
+WHERE (CONVERT(VARCHAR(36), [t].[TenantId]) = @__ToString_0) AND [t].[Name] LIKE (N'%' + @__specification_SearchTerm_2) + N'%'"
+
+Memory: 24071520
+2018-09-18 23:06:00.041 +01:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Search (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 3.5244ms.
+
+Memory: 24096096
+2018-09-18 23:06:00.041 +01:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 24120672
+2018-09-18 23:06:00.052 +01:00 [Information] Executed ViewResult - view "Index" executed in 10.7189ms.
+
+Memory: 24237456
+2018-09-18 23:06:00.052 +01:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Search (ScrumPm)" in 16.1184ms
+
+Memory: 24243552
+2018-09-18 23:06:00.053 +01:00 [Information] HTTP "POST" "/Team/Search" responded 200 in 16.7423 ms
+
+Memory: 24259936
+2018-09-18 23:06:00.054 +01:00 [Information] Request finished in 19.5807ms 200 text/html; charset=utf-8
+
+Memory: 24284512
+2018-09-18 23:06:01.220 +01:00 [Information] Request starting HTTP/1.1 GET http://localhost:51468/robots.txt?rnd=0.1734939151193562  
+
+Memory: 24308944
+2018-09-18 23:06:01.222 +01:00 [Information] HTTP "GET" "/robots.txt" responded 404 in 0.0550 ms
+
+Memory: 24366288
+2018-09-18 23:06:01.222 +01:00 [Information] Request finished in 1.8899ms 404 
+
+Memory: 24374480
