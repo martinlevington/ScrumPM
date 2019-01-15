@@ -38,7 +38,7 @@ namespace ScrumPm.Controllers
         [Route("")]      // Combines to define the route template "Home"
         [Route("Index")] // Combines to define the route template "Home/Index"
         [Route("/")]     // Doesn't combine, defines the route template ""
-
+ 
         public IActionResult Index()
         {
 

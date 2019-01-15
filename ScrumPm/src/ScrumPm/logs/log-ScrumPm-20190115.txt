@@ -1,0 +1,504 @@
+2019-01-15 13:09:54.891 +00:00 [Information] Starting web host
+
+Memory: 1041320
+2019-01-15 13:09:55.218 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1164200
+2019-01-15 13:10:02.131 +00:00 [Information] User profile is available. Using '"C:\Users\LevingtM\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 39707576
+2019-01-15 13:10:03.072 +00:00 [Information] Entity Framework Core "2.1.3-rtm-32065" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 41960152
+2019-01-15 13:10:49.896 +00:00 [Information] Starting web host
+
+Memory: 788744
+2019-01-15 13:10:50.027 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 903432
+2019-01-15 13:10:51.720 +00:00 [Information] User profile is available. Using '"C:\Users\LevingtM\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 39373264
+2019-01-15 13:10:52.467 +00:00 [Information] Entity Framework Core "2.1.3-rtm-32065" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 41634208
+2019-01-15 13:11:08.773 +00:00 [Fatal] Application startup exception
+System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.<>c__DisplayClass18_0.<Exists>b__0(DateTime giveUp)
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.<>c__DisplayClass12_0`2.<Execute>b__0(DbContext c, TState s)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.Execute[TState,TResult](IExecutionStrategy strategy, Func`2 operation, Func`2 verifySucceeded, TState state)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureDeleted()
+   at ScrumPm.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env) in C:\coding\ScrumPM\ScrumPm\src\ScrumPm\Startup.cs:line 103
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1,State:0,Class:20
+
+Memory: 42084824
+2019-01-15 13:11:09.215 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:1978/  
+
+Memory: 42773392
+2019-01-15 13:11:09.331 +00:00 [Information] Request finished in 114.6986ms 500 text/html; charset=utf-8
+
+Memory: 43404152
+2019-01-15 13:11:21.979 +00:00 [Information] Starting web host
+
+Memory: 1040768
+2019-01-15 13:11:22.248 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1163144
+2019-01-15 13:11:27.645 +00:00 [Information] User profile is available. Using '"C:\Users\LevingtM\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 39706264
+2019-01-15 13:11:28.518 +00:00 [Information] Entity Framework Core "2.1.3-rtm-32065" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 41967120
+2019-01-15 13:11:40.317 +00:00 [Error] Failed executing DbCommand ("46"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [ScrumPm];"
+System.Data.SqlClient.SqlException (0x80131904): CREATE FILE encountered operating system error 5(Access is denied.) while attempting to open or create the physical file 'C:\Users\LevingtMScrumPm.mdf'.
+CREATE DATABASE failed. Some file names listed could not be created. Check related errors.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:325d4120-a130-4816-bf5c-917be916b166
+Error Number:5123,State:1,Class:16
+
+Memory: 42876488
+2019-01-15 13:11:53.913 +00:00 [Information] Starting web host
+
+Memory: 789088
+2019-01-15 13:11:54.040 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 900848
+2019-01-15 13:11:55.681 +00:00 [Information] User profile is available. Using '"C:\Users\LevingtM\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 39373384
+2019-01-15 13:11:56.419 +00:00 [Information] Entity Framework Core "2.1.3-rtm-32065" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 41625976
+2019-01-15 13:12:09.273 +00:00 [Information] Starting web host
+
+Memory: 1046888
+2019-01-15 13:12:09.632 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1157176
+2019-01-15 13:12:15.336 +00:00 [Information] User profile is available. Using '"C:\Users\LevingtM\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 39700880
+2019-01-15 13:12:16.296 +00:00 [Information] Entity Framework Core "2.1.3-rtm-32065" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 41961776
+2019-01-15 13:12:27.717 +00:00 [Error] Failed executing DbCommand ("53"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [/ScrumPm];"
+System.Data.SqlClient.SqlException (0x80131904): CREATE FILE encountered operating system error 5(Access is denied.) while attempting to open or create the physical file 'C:\Users\LevingtM_ScrumPm.mdf'.
+CREATE DATABASE failed. Some file names listed could not be created. Check related errors.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:e3ef3f82-8e68-4d55-8e74-b9dc647034a9
+Error Number:5123,State:1,Class:16
+
+Memory: 42871144
+2019-01-15 13:12:39.668 +00:00 [Information] Starting web host
+
+Memory: 790272
+2019-01-15 13:12:39.795 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 908904
+2019-01-15 13:12:41.460 +00:00 [Information] User profile is available. Using '"C:\Users\LevingtM\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 39375272
+2019-01-15 13:12:42.211 +00:00 [Information] Entity Framework Core "2.1.3-rtm-32065" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 41636192
+2019-01-15 13:12:53.373 +00:00 [Error] Failed executing DbCommand ("23"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [/ScrumPm];"
+System.Data.SqlClient.SqlException (0x80131904): CREATE FILE encountered operating system error 5(Access is denied.) while attempting to open or create the physical file 'C:\Users\LevingtM_ScrumPm.mdf'.
+CREATE DATABASE failed. Some file names listed could not be created. Check related errors.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:1c08e361-c71d-42c0-91c2-b96621e9e2d4
+Error Number:5123,State:1,Class:16
+
+Memory: 42477480
+2019-01-15 13:12:53.416 +00:00 [Fatal] Application startup exception
+System.Data.SqlClient.SqlException (0x80131904): CREATE FILE encountered operating system error 5(Access is denied.) while attempting to open or create the physical file 'C:\Users\LevingtM_ScrumPm.mdf'.
+CREATE DATABASE failed. Some file names listed could not be created. Check related errors.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.MigrationCommandExecutor.ExecuteNonQuery(IEnumerable`1 migrationCommands, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerDatabaseCreator.Create()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureCreated()
+   at ScrumPm.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env) in C:\coding\ScrumPM\ScrumPm\src\ScrumPm\Startup.cs:line 104
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Hosting.ConventionBasedStartup.Configure(IApplicationBuilder app)
+   at Microsoft.AspNetCore.Hosting.Internal.WebHost.BuildApplication()
+ClientConnectionId:1c08e361-c71d-42c0-91c2-b96621e9e2d4
+Error Number:5123,State:1,Class:16
+
+Memory: 42780584
+2019-01-15 13:12:53.719 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:1978/  
+
+Memory: 43332048
+2019-01-15 13:12:53.839 +00:00 [Information] Request finished in 122.0967ms 500 text/html; charset=utf-8
+
+Memory: 43774056
+2019-01-15 13:12:53.851 +00:00 [Warning] Connection processing ended abnormally.
+Microsoft.AspNetCore.Connections.ConnectionAbortedException: The connection was aborted
+   at System.IO.Pipelines.PipeCompletion.ThrowLatchedException()
+   at System.IO.Pipelines.Pipe.GetReadResult(ReadResult& result)
+   at System.IO.Pipelines.Pipe.GetReadAsyncResult()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequestsAsync[TContext](IHttpApplication`1 application)
+
+Memory: 43806824
+2019-01-15 13:12:58.589 +00:00 [Information] Starting web host
+
+Memory: 1041360
+2019-01-15 13:12:58.880 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1163952
+2019-01-15 13:13:04.537 +00:00 [Information] User profile is available. Using '"C:\Users\LevingtM\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 39695024
+2019-01-15 13:13:05.364 +00:00 [Information] Entity Framework Core "2.1.3-rtm-32065" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 41955912
+2019-01-15 13:15:08.140 +00:00 [Information] Starting web host
+
+Memory: 792936
+2019-01-15 13:15:08.266 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 900888
+2019-01-15 13:15:09.928 +00:00 [Information] User profile is available. Using '"C:\Users\LevingtM\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 39374080
+2019-01-15 13:15:10.756 +00:00 [Information] Entity Framework Core "2.1.3-rtm-32065" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 41659440
+2019-01-15 13:15:18.268 +00:00 [Information] Starting web host
+
+Memory: 1046448
+2019-01-15 13:15:18.725 +00:00 [Information] Application version "1.0.0.0" starting up
+
+Memory: 1161048
+2019-01-15 13:15:24.444 +00:00 [Information] User profile is available. Using '"C:\Users\LevingtM\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+
+Memory: 39714720
+2019-01-15 13:15:25.300 +00:00 [Information] Entity Framework Core "2.1.3-rtm-32065" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 41975576
+2019-01-15 13:15:35.895 +00:00 [Information] Executed DbCommand ("269"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""CREATE DATABASE [ScrumPm];"
+
+Memory: 42876304
+2019-01-15 13:15:35.970 +00:00 [Information] Executed DbCommand ("71"ms) [Parameters=[""], CommandType='Text', CommandTimeout='60']"
+""IF SERVERPROPERTY('EngineEdition') <> 5
+BEGIN
+    ALTER DATABASE [ScrumPm] SET READ_COMMITTED_SNAPSHOT ON;
+END;"
+
+Memory: 42900880
+2019-01-15 13:15:36.136 +00:00 [Information] Executed DbCommand ("18"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[ProductOwners] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [EmailAddress] nvarchar(max) NULL,
+    [FirstName] nvarchar(max) NULL,
+    [LastName] nvarchar(max) NULL,
+    [UserName] nvarchar(max) NULL,
+    [Created] datetime2 NOT NULL,
+    [Modified] datetime2 NOT NULL,
+    CONSTRAINT [PK_ProductOwners] PRIMARY KEY ([Id])
+);"
+
+Memory: 43326864
+2019-01-15 13:15:36.149 +00:00 [Information] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Tenants] (
+    [Id] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    CONSTRAINT [PK_Tenants] PRIMARY KEY ([Id])
+);"
+
+Memory: 43343248
+2019-01-15 13:15:36.162 +00:00 [Information] Executed DbCommand ("13"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [dbo].[Teams] (
+    [Id] uniqueidentifier NOT NULL,
+    [TenantId] uniqueidentifier NOT NULL,
+    [Name] nvarchar(max) NULL,
+    [ProductOwnerId] uniqueidentifier NOT NULL,
+    CONSTRAINT [PK_Teams] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Teams_ProductOwners_ProductOwnerId] FOREIGN KEY ([ProductOwnerId]) REFERENCES [dbo].[ProductOwners] ([Id]) ON DELETE CASCADE
+);"
+
+Memory: 43359632
+2019-01-15 13:15:36.174 +00:00 [Information] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE UNIQUE INDEX [IX_Teams_ProductOwnerId] ON [dbo].[Teams] ([ProductOwnerId]);"
+
+Memory: 43367824
+2019-01-15 13:15:36.411 +00:00 [Information] Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name]
+FROM [dbo].[Tenants] AS [t]"
+
+Memory: 43613584
+2019-01-15 13:15:36.633 +00:00 [Information] Executed DbCommand ("53"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 43851152
+2019-01-15 13:15:36.646 +00:00 [Information] Executed DbCommand ("12"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Tenants] ([Id], [Name])
+VALUES (@p0, @p1);"
+
+Memory: 43867536
+2019-01-15 13:15:36.673 +00:00 [Information] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[Created], [p].[EmailAddress], [p].[FirstName], [p].[LastName], [p].[Modified], [p].[TenantId], [p].[UserName]
+FROM [dbo].[ProductOwners] AS [p]"
+
+Memory: 44006800
+2019-01-15 13:15:36.720 +00:00 [Information] Executed DbCommand ("19"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);"
+
+Memory: 44350824
+2019-01-15 13:15:36.732 +00:00 [Information] Executed DbCommand ("12"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (DbType = Guid), @p7='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[ProductOwners] ([Id], [Created], [EmailAddress], [FirstName], [LastName], [Modified], [TenantId], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);"
+
+Memory: 44383592
+2019-01-15 13:15:36.753 +00:00 [Information] Executed DbCommand ("14"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId]
+FROM [dbo].[Teams] AS [t]"
+
+Memory: 44506472
+2019-01-15 13:15:36.792 +00:00 [Information] Executed DbCommand ("13"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 44735848
+2019-01-15 13:15:36.803 +00:00 [Information] Executed DbCommand ("11"ms) [Parameters=["@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (DbType = Guid), @p3='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [dbo].[Teams] ([Id], [Name], [ProductOwnerId], [TenantId])
+VALUES (@p0, @p1, @p2, @p3);"
+
+Memory: 44768616
+2019-01-15 13:15:37.526 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:1978/  
+
+Memory: 45735280
+2019-01-15 13:15:37.526 +00:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:1978/  0
+
+Memory: 45743472
+2019-01-15 13:15:37.615 +00:00 [Information] Request finished in 93.3514ms 200 
+
+Memory: 45866320
+2019-01-15 13:15:37.849 +00:00 [Information] Route matched with "{action = \"Index\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Index (ScrumPm)"
+
+Memory: 46759224
+2019-01-15 13:15:37.957 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)" - Validation state: Valid
+
+Memory: 46898488
+2019-01-15 13:15:37.959 +00:00 [Debug] TeamController: Index
+
+Memory: 46914824
+2019-01-15 13:15:37.976 +00:00 [Information] Entity Framework Core "2.1.3-rtm-32065" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 47275064
+2019-01-15 13:15:38.222 +00:00 [Information] Executed DbCommand ("29"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwnerEf].[Id], [t.ProductOwnerEf].[Created], [t.ProductOwnerEf].[EmailAddress], [t.ProductOwnerEf].[FirstName], [t.ProductOwnerEf].[LastName], [t.ProductOwnerEf].[Modified], [t.ProductOwnerEf].[TenantId], [t.ProductOwnerEf].[UserName]
+FROM [dbo].[Teams] AS [t]
+INNER JOIN [dbo].[ProductOwners] AS [t.ProductOwnerEf] ON [t].[ProductOwnerId] = [t.ProductOwnerEf].[Id]"
+
+Memory: 48626176
+2019-01-15 13:15:38.260 +00:00 [Information] End TeamController: Index
+
+Memory: 48749056
+2019-01-15 13:15:38.268 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 309.0689ms.
+
+Memory: 48781824
+2019-01-15 13:15:43.465 +00:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 68423160
+2019-01-15 13:15:44.000 +00:00 [Information] Executed ViewResult - view "Index" executed in 5670.6867ms.
+
+Memory: 91034008
+2019-01-15 13:15:44.005 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Index (ScrumPm)" in 6151.9745ms
+
+Memory: 91050392
+2019-01-15 13:15:44.026 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:1978/lib/jquery/dist/jquery.js  
+
+Memory: 91099416
+2019-01-15 13:15:44.027 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:1978/lib/bootstrap/dist/js/bootstrap.js  
+
+Memory: 91123712
+2019-01-15 13:15:44.028 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:1978/css/site.css  
+
+Memory: 91131816
+2019-01-15 13:15:44.028 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:1978/js/site.js?v=ji3-IxbEzYWjzzLCGkF1KDjrT2jLbbrSYXw-AhMPNIA  
+
+Memory: 91156024
+2019-01-15 13:15:44.028 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:1978/lib/bootstrap/dist/css/bootstrap.css  
+
+Memory: 91156024
+2019-01-15 13:15:44.063 +00:00 [Information] HTTP "GET" "/" responded 200 in 6408.4029 ms
+
+Memory: 91213296
+2019-01-15 13:15:44.088 +00:00 [Information] Request finished in 6571.3764ms 200 text/html; charset=utf-8
+
+Memory: 91565168
+2019-01-15 13:15:44.095 +00:00 [Information] Sending file. Request path: '"/js/site.js"'. Physical path: '"C:\coding\ScrumPM\ScrumPm\src\ScrumPm\wwwroot\js\site.js"'
+
+Memory: 91835616
+2019-01-15 13:15:44.097 +00:00 [Information] Sending file. Request path: '"/css/site.css"'. Physical path: '"C:\coding\ScrumPM\ScrumPm\src\ScrumPm\wwwroot\css\site.css"'
+
+Memory: 91843808
+2019-01-15 13:15:44.100 +00:00 [Information] Request finished in 72.4625ms 200 text/css
+
+Memory: 91852000
+2019-01-15 13:15:44.100 +00:00 [Information] Request finished in 71.9385ms 200 application/javascript
+
+Memory: 91852000
+2019-01-15 13:15:44.110 +00:00 [Information] Sending file. Request path: '"/lib/bootstrap/dist/js/bootstrap.js"'. Physical path: '"C:\coding\ScrumPM\ScrumPm\src\ScrumPm\wwwroot\lib\bootstrap\dist\js\bootstrap.js"'
+
+Memory: 91909224
+2019-01-15 13:15:44.111 +00:00 [Information] Request finished in 83.6448ms 200 application/javascript
+
+Memory: 91917416
+2019-01-15 13:15:44.112 +00:00 [Information] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.css"'. Physical path: '"C:\coding\ScrumPM\ScrumPm\src\ScrumPm\wwwroot\lib\bootstrap\dist\css\bootstrap.css"'
+
+Memory: 91925608
+2019-01-15 13:15:44.114 +00:00 [Information] Sending file. Request path: '"/lib/jquery/dist/jquery.js"'. Physical path: '"C:\coding\ScrumPM\ScrumPm\src\ScrumPm\wwwroot\lib\jquery\dist\jquery.js"'
+
+Memory: 91941992
+2019-01-15 13:15:44.114 +00:00 [Information] Request finished in 88.2338ms 200 application/javascript
+
+Memory: 91950184
+2019-01-15 13:15:44.114 +00:00 [Information] Request finished in 86.3504ms 200 text/css
+
+Memory: 91950184
+2019-01-15 13:15:44.529 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:1978/favicon.ico  
+
+Memory: 91974760
+2019-01-15 13:15:44.533 +00:00 [Information] Sending file. Request path: '"/favicon.ico"'. Physical path: '"C:\coding\ScrumPM\ScrumPm\src\ScrumPm\wwwroot\favicon.ico"'
+
+Memory: 91991144
+2019-01-15 13:15:44.533 +00:00 [Information] Request finished in 4.7218ms 200 image/x-icon
+
+Memory: 91999288
+2019-01-15 13:15:59.598 +00:00 [Information] Request starting HTTP/1.1 POST http://localhost:1978/Team/Search application/x-www-form-urlencoded 193
+
+Memory: 92007480
+2019-01-15 13:15:59.637 +00:00 [Information] Route matched with "{action = \"Search\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Search (ScrumPm)"
+
+Memory: 92130264
+2019-01-15 13:15:59.779 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Search (ScrumPm)" with arguments (["ScrumPm.BindingModels.SearchBindingModel"]) - Validation state: Valid
+
+Memory: 92393416
+2019-01-15 13:15:59.791 +00:00 [Information] Entity Framework Core "2.1.3-rtm-32065" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 92426184
+2019-01-15 13:15:59.901 +00:00 [Information] Executed DbCommand ("34"ms) [Parameters=["@__ToString_0='?' (Size = 4000), @__specification_SearchTerm_2='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwnerEf].[Id], [t.ProductOwnerEf].[Created], [t.ProductOwnerEf].[EmailAddress], [t.ProductOwnerEf].[FirstName], [t.ProductOwnerEf].[LastName], [t.ProductOwnerEf].[Modified], [t.ProductOwnerEf].[TenantId], [t.ProductOwnerEf].[UserName]
+FROM [dbo].[Teams] AS [t]
+INNER JOIN [dbo].[ProductOwners] AS [t.ProductOwnerEf] ON [t].[ProductOwnerId] = [t.ProductOwnerEf].[Id]
+WHERE (CONVERT(VARCHAR(36), [t].[TenantId]) = @__ToString_0) AND [t].[Name] LIKE (N'%' + @__specification_SearchTerm_2) + N'%'"
+
+Memory: 93081544
+2019-01-15 13:15:59.907 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Search (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 123.5513ms.
+
+Memory: 93114312
+2019-01-15 13:15:59.915 +00:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 93138888
+2019-01-15 13:15:59.925 +00:00 [Information] Executed ViewResult - view "Index" executed in 9.7841ms.
+
+Memory: 93278136
+2019-01-15 13:15:59.925 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Search (ScrumPm)" in 288.0327ms
+
+Memory: 93302576
+2019-01-15 13:15:59.927 +00:00 [Information] HTTP "POST" "/Team/Search" responded 200 in 326.5773 ms
+
+Memory: 93310768
+2019-01-15 13:15:59.927 +00:00 [Information] Request finished in 329.3254ms 200 text/html; charset=utf-8
+
+Memory: 93318960
+2019-01-15 13:16:02.937 +00:00 [Information] Request starting HTTP/1.1 GET http://localhost:1978/  
+
+Memory: 93343384
+2019-01-15 13:16:02.939 +00:00 [Information] Route matched with "{action = \"Index\", controller = \"Team\"}". Executing action "ScrumPm.Controllers.TeamController.Index (ScrumPm)"
+
+Memory: 93359768
+2019-01-15 13:16:02.959 +00:00 [Information] Executing action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)" - Validation state: Valid
+
+Memory: 93392536
+2019-01-15 13:16:02.960 +00:00 [Debug] TeamController: Index
+
+Memory: 93400728
+2019-01-15 13:16:02.960 +00:00 [Information] Entity Framework Core "2.1.3-rtm-32065" initialized '"ScrumPmContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "None"
+
+Memory: 93433496
+2019-01-15 13:16:02.984 +00:00 [Information] Executed DbCommand ("19"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[Name], [t].[ProductOwnerId], [t].[TenantId], [t.ProductOwnerEf].[Id], [t.ProductOwnerEf].[Created], [t.ProductOwnerEf].[EmailAddress], [t.ProductOwnerEf].[FirstName], [t.ProductOwnerEf].[LastName], [t.ProductOwnerEf].[Modified], [t.ProductOwnerEf].[TenantId], [t.ProductOwnerEf].[UserName]
+FROM [dbo].[Teams] AS [t]
+INNER JOIN [dbo].[ProductOwners] AS [t.ProductOwnerEf] ON [t].[ProductOwnerId] = [t.ProductOwnerEf].[Id]"
+
+Memory: 93466264
+2019-01-15 13:16:02.984 +00:00 [Information] End TeamController: Index
+
+Memory: 93490840
+2019-01-15 13:16:02.984 +00:00 [Information] Executed action method "ScrumPm.Controllers.TeamController.Index (ScrumPm)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 24.6535ms.
+
+Memory: 93507224
+2019-01-15 13:16:02.985 +00:00 [Information] Executing ViewResult, running view "Index".
+
+Memory: 93523608
+2019-01-15 13:16:02.987 +00:00 [Information] Executed ViewResult - view "Index" executed in 1.9885ms.
+
+Memory: 93621960
+2019-01-15 13:16:02.987 +00:00 [Information] Executed action "ScrumPm.Controllers.TeamController.Index (ScrumPm)" in 47.6772ms
+
+Memory: 93630152
+2019-01-15 13:16:02.987 +00:00 [Information] HTTP "GET" "/" responded 200 in 49.4605 ms
+
+Memory: 93646536
+2019-01-15 13:16:02.987 +00:00 [Information] Request finished in 49.9575ms 200 text/html; charset=utf-8
+
+Memory: 93662920
