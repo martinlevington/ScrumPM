@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPmApi", "ScrumPmApi\Sc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPm.AspNetCore.Common", "ScrumPm.AspNetCore.Common\ScrumPm.AspNetCore.Common.csproj", "{C4E96365-6E63-4EAA-987E-BEA64208FCF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumPm.Domain.Common", "ScrumPm.Domain.Common\ScrumPm.Domain.Common.csproj", "{726C4585-125D-4A27-8671-1F8A1A5B3200}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScrumPm.Domain.Common", "ScrumPm.Domain.Common\ScrumPm.Domain.Common.csproj", "{726C4585-125D-4A27-8671-1F8A1A5B3200}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrumPm.Application.Tests.Unit", "ScrumPm.Application.Tests.Unit\ScrumPm.Application.Tests.Unit.csproj", "{B434B291-9D89-4A4B-9AA4-881EF203575A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +93,14 @@ Global
 		{726C4585-125D-4A27-8671-1F8A1A5B3200}.Release|Any CPU.Build.0 = Release|Any CPU
 		{726C4585-125D-4A27-8671-1F8A1A5B3200}.Release|x86.ActiveCfg = Release|Any CPU
 		{726C4585-125D-4A27-8671-1F8A1A5B3200}.Release|x86.Build.0 = Release|Any CPU
+		{B434B291-9D89-4A4B-9AA4-881EF203575A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B434B291-9D89-4A4B-9AA4-881EF203575A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B434B291-9D89-4A4B-9AA4-881EF203575A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B434B291-9D89-4A4B-9AA4-881EF203575A}.Debug|x86.Build.0 = Debug|Any CPU
+		{B434B291-9D89-4A4B-9AA4-881EF203575A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B434B291-9D89-4A4B-9AA4-881EF203575A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B434B291-9D89-4A4B-9AA4-881EF203575A}.Release|x86.ActiveCfg = Release|Any CPU
+		{B434B291-9D89-4A4B-9AA4-881EF203575A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
