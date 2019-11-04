@@ -15,11 +15,10 @@ namespace ScrumPm.Domain.Common.Uow
     {
         public Guid Id { get; } = Guid.NewGuid();
 
-        public IUnitOfWorkOptions Options { get; private set; }
-
+        public IUnitOfWorkOptions Options { get; private set; 
+        
         public bool IsDisposed { get; set; }
         public bool IsCompleted { get; set; }
-
 
         private readonly Dictionary<string, IDatabaseApi> _databaseApis;
         private readonly Dictionary<string, ITransactionApi> _transactionApis;
@@ -32,14 +31,10 @@ namespace ScrumPm.Domain.Common.Uow
 
         public UnitOfWork(IOptions<UnitOfWorkDefaultOptions> options)
         {
-         
             _defaultOptions = options.Value;
-
             _databaseApis = new Dictionary<string, IDatabaseApi>();
             _transactionApis = new Dictionary<string, ITransactionApi>();
         }
-
- 
 
         public virtual void Initialize(UnitOfWorkOptions options)
         {
@@ -51,10 +46,7 @@ namespace ScrumPm.Domain.Common.Uow
             }
 
             Options = _defaultOptions.Normalize(options.Clone());
- 
         }
-
-   
 
         public virtual void SaveChanges()
         {
@@ -197,8 +189,6 @@ namespace ScrumPm.Domain.Common.Uow
             return _transactionApis.GetOrAdd(key, factory);
         }
 
-    
-
         protected virtual void OnCompleted()
         {
             IsCompleted = true;
@@ -261,7 +251,6 @@ namespace ScrumPm.Domain.Common.Uow
 
             _isCompleted = true;
         }
-
 
         protected virtual void RollbackAll()
         {
@@ -330,7 +319,6 @@ namespace ScrumPm.Domain.Common.Uow
                 await transaction.CommitAsync();
             }
         }
-
 
         public override string ToString()
         {
