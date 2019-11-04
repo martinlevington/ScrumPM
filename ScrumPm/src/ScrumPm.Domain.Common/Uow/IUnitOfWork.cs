@@ -9,13 +9,9 @@ namespace ScrumPm.Domain.Common.Uow
     {
         Guid Id { get; }
 
-
-
         IUnitOfWorkOptions Options { get; }
 
-
         void Initialize([NotNull] UnitOfWorkOptions options);
-
 
         void SaveChanges();
 
@@ -28,8 +24,6 @@ namespace ScrumPm.Domain.Common.Uow
         void Rollback();
 
         Task RollbackAsync(CancellationToken cancellationToken = default);
-
-    
 
     }
 }
