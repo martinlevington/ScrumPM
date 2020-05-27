@@ -11,9 +11,6 @@ namespace ScrumPm.Persistence.Common
         where TEntity : class, IDataEntity
     {
 
-
- 
-
         public ICancellationTokenProvider CancellationTokenProvider { get; set; }
 
         protected BasicRepositoryBase()

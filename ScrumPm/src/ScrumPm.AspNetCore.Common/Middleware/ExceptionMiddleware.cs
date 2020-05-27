@@ -6,6 +6,7 @@ using System.Net.Mime;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ScrumPm.Domain.Common.Exceptions;
 
@@ -13,11 +14,11 @@ namespace ScrumPm.AspNetCore.Common.Middleware
 {
     public class ExceptionMiddleware
     {
-        private readonly IHostingEnvironment _environment;
+        private readonly IWebHostEnvironment _environment;
         private readonly ILogger _logger;
         private readonly RequestDelegate _request;
 
-        public ExceptionMiddleware(IHostingEnvironment environment, RequestDelegate next, ILoggerFactory loggerFactory)
+        public ExceptionMiddleware(IWebHostEnvironment environment, RequestDelegate next, ILoggerFactory loggerFactory)
         {
             _environment = environment;
             _logger = loggerFactory.CreateLogger<ExceptionMiddleware>();

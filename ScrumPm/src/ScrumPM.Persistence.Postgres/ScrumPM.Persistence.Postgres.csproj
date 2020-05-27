@@ -1,19 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Products\" />
-    <Folder Include="Teams\Commands\" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ScrumPm.Domain.Common\ScrumPm.Domain.Common.csproj" />
     <ProjectReference Include="..\ScrumPm.Domain\ScrumPm.Domain.csproj" />
     <ProjectReference Include="..\ScrumPm.Persistence.Models\ScrumPm.Persistence.Models.csproj" />
-    <ProjectReference Include="..\ScrumPM.Persistence.Postgres\ScrumPM.Persistence.Postgres.csproj" />
   </ItemGroup>
 
 </Project>

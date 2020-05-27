@@ -15,8 +15,8 @@ namespace ScrumPm.Domain.Common.Uow
     {
         public Guid Id { get; } = Guid.NewGuid();
 
-        public IUnitOfWorkOptions Options { get; private set; 
-        
+        public IUnitOfWorkOptions Options { get; private set; }
+
         public bool IsDisposed { get; set; }
         public bool IsCompleted { get; set; }
 

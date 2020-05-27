@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 using ScrumPm.Middleware;
 
 namespace ScrumPm.Extensions
@@ -24,7 +25,7 @@ namespace ScrumPm.Extensions
         /// </summary>
         /// <param name="application">The application being configured</param>
         /// <param name="environment">The current development environment</param>
-        public static void UseExceptionCustom(this IApplicationBuilder application, IHostingEnvironment environment)
+        public static void UseExceptionCustom(this IApplicationBuilder application, IWebHostEnvironment environment)
         {
             if (environment.IsDevelopment())
             {
@@ -49,7 +50,7 @@ namespace ScrumPm.Extensions
         /// </summary>
         /// <param name="application">The application being configured</param>
         /// <param name="environment">The current development environment</param>
-        public static void UseHstsCustom(this IApplicationBuilder application, IHostingEnvironment environment)
+        public static void UseHstsCustom(this IApplicationBuilder application, IWebHostEnvironment environment)
         {
             if (!environment.IsDevelopment())
             {

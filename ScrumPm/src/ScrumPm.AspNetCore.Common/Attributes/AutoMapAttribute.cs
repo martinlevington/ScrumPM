@@ -9,28 +9,24 @@ namespace ScrumPm.AspNetCore.Common.Attributes
     {
         private readonly Type _sourceType;
         private readonly Type _destType;
+        private readonly IMapper _mapper;
 
-        public AutoMapAttribute(Type sourceType, Type destType)
+        public AutoMapAttribute(Type sourceType, Type destType, IMapper mapper)
         {
             _sourceType = sourceType;
             _destType = destType;
+            _mapper = mapper;
         }
 
         public override void OnActionExecuted(ActionExecutedContext context)
         {
-            var filter = new AutoMapFilter(SourceType, DestType,  Mapper.Instance );
+            var filter = new AutoMapFilter(SourceType, DestType,  _mapper );
 
             filter.OnActionExecuted(context);
         }
 
-        public Type SourceType
-        {
-            get { return _sourceType; }
-        }
+        public Type SourceType => _sourceType;
 
-        public Type DestType
-        {
-            get { return _destType; }
-        }
+        public Type DestType => _destType;
     }
 }

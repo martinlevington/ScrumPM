@@ -1,23 +1,20 @@
-﻿using ScrumPm.Domain.Common;
-using ScrumPm.Domain.Common.MultiTenant;
-using ScrumPm.Domain.Common.Persistence;
-using ScrumPm.Persistence.Common.Entities;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
+using ScrumPm.Domain.Common;
+using ScrumPm.Domain.Common.MultiTenant;
+using ScrumPm.Domain.Common.Persistence;
+using ScrumPm.Persistence.Common.Entities;
 
 namespace ScrumPm.Persistence.Common
 {
     public abstract class RepositoryBase<TEntity> : BasicRepositoryBase<TEntity>, IRepository<TEntity>
-        where TEntity :  class,IDataEntity
-    { 
-        
-  
-
+        where TEntity : class, IDataEntity
+    {
         public ICurrentTenant CurrentTenant { get; set; }
 
         public virtual Type ElementType => GetQueryable().ElementType;
@@ -26,7 +23,6 @@ namespace ScrumPm.Persistence.Common
 
         public virtual IQueryProvider Provider => GetQueryable().Provider;
 
- 
 
         public virtual IQueryable<TEntity> WithDetails()
         {
@@ -48,8 +44,6 @@ namespace ScrumPm.Persistence.Common
             return GetQueryable().GetEnumerator();
         }
 
-        protected abstract IQueryable<TEntity> GetQueryable();
-
         public virtual void Delete(Expression<Func<TEntity, bool>> predicate, bool autoSave = false)
         {
             foreach (var entity in GetQueryable().Where(predicate).ToList())
@@ -58,17 +52,18 @@ namespace ScrumPm.Persistence.Common
             }
         }
 
-        public virtual Task DeleteAsync(Expression<Func<TEntity, bool>> predicate, bool autoSave = false, CancellationToken cancellationToken = default)
+        public virtual Task DeleteAsync(Expression<Func<TEntity, bool>> predicate, bool autoSave = false,
+            CancellationToken cancellationToken = default)
         {
             Delete(predicate, autoSave);
             return Task.CompletedTask;
         }
 
+        protected abstract IQueryable<TEntity> GetQueryable();
+
         protected virtual TQueryable ApplyDataFilters<TQueryable>(TQueryable query)
             where TQueryable : IQueryable<TEntity>
         {
-           
-
             //if (typeof(IMultiTenant).IsAssignableFrom(typeof(TEntity)))
             //{
             //    var tenantId = CurrentTenant.Id;
@@ -82,14 +77,14 @@ namespace ScrumPm.Persistence.Common
     public abstract class RepositoryBase<TEntity, TKey> : RepositoryBase<TEntity>, IRepository<TEntity, TKey>
         where TEntity : class, IDataEntity<TKey>
     {
+        public virtual IQueryable<TEntity> Queryable { get; }
+
         public virtual TEntity Find(TKey id, bool includeDetails = true)
         {
             return includeDetails
                 ? WithDetails().FirstOrDefault(DataEntityHelper.CreateEqualityExpressionForId<TEntity, TKey>(id))
                 : GetQueryable().FirstOrDefault(DataEntityHelper.CreateEqualityExpressionForId<TEntity, TKey>(id));
         }
-
-        public virtual IQueryable<TEntity> Queryable { get; }
 
         public virtual TEntity GetById(TKey id, bool includeDetails = true)
         {
@@ -103,19 +98,21 @@ namespace ScrumPm.Persistence.Common
             return entity;
         }
 
-        public virtual Task<TEntity> GetAsync(TKey id, bool includeDetails = true, CancellationToken cancellationToken = default)
+        public virtual Task<TEntity> GetAsync(TKey id, bool includeDetails = true,
+            CancellationToken cancellationToken = default)
         {
             return Task.FromResult(GetById(id, includeDetails));
         }
 
-        public virtual Task<TEntity> FindAsync(TKey id, bool includeDetails = true, CancellationToken cancellationToken = default)
+        public virtual Task<TEntity> FindAsync(TKey id, bool includeDetails = true,
+            CancellationToken cancellationToken = default)
         {
             return Task.FromResult(Find(id, includeDetails));
         }
 
         public virtual void Delete(TKey id, bool autoSave = false)
         {
-            var entity = Find(id, includeDetails: false);
+            var entity = Find(id, false);
             if (entity == null)
             {
                 return;

@@ -1,10 +1,11 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using ScrumPm.Persistence.Database;
-using ScrumPm.Persistence.Teams.PersistenceModels;
+using ScrumPm.Persistence.Models.Teams.PersistenceModels;
+using ScrumPM.Persistence.Postgres;
+using System.Linq;
+
 
 namespace ScrumPm.Migrations
 {
